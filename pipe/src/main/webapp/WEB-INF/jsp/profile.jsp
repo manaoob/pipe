@@ -1,4 +1,8 @@
 <%@page pageEncoding="utf-8"%>
+<% String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() +
+			":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -122,7 +126,7 @@
                         <li><a href="toPro"><i class="fa fa-user-plus"></i> My Profile</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out"></i> Logout</a>
+                        <li><a href="logout"><i class="fa fa-sign-out"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -136,14 +140,12 @@
                 <ul class="nav" id="main-menu">
                     <li>
                         <div class="user-img-div">
-                            <img src="<%=request.getContextPath()%>/lib/assets/img/user.jpg" class="img-circle" />
-							
-                           
+                            <img src= "<%=request.getContextPath()%>/images/${user.photo}"  class="img-circle" style="width: 150px;height: 150px; border-radius:250px;overflow: hidden;"/>
                         </div>
 
                     </li>
                      <li>
-                        <a  href="#"> <strong> Romelia Alexendra </strong></a>
+                        <a  href="toPro"> <strong> ${user.username}</strong></a>
                     </li>
 
                     <li>
@@ -203,10 +205,10 @@
                     <div class="row">
                         <div class="col-sm-6">
                         	<div class="col-md-4">
-                        		<img class="user_profile_img" src="<%=request.getContextPath()%>/lib/assets/img/user.jpg" alt="" style="width: 150px;height: 150px; border-radius:250px;overflow: hidden;"/>                        		
+                        		<img class="user_profile_img" src="<%=request.getContextPath()%>/images/${user.photo}" alt="" style="width: 150px;height: 150px; border-radius:250px;overflow: hidden;"/>                        		
                         	</div>                            
                             <div class="col-md-8">
-                            	<h1 class="user_profile_name"> Carrol Clark</h1>
+                            	<h1 class="user_profile_name"> ${user.nickName}</h1>
 	                            <p class="user_profile_info">&nbsp;</p>
 	                            <!--<p><button class="btn-danger">上传头像</button> </p>-->
                             </div>
@@ -216,7 +218,7 @@
                     <hr/>
                     <div class="row">
                         <div class="col-md-12">
-                           <form action= "infoChange" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                           <form id="myForm" action= "infoChange" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                                 <h3 class="heading_a"><span class="heading_text">基本信息</span></h3>
                                 <div class="form-group">
                                     <label for="profile_username" class="col-sm-2 control-label">用户名</label>
@@ -233,7 +235,7 @@
                                 <div class="form-group">
                                     <label for="profile_bday" class="col-sm-2 control-label">生日</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="profile_bday" name="birthday" value="${user.birthday}">
+                                        <input type="text" class="form-control" id="" name="birthday" value="${user.birthday}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -250,7 +252,7 @@
                                 <div class="form-group">
                                     <label for="profile_skype" class="col-sm-2 control-label">联系方式</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="profile_skype" name="phone" value="${user.photo}">
+                                        <input type="text" class="form-control" id="profile_skype" name="phone" value="${user.phone}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -269,7 +271,7 @@
                                 <div class="form-group">
                                     <label for="profile_notes" class="col-sm-2 control-label">个人简介</label>
                                     <div class="col-sm-10">
-                                        <textarea name="profile_notes" id="profile_notes" name="notes" cols="30" rows="4" class="form-control">
+                                        <textarea id="profile_notes" name="notes" cols="30" rows="4" class="form-control">
 											${user.notes}
                                         </textarea>
                                     </div>
@@ -277,8 +279,9 @@
                                 <hr/>
                                 <div class="form-group">
                                     <div class="col-sm-10 col-sm-offset-2">
-                                        <button class="btn-primary btn">保存</button>
-                                        <button class="btn-default btn">取消</button>
+                                        <input type="submit" value="提交" class="btn-primary btn">
+                                        <button class="btn-default btn" onclick="formReset();">取消</button>
+                                        <h4>${hint}</h4>
                                     </div>
                                 </div>
                             </form>                            
@@ -304,7 +307,13 @@
     <script src="<%=request.getContextPath()%>/lib/assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="<%=request.getContextPath()%>/lib/assets/js/custom.js"></script>
+	<script src="<%=request.getContextPath()%>/lib/js/scripts.js">
+	function formReset()
+	 {
+	     document.getElementById("myForm").reset();
 
+	 }
+	</script>
 
 </body>
 </html>

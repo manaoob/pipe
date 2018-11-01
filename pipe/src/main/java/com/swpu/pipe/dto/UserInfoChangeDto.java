@@ -1,8 +1,7 @@
 package com.swpu.pipe.dto;
 
-import java.util.Date;
-
-import org.springframework.stereotype.Service;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import com.swpu.pipe.entity.User;
 
@@ -10,7 +9,9 @@ public class UserInfoChangeDto {
 
 	private String nickName;
 	
-	private Date birthday;
+	private String birthday;
+	
+//	private Date birthday;
 	
 	private String phone;
 	
@@ -23,7 +24,14 @@ public class UserInfoChangeDto {
 	public User toUser(UserInfoChangeDto userInfoChangeDto){
 		User user = new User();
 		user.setNickName(nickName);
-		user.setBirthday(birthday);
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    try {
+			user.setBirthday(sdf.parse(birthday));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		user.setBirthday(birthday);
 		user.setPhone(phone);
 		user.setQQorWechat(QQorWechat);
 		user.setNotes(notes);
@@ -38,14 +46,20 @@ public class UserInfoChangeDto {
 		this.nickName = nickName;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-
-	public void setBirthday(Date birthday) {
+	
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
+//	public void setBirthday(Date birthday) {
+//		this.birthday = birthday;
+//	}
+//	public Date getBirthday() {
+//		return birthday;
+//	}
 
 	public String getPhone() {
 		return phone;
