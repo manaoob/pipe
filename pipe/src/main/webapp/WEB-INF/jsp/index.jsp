@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pipe System</title>
     <!-- BOOTSTRAP STYLES-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/lib/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME ICONS STYLES-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/lib/assets/css/font-awesome.css" rel="stylesheet" />
     <!--CUSTOM STYLES-->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/lib/assets/css/style.css" rel="stylesheet" />
       <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -141,25 +141,25 @@
 
                     </li>
                      <li>
-                        <a  href="#"> <strong> Romelia Alexendra </strong></a>
+                        <a  href="toPro"> <strong> ${user.username} </strong></a>
                     </li>
 
                     <li>
-                        <a class="active-menu"  href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
+                        <a class="active-menu"  href="toIndex"><i class="fa fa-dashboard "></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="ui.html"><i class="fa fa-venus "></i>UI Elements </a>
+                        <a href="toUI"><i class="fa fa-venus "></i>UI Elements </a>
                         
                     </li>
                     
                     <li>
-                        <a href="table.html"><i class="fa fa-bolt "></i>Data Tables </a>
+                        <a href="toTable"><i class="fa fa-bolt "></i>Data Tables </a>
                         
                     </li>
                    
                      
                      <li>
-                        <a href="forms.html"><i class="fa fa-code "></i>Forms</a>
+                        <a href="toForms"><i class="fa fa-code "></i>Forms</a>
                     </li>
                    
                     <li>
@@ -347,7 +347,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
                     <div class="media">
       <a class="media-left" href="#">
-          <img src="assets/img/1.jpg" alt="" class="img-rounded" />
+          <img src="<%=request.getContextPath()%>/lib/assets/img/1.jpg" alt="" class="img-rounded" />
       </a>
       <div class="media-body">
         <h4 class="media-heading">Media heading </h4>
@@ -356,7 +356,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </div>
     <div class="media">
       <a class="media-left" href="#">
-          <img src="assets/img/2.jpg" alt="" class="img-rounded" />
+          <img src="<%=request.getContextPath()%>/lib/assets/img/2.jpg" alt="" class="img-rounded" />
       </a>
       <div class="media-body">
         <h4 class="media-heading">Media heading</h4>
@@ -388,13 +388,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     <!-- /. FOOTER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.11.1.js"></script>
+    <script src="<%=request.getContextPath()%>/lib/assets/js/jquery-1.11.1.js"></script>
     <!-- BOOTSTRAP SCRIPTS -->
-    <script src="assets/js/bootstrap.js"></script>
+    <script src="<%=request.getContextPath()%>/lib/assets/js/bootstrap.js"></script>
     <!-- METISMENU SCRIPTS -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="<%=request.getContextPath()%>/lib/assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
+    <script src="<%=request.getContextPath()%>/lib/assets/js/custom.js"></script>
 
 
 </body>

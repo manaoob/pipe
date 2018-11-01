@@ -18,7 +18,7 @@
 	<mvc:default-servlet-handler/>
 	<!-- location指定静态资源放在什么地方，mapping指映射成什么 -->
 	<!-- <mvc:resources location="/WEB-INF/*" mapping="/resource" /> -->
-	
+	<mvc:annotation-driven />  
 	
 	<!-- 视图解析器 -->
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -50,10 +50,11 @@ public class UserController {
 	public String login(@Valid UserLonDto userLonDto, Model model, HttpServletRequest request, HttpServletResponse response){
 		String code = (String) request.getSession().getAttribute("code");
 		if (userLonDto.getVcode().equalsIgnoreCase(code)) {
-			User user = userLonDto.toUser(userLonDto);
-			if (userService.login(user)) {
+			User userTemp = userLonDto.toUser(userLonDto);
+			if (userService.login(userTemp)) {
 				
-				request.getSession().setAttribute("username", user.getUsername());
+				request.getSession().setAttribute("username", userTemp.getUsername());
+				User user = userService.findByUsername(userTemp.getUsername());
 				model.addAttribute("user", user);
 				return "profile";
 			}
@@ -74,7 +75,7 @@ public class UserController {
 	 * @param response
 	 * @return
 	 */
-	@PostMapping(value="/logout")
+	@GetMapping(value="/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response){
 		request.getSession().removeAttribute("username");
 		return "login";
@@ -116,14 +117,17 @@ public class UserController {
 	@PostMapping(value="infoChange")
 	public String infoChange(UserInfoChangeDto userInfoChangeDto,Errors errors,MultipartFile photo, Model model,HttpServletRequest request,HttpServletResponse response) throws IllegalStateException, IOException{
 		if (!errors.hasErrors()) {
+			String username = (String) request.getSession().getAttribute("username");
 			ServletContext context = request.getServletContext();
 			String path = context.getRealPath("/images");
 			System.out.println(photo);
 			String fileName = PipeUtil.getRandomFileName(photo.getOriginalFilename());
 			photo.transferTo(new File(path + "/" + fileName));
-			User user = userInfoChangeDto.toUser(userInfoChangeDto);
-			user.setPhoto(fileName);
-			if (userService.updateUser(user)) {
+			User userTemp = userInfoChangeDto.toUser(userInfoChangeDto);
+			userTemp.setUsername(username);
+			userTemp.setPhoto(fileName);
+			if (userService.updateUser(userTemp)) {
+				User user = userService.findByUsername(username);
 				model.addAttribute("user", user);			
 				return "profile";
 			}
@@ -190,6 +194,20 @@ public class UserController {
 	public String toBlank(){
 		return "blank";
 	}
+
+//	/**
+//		 * form表单提交 Date类型数据绑定
+//		 * <功能详细描述>
+//		 * @param binder
+//		 * @see [类、类#方法、类#成员]
+//		 */
+//	@InitBinder  
+//	public void initBinder(WebDataBinder binder) {  
+//		    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+//		    dateFormat.setLenient(false);  
+//		    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));  
+//	}
+
 
 	
 }

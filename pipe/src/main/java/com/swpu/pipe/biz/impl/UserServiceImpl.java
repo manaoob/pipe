@@ -50,9 +50,9 @@ public class UserServiceImpl implements UserService{
 		return userDao.findByUsername(username);
 	}
 
+	
 	@Override
 	public boolean updateUser(User user) {
-		// TODO Auto-generated method stub
 		return userDao.update(user);
 	}
 

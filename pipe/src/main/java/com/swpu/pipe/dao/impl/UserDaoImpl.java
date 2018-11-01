@@ -34,9 +34,20 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public boolean update(User entity) {
-		SessionFactory.getCurrentSession().update(entity.getUsername(), entity);
-		
-		return true;
+	return SessionFactory.getCurrentSession().createQuery("update User u set u.nickName=:nickName,"
+				+ "u.birthday=:birthday, u.photo=:photo, u.phone=:phone, u.QQorWechat=:QQorWechat,"
+				+ "u.email=:email, u.notes=:notes where u.username=:username").setParameter("nickName", entity.getNickName())
+		        .setParameter("birthday", entity.getBirthday()).setParameter("photo", entity.getPhoto())
+		        .setParameter("phone", entity.getPhone()).setParameter("QQorWechat", entity.getQQorWechat())
+		        .setParameter("email", entity.getEmail()).setParameter("notes", entity.getNotes())
+		        .setParameter("username", entity.getUsername()).executeUpdate() == 1;
+//		SessionFactory.getCurrentSession().createQuery("update User set nickName=?,"
+//			+ "birthday=?, photo=?, phone=?, QQorWechat=?,"
+//			+ "email=?, notes=? where username=?").setParameter(0, entity.getNickName())
+//	        .setParameter(1, entity.getBirthday()).setParameter(2, entity.getPhoto())
+//	        .setParameter(3, entity.getPhone()).setParameter(4, entity.getQQorWechat())
+//	        .setParameter(5, entity.getEmail()).setParameter(6, entity.getNotes())
+//	        .setParameter(7, entity.getUsername());		
 	}
 
 	@Override
