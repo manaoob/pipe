@@ -1,5 +1,7 @@
 package com.swpu.pipe.biz.impl;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.swpu.pipe.biz.UserService;
 import com.swpu.pipe.dao.UserDao;
 import com.swpu.pipe.entity.User;
+import com.swpu.pipe.util.MD5Util;
 
 @Service
 @Transactional
@@ -24,7 +27,12 @@ public class UserServiceImpl implements UserService{
 	public boolean login(User user) {
 		User temp = userDao.findByUsername(user.getUsername());
 		if (temp != null) {
-			return temp.getPassword().equals(user.getPassword());
+			try {
+				return temp.getPassword().equals(MD5Util.EncoderByMd5(user.getPassword()));
+			} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return false;
 	}
@@ -40,6 +48,13 @@ public class UserServiceImpl implements UserService{
 				return false;
 			}
 			
+		}
+		try {
+			String password = MD5Util.EncoderByMd5(user.getPassword());
+			user.setPassword(password);
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return userDao.add(user);		
 	}

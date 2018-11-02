@@ -43,7 +43,21 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-	
+			<!-- 错误页面 -->
+		<error-page>
+		    <error-code>404</error-code>
+		    <location>/404.jsp</location>
+		</error-page>
+		 
+		    <error-page>
+		        <error-code>500</error-code>
+		        <location>/500.jsp</location>
+		    </error-page>
+		     
+		    <error-page>
+		        <error-code>400</error-code>
+		        <location>/400.jsp</location>
+		    </error-page> 
   
 	  <servlet>
 	    <servlet-name>dispatcher</servlet-name>

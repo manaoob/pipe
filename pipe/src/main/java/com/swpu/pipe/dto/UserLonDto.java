@@ -11,7 +11,7 @@ public class UserLonDto {
 
 	//@Pattern(regexp = "\\w{4,20}")
 	private String username;
-	private Integer password;
+	private String password;
 	private String vcode;
 	
 	public User toUser(UserLonDto userLonDto){
@@ -33,10 +33,10 @@ public class UserLonDto {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public Integer getPassword() {
+	public String getPassword() {
 		return password;
 	}
-	public void setPassword(Integer password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 }

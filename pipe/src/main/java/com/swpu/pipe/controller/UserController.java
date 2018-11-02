@@ -57,7 +57,7 @@ public class UserController {
 				User user = userService.findByUsername(userTemp.getUsername());
 				model.addAttribute("user", user);
 				return "profile";
-			}
+			} 
 			else {
 				model.addAttribute("hint", "ÓÃ»§Ãû»òµÇÂ¼ÃÜÂë´íÎó£¬µÇÂ¼Ê§°Ü£¡£¡");
 				return "login";			
@@ -89,7 +89,7 @@ public class UserController {
 	 */
 	@PostMapping(value="/register")
 	public String register(UserRegDto userRegDto,Model model){
-		if (userRegDto.getPassword() == userRegDto.getRePassword()) {
+		if (userRegDto.getPassword().equals(userRegDto.getRePassword())) {
 			if (userService.register(userRegDto.toUser())) {
 				model.addAttribute("hint","×¢²á³É¹¦£¡£¡");
 				return "login";

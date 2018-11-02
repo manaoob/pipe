@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Random;
 import java.util.UUID;
 
@@ -83,5 +85,32 @@ public class PipeUtil {
 	public static String getRandomFileName(String currentFilename) {
 		return UUID.randomUUID().toString() + getSuffix(currentFilename);
 	}
-
+	
+	/**
+	 * 监测abaqus程序是否运行。
+	 * @param program
+	 * @return
+	 */
+	public static boolean judgeRuning(String program){
+			Runtime runtime = Runtime.getRuntime();
+        
+        try {
+            Process process = runtime.exec("cmd /c Tasklist");
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            
+            String s;
+            while ((s = in.readLine()) != null) {
+                s = s.toLowerCase();
+                if (s.startsWith(program)) {
+                    return true;
+                }
+               
+            }            	
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+         return false;
+		}
 }
+	

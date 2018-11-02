@@ -38,7 +38,7 @@ public class User implements Serializable{
 	
 	private String notes;
 	
-	private Integer password;
+	private String password;
 
 
 
@@ -57,11 +57,11 @@ public class User implements Serializable{
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public Integer getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(Integer password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 

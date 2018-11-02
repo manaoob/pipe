@@ -8,8 +8,8 @@ public class UserRegDto {
 
 	@Pattern(regexp="\\w{4,20}")
 	private String username;
-	private Integer password;
-	private Integer rePassword;
+	private String password;
+	private String rePassword;
 	
 	public User toUser(){
 		User user = new User();
@@ -24,16 +24,16 @@ public class UserRegDto {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public Integer getPassword() {
+	public String getPassword() {
 		return password;
 	}
-	public void setPassword(Integer password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Integer getRePassword() {
+	public String getRePassword() {
 		return rePassword;
 	}
-	public void setRePassword(Integer rePassword) {
+	public void setRePassword(String rePassword) {
 		this.rePassword = rePassword;
 	}
 	
