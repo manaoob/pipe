@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Free Bootstrap Admin Template</title>
     <!-- BOOTSTRAP STYLES-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/lib/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME ICONS STYLES-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/lib/assets/css/font-awesome.css" rel="stylesheet" />
     <!--CUSTOM STYLES-->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/lib/assets/css/style.css" rel="stylesheet" />
       <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
             <div class="notifications-wrapper">
 <ul class="nav">
                
-                <li class="dropdown">
+             <!--    <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
@@ -110,17 +110,17 @@
                                     </a>
                                 </li>
                             </ul>
-                </li>
+                </li> --> 
               
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user-plus"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="profile.html"><i class="fa fa-user-plus"></i> My Profile</a>
+                        <li><a href="toPro"><i class="fa fa-user-plus"></i> My Profile</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out"></i> Logout</a>
+                        <li><a href="logout"><i class="fa fa-sign-out"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -746,7 +746,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button>
                                             <h4 class="modal-title" id="myModalLabel">Modal title Here</h4>
                                         </div>
                                         <div class="modal-body">
@@ -822,13 +822,13 @@
     <!-- /. FOOTER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.11.1.js"></script>
+    <script src="<%=request.getContextPath()%>/lib/assets/js/jquery-1.11.1.js"></script>
     <!-- BOOTSTRAP SCRIPTS -->
-    <script src="assets/js/bootstrap.js"></script>
+    <script src="<%=request.getContextPath()%>/lib/assets/js/bootstrap.js"></script>
     <!-- METISMENU SCRIPTS -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="<%=request.getContextPath()%>/lib/assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
+    <script src="<%=request.getContextPath()%>/lib/assets/js/custom.js"></script>
 
 
 </body>
