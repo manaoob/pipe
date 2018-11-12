@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a  class="navbar-brand" href="index.html"> 
+                <a  class="navbar-brand" href="">PipeSystem 
 
                 </a>
             </div>
@@ -119,10 +119,10 @@
                         <i class="fa fa-user-plus"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="toPro"><i class="fa fa-user-plus"></i> My Profile</a>
+                        <li><a href="toPro"><i class="fa fa-user-plus"></i>个人信息</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out"></i> Logout</a>
+                        <li><a href="logout"><i class="fa fa-sign-out"></i>注销</a>
                         </li>
                     </ul>
                 </li>
@@ -131,65 +131,40 @@
             </div>
         </nav>
         <!-- /. NAV TOP  -->
-        <nav  class="navbar-default navbar-side" role="navigation">
+       <nav  class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
                         <div class="user-img-div">
-                            <img src="assets/img/user.jpg" class="img-circle" />
-
-                           
+                            <img src= "<%=request.getContextPath()%>/images/${user.photo}"  class="img-circle" style="width: 150px;height: 150px; border-radius:250px;overflow: hidden;"/>
                         </div>
 
                     </li>
                      <li>
-                        <a  href="toPro"> <strong> ${user.username} </strong></a>
+                        <a  href="toPro"> <strong> ${user.username}</strong></a>
                     </li>
 
                     <li>
-                        <a class="active-menu"  href="toIndex"><i class="fa fa-dashboard "></i>Dashboard</a>
+                        <a href="toIndex"><i class="fa fa-dashboard "></i>管道参数</a>
                     </li>
                     <li>
-                        <a href="toUI"><i class="fa fa-venus "></i>UI Elements </a>
+                        <a href="toResult"><i class="fa fa-venus "></i>计算结果 </a>
                         
                     </li>
                     
                     <li>
-                        <a href="toTable"><i class="fa fa-bolt "></i>Data Tables </a>
+                        <a href="toQuery"><i class="fa fa-bolt "></i>计算结果查询 </a>
                         
                     </li>
                    
                      
                      <li>
-                        <a href="toForms"><i class="fa fa-code "></i>Forms</a>
+                        <a href="toAnsys"><i class="fa fa-code "></i>结果分析</a>
                     </li>
                    
+                   
                     <li>
-                        <a href="#"><i class="fa fa-sitemap "></i>Multilevel Link <span class="fa arrow"></span></a>
-                         <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#"><i class="fa fa-cogs "></i>Second  Link</a>
-                            </li>
-                             <li>
-                                <a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third  Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Link</a>
-                                    </li>
-
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blank.html"><i class="fa fa-dashcube "></i>Blank Page</a>
+                        <a href="toBlank"><i class="fa fa-dashcube "></i>Blank Page</a>
                     </li>
                    
                 </ul>
@@ -208,8 +183,8 @@
 								<legend>模型参数</legend>
 								<ul>
 									<li class="a"><span class="def-font">管道外径：</span><input type="text" class="def-input"/></li>
-									<li class="a">管道内径：<input type="text" /></li>
-									<li class="a">管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厚：<input type="text" /></li>
+									<li class="a"><span class="def-font">管道内径：</span><input type="text" class="def-input"/></li>
+									<li class="a"><span class="def-font">管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厚：</span><input type="text" class="def-input"/></li>
 								</ul>
 							</fieldset>
 							
@@ -220,8 +195,8 @@
 							<fieldset style="margin: 20px;">
 								<legend>材料属性</legend>
 								<ul>
-									<li class="a">弹性模量：<input type="text" /></li>
-									<li class="a">泊松比：&nbsp;&nbsp; <input type="text" /></li>
+									<li class="a"><span class="def-font">弹性模量：</span><input type="text" class="def-input"/></li>
+									<li class="a"><span class="def-font">泊松比：&nbsp;&nbsp;</span> <input type="text" class="def-input"/></li>
 								</ul>
 							</fieldset>
 						</div>
@@ -240,8 +215,8 @@
 							<fieldse style="margin: 20px;">
 								<legend>裂纹尺寸</legend>
 								<ul>
-									<li class="a">裂纹长度：<input type="text" /></li>
-									<li class="a">相对长度： <input type="text" /></li>
+									<li class="a"><span class="def-font">裂纹长度：</span><input type="text" class="def-input"/></li>
+									<li class="a"><span class="def-font">相对长度：</span> <input type="text" class="def-input"/></li>
 								</ul>
 							</fieldset>
 						</div>
@@ -250,7 +225,7 @@
 							<fieldse style="margin: 20px;">
 								<legend>操作参数</legend>
 								<ul>
-									<li class="a">内压：<input type="text" /></li>
+									<li class="a"><span class="def-font">内压：</span><input type="text" class="def-input"/></li>
 									<!--<li class="a">： <input type="text" /></li>-->
 								</ul>
 							</fieldset>
@@ -264,7 +239,7 @@
 						</div>
 					</div>
 					<div style="margin-top: 50px;">
-						<button type="submit" class="btn-blue" style="background: #d9edf6;">提交计算</button>
+						<input type="submit" value="提交计算" class="btn-primary btn">
 					</div>
 				</form>
 			</div>	        

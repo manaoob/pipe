@@ -1,12 +1,8 @@
 <%@page pageEncoding="utf-8"%>
-<% String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() +
-			":" + request.getServerPort() + path + "/";
-%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
+   <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pipe System</title>
     <!-- BOOTSTRAP STYLES-->
@@ -21,6 +17,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link href="<%=request.getContextPath()%>/lib/assets/css/controlStyle.css" rel="stylesheet"  />
 </head>
 <body>
     <div id="wrapper">
@@ -40,12 +37,11 @@
             <div class="notifications-wrapper">
 <ul class="nav">
                
-                <li class="dropdown">
-                    <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+             <!--    <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>-->
-                                    
-                    <!--<ul class="dropdown-menu dropdown-tasks">
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
                                 <li>
                                     <a href="#">
                                         <div>
@@ -115,8 +111,8 @@
                                         <strong>See Tasks List + </strong>
                                     </a>
                                 </li>
-                            </ul>-->
-                </li>
+                            </ul>
+                </li> --> 
               
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -131,11 +127,10 @@
                     </ul>
                 </li>
             </ul>
-               
             </div>
         </nav>
         <!-- /. NAV TOP  -->
-        <nav  class="navbar-default navbar-side" role="navigation">
+         <nav  class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
@@ -177,99 +172,65 @@
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
         <div id="page-wrapper" class="page-wrapper-cls">
-               <div id="page-inner">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                        	<div class="col-md-4">
-                        		<img class="user_profile_img" src="<%=request.getContextPath()%>/images/${user.photo}" alt="" style="width: 150px;height: 150px; border-radius:250px;overflow: hidden;"/>                        		
-                        	</div>                            
-                            <div class="col-md-8">
-                            	<h1 class="user_profile_name"> ${user.nickName}</h1>
-	                            <p class="user_profile_info">&nbsp;</p>
-	                            <!--<p><button class="btn-danger">上传头像</button> </p>-->
-                            </div>
-
-                        </div>
-                    </div>
-                    <hr/>
-                    <div class="row">
-                        <div class="col-md-12">
-                           <form id="myForm" action= "infoChange" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
-                                <h3 class="heading_a"><span class="heading_text">基本信息</span></h3>
-                                <div class="form-group">
-                                    <label for="profile_username" class="col-sm-2 control-label">用户名</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="profile_username" value="${user.username}" disabled="disabled">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="profile_name" class="col-sm-2 control-label">昵称</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="profile_name" name="nickName" value="${user.nickName}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="profile_bday" class="col-sm-2 control-label">生日</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="" name="birthday" value="${user.birthday}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                	<label class="col-sm-2 control-label">头像</label>
-                                	<div class="col-sm-10">
-		                               
-		                                	<div class="col-md-4">
-		                                		<input id="choose-file" type="file" name="photo" />
-		                                	</div>
-
-									</div>
-                                </div>
-                                <h3 class="heading_a"><span class="heading_text">详细信息</span></h3>
-                                <div class="form-group">
-                                    <label for="profile_skype" class="col-sm-2 control-label">联系方式</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="profile_skype" name="phone" value="${user.phone}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="profile_fb" class="col-sm-2 control-label">QQ/WeChat</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="profile_fb" name="QQorWechat" value="${user.QQorWechat}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="profile_email" class="col-sm-2 control-label">Email</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="profile_email" name="email" value="${user.email}">
-                                    </div>
-                                </div>
-                                <h3 class="heading_a"><span class="heading_text">其他信息</span></h3>
-                                <div class="form-group">
-                                    <label for="profile_notes" class="col-sm-2 control-label">个人简介</label>
-                                    <div class="col-sm-10">
-                                        <textarea id="profile_notes" name="notes" cols="30" rows="4" class="form-control">
-											${user.notes}
-                                        </textarea>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="form-group">
-                                    <div class="col-sm-10 col-sm-offset-2">
-                                        <input type="submit" value="提交" class="btn-primary btn">
-                                        <button class="btn-default btn" onclick="formReset();">取消</button>
-                                        <h4>${hint}</h4>
-                                    </div>
-                                </div>
-                            </form>                            
-                        </div>
-                    </div>                
-                    </div>
+            <p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">计算结果</p>
+		<div class="all">
+			 <!--<p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">管道参数输入</p>-->
+				<form  class="form-horizontal" role="from">
+					<div class="form-group">
+						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:400px; background: #d96615; border-radius: 20px;">
+							<fieldset style="margin: 20px;">
+								<legend class="def-title">应力计算结果</legend>
+								<ul>
+									<li class="a"><span class="def-font-result">裂纹尖端最大MISES：</span><input type="text" class="def-input-result" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹尖端Max.Principal：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹尖端Max.Principal(abs)：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹尖端Mid.Principal：</span><input type="text" class="def-input-result" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹尖端Min.Principal：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹尖端S11：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹尖端S22：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹尖端S33：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+								</ul>
+							</fieldset>
+							
+							
+						</div>
+						
+						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:400px; background: #2bbeb4; border-radius: 20px;">			
+							<fieldset style="margin: 20px;">
+								<legend>应变计算结果</legend>
+								<ul>
+									<li class="a"><span class="def-font-result">裂纹尖端Magnitude：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹尖端U1：</span> <input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹尖端U2：</span> <input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">应力强度因子K：</span> <input class="def-input-result" type="text" placeholder="mm"/></li>
+								</ul>
+							</fieldset>
+						</div>
+						
+						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:400px; background: #e93dab; border-radius: 20px;">			
+							<fieldset style="margin: 20px;">
+								<legend>应力应变图</legend>
+									<p class="def-font-result">Mises应力图</p>
+									<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
+									<p></p>
+									<p class="def-font-result">总应变图 </p>
+									<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
+							</fieldset>	
+						</div>		
+					</div>
+					
+			
+			
+					
+					<div style="margin-top: 50px;">
+						<input type="submit" value="保存" class="btn-primary btn">
+					</div>
+				</form>
+		</div>
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
     </div>
-        </div>
     <!-- /. WRAPPER  -->
     <footer >
         &copy; 2019 YourCompany | By : <a href="http://www.designbootstrap.com/" target="_blank">Allen</a>
@@ -284,13 +245,7 @@
     <script src="<%=request.getContextPath()%>/lib/assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="<%=request.getContextPath()%>/lib/assets/js/custom.js"></script>
-	<script src="<%=request.getContextPath()%>/lib/js/scripts.js">
-	function formReset()
-	 {
-	     document.getElementById("myForm").reset();
 
-	 }
-	</script>
 
 </body>
 </html>

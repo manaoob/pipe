@@ -175,23 +175,38 @@ public class UserController {
 		return "profile";
 	}	
 	@GetMapping(value="/toIndex")
-	public String toIndex(){
+	public String toIndex(HttpServletRequest request, HttpServletResponse response,Model model){
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
 		return "index";
 	}
-	@GetMapping(value="/toUI")
-	public String toUI(){
-		return "ui";
+	@GetMapping(value="/toResult")
+	public String toResult(HttpServletRequest request, HttpServletResponse response,Model model){
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
+		return "result";
 	}
-	@GetMapping(value="/toTable")
-	public String toTable(){
-		return "table";
+	@GetMapping(value="/toQuery")
+	public String toQuery(HttpServletRequest request, HttpServletResponse response,Model model){
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
+		return "query";
 	}
-	@GetMapping(value="/toForms")
-	public String toForms(){
-		return "forms";
+	@GetMapping(value="/toAnsys")
+	public String toAnsys(HttpServletRequest request, HttpServletResponse response,Model model){
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
+		return "ansys";
 	}
 	@GetMapping(value="/toBlank")
-	public String toBlank(){
+	public String toBlank(HttpServletRequest request, HttpServletResponse response,Model model){
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
 		return "blank";
 	}
 

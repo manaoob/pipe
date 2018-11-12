@@ -1,11 +1,15 @@
 package com.swpu.pipe.util;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * 操作文件的工具类，包括文件的修改、复制以及删除
  * @author Allen
@@ -93,5 +97,32 @@ public class FileUtil {
 					return true;
 				}
 				return false;
-			}		
+			}
+			
+			/**
+			 * 以字符流的方式读取文件，目的是为了得到在txt文件下的模型的输出数据。
+			 * @param pathName
+			 * @return 输出数据（文本里面的数据）
+			 */
+			public static List<String> read(String pathName){	
+				List<String> list = new ArrayList<>();
+				
+		        // 绝对路径或相对路径都可以，写入文件时演示相对路径,读取以上路径的input.txt文件
+		        //防止文件建立或读取失败，用catch捕捉错误并打印，也可以throw;
+		        //不关闭文件会导致资源的泄露，读写文件都同理
+		        //Java7的try-with-resources可以优雅关闭文件，异常时自动关闭文件；详细解读https://stackoverflow.com/a/12665271
+		        try (FileReader reader = new FileReader(pathName);
+		             BufferedReader br = new BufferedReader(reader) // 建立一个对象，它把文件内容转成计算机能读懂的语言
+		        ) {
+		            String line;
+		            //网友推荐更加简洁的写法
+		            while ((line = br.readLine()) != null) {
+		                // 一次读入一行数据
+		                list.add(line);
+		            }
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+		        return list;
+	}
 }

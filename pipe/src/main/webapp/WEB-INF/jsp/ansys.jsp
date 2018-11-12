@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8" />
+   <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pipe System</title>
     <!-- BOOTSTRAP STYLES-->
@@ -38,7 +38,7 @@
             </div>
 
             <div class="notifications-wrapper">
-<ul class="nav">          
+<ul class="nav">                                         
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user-plus"></i>  <i class="fa fa-caret-down"></i>
@@ -55,7 +55,7 @@
             </div>
         </nav>
         <!-- /. NAV TOP  -->
-         <nav  class="navbar-default navbar-side" role="navigation">
+        <nav  class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
@@ -97,27 +97,7 @@
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
         <div id="page-wrapper" class="page-wrapper-cls">
-            <div id="page-inner">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-head-line">说明</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert alert-warning">
-                            Hey,
-                            <br />
-                             		简洁的仿真分析二次开发软件
-                            <br /><br />
-                            Thanks & Regards
-                            <br />
-                            <strong><a href="http://www.baidu.com/" target="_blank">allen.Com</a></strong> 
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+           <h1> 敬请期待 </h1>
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->

@@ -1,0 +1,29 @@
+
+.all{
+	margin: 40px;
+
+	text-align: center;
+}
+.a{
+	list-style: none;
+	margin-bottom: 10px;
+}
+.def-font{
+	font-size: 16px;
+}
+.def-input{
+	border-radius:6px;
+}
+.def-title{
+	font: "ºÚÌå";
+	padding-top: 10px;
+}
+.def-input-result{
+	width: 50px;
+	border-radius:6px;
+}
+.def-font-result{
+	
+	font-size: 14px;
+	text-align: center;
+}
