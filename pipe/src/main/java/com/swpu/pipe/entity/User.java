@@ -2,11 +2,14 @@ package com.swpu.pipe.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -40,8 +43,25 @@ public class User implements Serializable{
 	
 	private String password;
 
-
-
+	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	private List<InputData> inputDatas;
+	
+	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	private List<ResultData> resultDatas;
+	
+	
+	public List<ResultData> getResultDatas() {
+		return resultDatas;
+	}
+	public void setResultDatas(List<ResultData> resultDatas) {
+		this.resultDatas = resultDatas;
+	}
+	public List<InputData> getInputDatas() {
+		return inputDatas;
+	}
+	public void setInputDatas(List<InputData> inputDatas) {
+		this.inputDatas = inputDatas;
+	}
 
 	public Integer getUserId() {
 		return userId;

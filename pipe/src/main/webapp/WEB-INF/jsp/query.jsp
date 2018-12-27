@@ -127,8 +127,8 @@
 						
 										
 						<div class="form-group">
-							<div class="col-md-3" style="margin-left: 15px; margin-right: 10px; width: 350px; height:400px; background: #d96615; border-radius: 20px;">
-								<fieldset style="margin: 20px;">
+							<div class="col-md-3" style="margin-left: 35px; margin-right: 5px; width: 340px; height:400px; background: #d96615; border-radius: 20px;">
+								<fieldset style="margin: 15px;">
 									<legend class="def-title">应力计算结果</legend>
 									<ul>
 										<li class="a"><span class="def-font-result">裂纹尖端最大MISES：</span><input type="text" class="def-input-result" placeholder="mm"/></li>
@@ -145,8 +145,8 @@
 								
 							</div>
 							
-							<div class="col-md-3" style="margin-right: 10px; width: 350px; height:400px; background: #2bbeb4; border-radius: 20px;">			
-								<fieldset style="margin: 20px;">
+							<div class="col-md-3" style="margin-right: 5px; width: 340px; height:400px; background: #2bbeb4; border-radius: 20px;">			
+								<fieldset style="margin: 15px;">
 									<legend>应变计算结果</legend>
 									<ul>
 										<li class="a"><span class="def-font-result">裂纹尖端Magnitude：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
@@ -157,8 +157,8 @@
 								</fieldset>
 							</div>
 							
-							<div class="col-md-3" style="margin-right: 10px; width: 350px; height:400px; background: #e93dab; border-radius: 20px;">			
-								<fieldset style="margin: 20px;">
+							<div class="col-md-3" style="margin-right: 5px; width: 340px; height:400px; background: #e93dab; border-radius: 20px;">			
+								<fieldset style="margin: 15px;">
 									<legend>应力应变图</legend>
 										<p class="def-font-result">Mises应力图</p>
 										<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>

@@ -177,7 +177,7 @@
 			 <!--<p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">管道参数输入</p>-->
 				<form  class="form-horizontal" role="from">
 					<div class="form-group">
-						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:400px; background: #d96615; border-radius: 20px;">
+						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:400px; background: #d96615; border-radius: 20px;">
 							<fieldset style="margin: 20px;">
 								<legend class="def-title">应力计算结果</legend>
 								<ul>
@@ -195,7 +195,7 @@
 							
 						</div>
 						
-						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:400px; background: #2bbeb4; border-radius: 20px;">			
+						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:400px; background: #2bbeb4; border-radius: 20px;">			
 							<fieldset style="margin: 20px;">
 								<legend>应变计算结果</legend>
 								<ul>
@@ -207,7 +207,7 @@
 							</fieldset>
 						</div>
 						
-						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:400px; background: #e93dab; border-radius: 20px;">			
+						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:400px; background: #e93dab; border-radius: 20px;">			
 							<fieldset style="margin: 20px;">
 								<legend>应力应变图</legend>
 									<p class="def-font-result">Mises应力图</p>

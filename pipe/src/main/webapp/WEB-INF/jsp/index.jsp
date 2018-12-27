@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pipe System</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/lib/css/controlStyle.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/lib/assets/css/controlStyle.css" />
     <!-- BOOTSTRAP STYLES-->
     <link href="<%=request.getContextPath()%>/lib/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME ICONS STYLES-->
@@ -178,7 +178,7 @@
 				
 				<form  class="form-horizontal" role="from">
 					<div class="form-group">
-						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:200px; background: #d96615; border-radius: 20px;">
+						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #d96615; border-radius: 20px;">
 							<fieldset style="margin: 20px;">
 								<legend>模型参数</legend>
 								<ul>
@@ -191,7 +191,7 @@
 							
 						</div>
 						
-						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:200px; background: #2bbeb4; border-radius: 20px;">			
+						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #2bbeb4; border-radius: 20px;">			
 							<fieldset style="margin: 20px;">
 								<legend>材料属性</legend>
 								<ul>
@@ -201,7 +201,7 @@
 							</fieldset>
 						</div>
 						
-						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:200px; background: #e93dab; border-radius: 20px;">			
+						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #e93dab; border-radius: 20px;">			
 							<fieldset style="margin: 20px;">
 								<legend>管道模型图</legend>
 									<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
@@ -211,8 +211,8 @@
 					
 			
 					<div class="form-group">
-						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:200px; background: #d96615; border-radius: 20px;">		
-							<fieldse style="margin: 20px;">
+						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #d96615; border-radius: 20px;">		
+							<fieldset style="margin: 20px;">
 								<legend>裂纹尺寸</legend>
 								<ul>
 									<li class="a"><span class="def-font">裂纹长度：</span><input type="text" class="def-input"/></li>
@@ -221,8 +221,8 @@
 							</fieldset>
 						</div>
 						
-						<div class="col-md-3" style=" margin-right: 10px; width: 350px; height:200px; background: #2bbeb4; border-radius: 20px;">		
-							<fieldse style="margin: 20px;">
+						<div class="col-md-3" style=" margin-right: 5px; width: 350px; height:200px; background: #2bbeb4; border-radius: 20px;">		
+							<fieldset style="margin: 20px;">
 								<legend>操作参数</legend>
 								<ul>
 									<li class="a"><span class="def-font">内压：</span><input type="text" class="def-input"/></li>
@@ -231,7 +231,7 @@
 							</fieldset>
 						</div>
 						
-						<div class="col-md-3" style="margin-right: 10px; width: 350px; height:200px; background: #adaa37; border-radius: 20px;">			
+						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #adaa37; border-radius: 20px;">			
 							<fieldset style="margin: 20px;">
 								<legend>说明</legend>
 									<p>  哈哈哈哈哈哈，哈哈哈哈哈哈</p>
