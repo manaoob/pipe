@@ -2,6 +2,8 @@ package com.swpu.pipe.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import com.swpu.pipe.beans.PageBean;
+
 /**
  * ¹«¹²dao
  * @author advice
@@ -12,7 +14,7 @@ public interface BaseDao<E,K extends Serializable> {
 
 	public K save(E entity);
 	
-	public void delete(E entity);
+	public boolean delete(E entity);
 	
 	public boolean deleteById(K k);
 	
@@ -23,5 +25,7 @@ public interface BaseDao<E,K extends Serializable> {
 	public List<E> findAll();
 	
 	public boolean add(E entity);
+	
+	public PageBean<E> findAll(int page, int size);
 	
 }

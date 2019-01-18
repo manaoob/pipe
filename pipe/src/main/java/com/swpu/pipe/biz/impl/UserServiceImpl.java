@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.swpu.pipe.beans.PageBean;
 import com.swpu.pipe.biz.UserService;
 import com.swpu.pipe.dao.UserDao;
 import com.swpu.pipe.entity.User;
@@ -69,6 +70,19 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean updateUser(User user) {
 		return userDao.update(user);
+	}
+
+	
+	@Override
+	public PageBean<User> findAll(int page, int size) {
+		// TODO Auto-generated method stub
+		return userDao.findAll(page, size);
+	}
+
+	@Override
+	public boolean delete(User user) {
+		
+		return userDao.delete(user);
 	}
 
 }

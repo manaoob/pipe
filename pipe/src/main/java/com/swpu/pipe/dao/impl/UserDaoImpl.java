@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import com.swpu.pipe.beans.PageBean;
 import com.swpu.pipe.dao.UserDao;
 import com.swpu.pipe.entity.User;
 
@@ -20,11 +20,7 @@ public class UserDaoImpl implements UserDao{
 		return (Integer) SessionFactory.getCurrentSession().save(entity);
 	}
 
-	@Override
-	public void delete(User entity) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public boolean deleteById(Integer k) {
@@ -73,6 +69,26 @@ public class UserDaoImpl implements UserDao{
 	public boolean add(User entity) {
 		return SessionFactory.getCurrentSession().save(entity) != null;
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public PageBean<User> findAll(int page, int size) {
+		//List<CivilServant> dataList = (List<CivilServant>) sqlSession.getMapper(CivilServantMapper.class).findAllCivil(stateName);
+		List<User> dataList = SessionFactory.getCurrentSession().createQuery("from User")
+				.setFirstResult((page - 1) * size).
+				setMaxResults(size).getResultList();
+		int total = ((Long) SessionFactory.getCurrentSession().createQuery("select count(*) from User")
+				.uniqueResult()).intValue();		
+		return new PageBean<User>(dataList, page, size, total);
+	}
+
+
+
+	@Override
+	public boolean delete(User entity) {
+		SessionFactory.getCurrentSession().delete(entity);
+		return true;
 	}
 	
 

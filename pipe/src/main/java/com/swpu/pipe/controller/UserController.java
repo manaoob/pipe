@@ -16,11 +16,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.ModelAndViewMethodReturnValueHandler;
 
+import com.swpu.pipe.beans.PageBean;
+import com.swpu.pipe.biz.AdminService;
 import com.swpu.pipe.biz.UserService;
 import com.swpu.pipe.dto.UserInfoChangeDto;
 import com.swpu.pipe.dto.UserLonDto;
 import com.swpu.pipe.dto.UserRegDto;
+import com.swpu.pipe.entity.Admin;
 import com.swpu.pipe.entity.User;
 import com.swpu.pipe.util.PipeUtil;
 
@@ -30,6 +34,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private AdminService adminService;
 
 	/**
 	 * Ìø×ªµÇÂ¼½çÃæ
@@ -49,7 +55,9 @@ public class UserController {
 	@PostMapping(value="/login")
 	public String login(@Valid UserLonDto userLonDto, Model model, HttpServletRequest request, HttpServletResponse response){
 		String code = (String) request.getSession().getAttribute("code");
+		
 		if (userLonDto.getVcode().equalsIgnoreCase(code)) {
+			
 			User userTemp = userLonDto.toUser(userLonDto);
 			if (userService.login(userTemp)) {
 				
@@ -58,11 +66,25 @@ public class UserController {
 				model.addAttribute("user", user);
 				return "profile";
 			} 
+			Admin admin = new Admin();
+			admin.setAdminId(1);
+			admin.setAdminName(userLonDto.getUsername());
+			admin.setPassword(userLonDto.getPassword());
+			if (adminService.verifyAdmin(admin)) {
+				model.addAttribute("admin", admin);
+				PageBean<User> pageBean = userService.findAll(1,2);
+				model.addAttribute("pageBean", pageBean);
+				return "adminInterface";
+			}
+			
 			else {
 				model.addAttribute("hint", "ÓÃ»§Ãû»òµÇÂ¼ÃÜÂë´íÎó£¬µÇÂ¼Ê§°Ü£¡£¡");
 				return "login";			
 			}
+			
 		}
+		
+		
 		else {
 			model.addAttribute("hint", "ÑéÖ¤Âë´íÎó!!");
 			return "login";	
@@ -90,6 +112,7 @@ public class UserController {
 	@PostMapping(value="/register")
 	public String register(UserRegDto userRegDto,Model model){
 		if (userRegDto.getPassword().equals(userRegDto.getRePassword())) {
+			
 			if (userService.register(userRegDto.toUser())) {
 				model.addAttribute("hint","×¢²á³É¹¦£¡£¡");
 				return "login";
@@ -114,7 +137,7 @@ public class UserController {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
-	@PostMapping(value="infoChange")
+	@PostMapping(value="/infoChange")
 	public String infoChange(UserInfoChangeDto userInfoChangeDto,Errors errors,MultipartFile photo, Model model,HttpServletRequest request,HttpServletResponse response) throws IllegalStateException, IOException{
 		if (!errors.hasErrors()) {
 			String username = (String) request.getSession().getAttribute("username");
@@ -173,7 +196,38 @@ public class UserController {
 		User user = userService.findByUsername(username);
 		model.addAttribute("user", user);
 		return "profile";
-	}	
+	}
+	
+	@RequestMapping(value="/showUser")
+	public String showUser(Integer page, Model model){
+		if (page != null) {
+			PageBean<User> pageBean = userService.findAll(page, 2);
+			model.addAttribute("pageBean", pageBean);
+			//model.addAttribute("qStr", id);
+			return "adminInterface";
+		} else {
+			PageBean<User> pageBean = userService.findAll(1, 2);	
+			model.addAttribute("pageBean", pageBean);
+			//model.addAttribute("qStr", id);
+			return "adminInterface";
+		}
+		
+	}
+	@RequestMapping(value="/deleteUser")
+	public String deleteUser(String userName, Model model){
+		User user = userService.findByUsername(userName);
+		if (userService.delete(user)) {
+			PageBean<User> pageBean = userService.findAll(1, 2);	
+			model.addAttribute("pageBean", pageBean);
+			model.addAttribute("hint", "É¾³ý³É¹¦£¡£¡");
+			return "adminInterface";
+		}
+		PageBean<User> pageBean = userService.findAll(1, 2);	
+		model.addAttribute("pageBean", pageBean);
+		model.addAttribute("hint", "É¾³ýÊ§°Ü£¡£¡");
+		return "adminInterface";
+	}
+	
 	@GetMapping(value="/toIndex")
 	public String toIndex(HttpServletRequest request, HttpServletResponse response,Model model){
 		String username = (String) request.getSession().getAttribute("username");
