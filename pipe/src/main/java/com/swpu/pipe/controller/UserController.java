@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ModelAndViewMethodR
 import com.swpu.pipe.beans.PageBean;
 import com.swpu.pipe.biz.AdminService;
 import com.swpu.pipe.biz.UserService;
+import com.swpu.pipe.dto.UserEditPassDto;
 import com.swpu.pipe.dto.UserInfoChangeDto;
 import com.swpu.pipe.dto.UserLonDto;
 import com.swpu.pipe.dto.UserRegDto;
@@ -31,7 +32,7 @@ import com.swpu.pipe.util.PipeUtil;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
+	private final int pageSize = 5;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -72,7 +73,7 @@ public class UserController {
 			admin.setPassword(userLonDto.getPassword());
 			if (adminService.verifyAdmin(admin)) {
 				model.addAttribute("admin", admin);
-				PageBean<User> pageBean = userService.findAll(1,2);
+				PageBean<User> pageBean = userService.findAll(1,pageSize);
 				model.addAttribute("pageBean", pageBean);
 				return "adminInterface";
 			}
@@ -201,12 +202,12 @@ public class UserController {
 	@RequestMapping(value="/showUser")
 	public String showUser(Integer page, Model model){
 		if (page != null) {
-			PageBean<User> pageBean = userService.findAll(page, 2);
+			PageBean<User> pageBean = userService.findAll(page, pageSize);
 			model.addAttribute("pageBean", pageBean);
 			//model.addAttribute("qStr", id);
 			return "adminInterface";
 		} else {
-			PageBean<User> pageBean = userService.findAll(1, 2);	
+			PageBean<User> pageBean = userService.findAll(1, pageSize);	
 			model.addAttribute("pageBean", pageBean);
 			//model.addAttribute("qStr", id);
 			return "adminInterface";
@@ -217,12 +218,12 @@ public class UserController {
 	public String deleteUser(String userName, Model model){
 		User user = userService.findByUsername(userName);
 		if (userService.delete(user)) {
-			PageBean<User> pageBean = userService.findAll(1, 2);	
+			PageBean<User> pageBean = userService.findAll(1, pageSize);	
 			model.addAttribute("pageBean", pageBean);
 			model.addAttribute("hint", "删除成功！！");
 			return "adminInterface";
 		}
-		PageBean<User> pageBean = userService.findAll(1, 2);	
+		PageBean<User> pageBean = userService.findAll(1, pageSize);	
 		model.addAttribute("pageBean", pageBean);
 		model.addAttribute("hint", "删除失败！！");
 		return "adminInterface";
@@ -262,6 +263,40 @@ public class UserController {
 		User user = userService.findByUsername(username);
 		model.addAttribute("user", user);
 		return "blank";
+	}
+	
+	@GetMapping(value="/editPass")
+	public String toEditPass(HttpServletRequest request, HttpServletResponse response,Model model){
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
+		return "editPass";
+	}
+	@PostMapping(value="/updatePass")
+	public String toUpdatePass(UserEditPassDto userEditPassDto,Model model,HttpServletRequest request, HttpServletResponse response){
+		if (userEditPassDto.getPassword().equals(userEditPassDto.getRePassword())) {
+			if (userService.updatePassword(userEditPassDto)) {
+				String username = (String) request.getSession().getAttribute("username");
+				User user = userService.findByUsername(username);
+				model.addAttribute("user", user);
+				model.addAttribute("hint", "修改密码成功");
+				return "editPass";
+			}else{
+				String username = (String) request.getSession().getAttribute("username");
+				User user = userService.findByUsername(username);
+				model.addAttribute("user", user);
+				model.addAttribute("hint", "修改密码失败");
+				return "editPass";
+			}
+		}else{
+			String username = (String) request.getSession().getAttribute("username");
+			User user = userService.findByUsername(username);
+			model.addAttribute("user", user);
+			model.addAttribute("hint", "两次输入密码不一致，请重新输入");
+			return "editPass";
+		}
+
+		
 	}
 
 //	/**

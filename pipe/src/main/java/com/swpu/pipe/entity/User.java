@@ -42,6 +42,8 @@ public class User implements Serializable{
 	private String notes;
 	
 	private String password;
+	
+	private String gender;
 
 	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
 	private List<InputData> inputDatas;
@@ -139,6 +141,14 @@ public class User implements Serializable{
 
 	public void setNotes(String notes) {
 		this.notes = notes;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+	
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	
 	

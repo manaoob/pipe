@@ -1,11 +1,24 @@
 <%@page pageEncoding="utf-8"%>
+<% String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() +
+			":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pipe System</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/lib/assets/css/controlStyle.css" />
+
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="lib/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=request.getContextPath()%>/lib/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=request.getContextPath()%>/lib/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath()%>/lib/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/lib/ico/apple-touch-icon-57-precomposed.png">
+    
+    
     <!-- BOOTSTRAP STYLES-->
     <link href="<%=request.getContextPath()%>/lib/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME ICONS STYLES-->
@@ -37,11 +50,12 @@
             <div class="notifications-wrapper">
 <ul class="nav">
                
-              <!--    <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <li class="dropdown">
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-tasks">
+                    </a>-->
+                                    
+                    <!--<ul class="dropdown-menu dropdown-tasks">
                                 <li>
                                     <a href="#">
                                         <div>
@@ -111,8 +125,8 @@
                                         <strong>See Tasks List + </strong>
                                     </a>
                                 </li>
-                            </ul>
-                </li> -->
+                            </ul>-->
+                </li>
               
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -121,10 +135,11 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="toPro"><i class="fa fa-user-plus"></i>个人信息</a>
                         </li>
-                        
                         <li class="divider"></li>
+                        
                         <li><a href="editPass"><i class="fa fa-home"></i>密码修改</a>
-                        </li>                          
+                        </li>                                          
+                        
                         <li class="divider"></li>
                         <li><a href="logout"><i class="fa fa-sign-out"></i>注销</a>
                         </li>
@@ -135,7 +150,7 @@
             </div>
         </nav>
         <!-- /. NAV TOP  -->
-       <nav  class="navbar-default navbar-side" role="navigation">
+        <nav  class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
@@ -176,81 +191,45 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-               <div id="page-wrapper" class="page-wrapper-cls">
-        <p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">管道参数输入</p>
-			<div class="all">
-				
-				<form  class="form-horizontal" role="from">
-					<div class="form-group">
-						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #d96615; border-radius: 20px;">
-							<fieldset style="margin: 20px;">
-								<legend>模型参数</legend>
-								<ul>
-									<li class="a"><span class="def-font">管道外径：</span><input type="text" class="def-input"/></li>
-									<li class="a"><span class="def-font">管道内径：</span><input type="text" class="def-input"/></li>
-									<li class="a"><span class="def-font">管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厚：</span><input type="text" class="def-input"/></li>
-								</ul>
-							</fieldset>
-							
-							
-						</div>
-						
-						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #2bbeb4; border-radius: 20px;">			
-							<fieldset style="margin: 20px;">
-								<legend>材料属性</legend>
-								<ul>
-									<li class="a"><span class="def-font">弹性模量：</span><input type="text" class="def-input"/></li>
-									<li class="a"><span class="def-font">泊松比：&nbsp;&nbsp;</span> <input type="text" class="def-input"/></li>
-								</ul>
-							</fieldset>
-						</div>
-						
-						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #e93dab; border-radius: 20px;">			
-							<fieldset style="margin: 20px;">
-								<legend>管道模型图</legend>
-									<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
-							</fieldset>	
-						</div>		
-					</div>
-					
-			
-					<div class="form-group">
-						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #d96615; border-radius: 20px;">		
-							<fieldset style="margin: 20px;">
-								<legend>裂纹尺寸</legend>
-								<ul>
-									<li class="a"><span class="def-font">裂纹长度：</span><input type="text" class="def-input"/></li>
-									<li class="a"><span class="def-font">相对长度：</span> <input type="text" class="def-input"/></li>
-								</ul>
-							</fieldset>
-						</div>
-						
-						<div class="col-md-3" style=" margin-right: 5px; width: 350px; height:200px; background: #2bbeb4; border-radius: 20px;">		
-							<fieldset style="margin: 20px;">
-								<legend>操作参数</legend>
-								<ul>
-									<li class="a"><span class="def-font">内压：</span><input type="text" class="def-input"/></li>
-									<!--<li class="a">： <input type="text" /></li>-->
-								</ul>
-							</fieldset>
-						</div>
-						
-						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #adaa37; border-radius: 20px;">			
-							<fieldset style="margin: 20px;">
-								<legend>说明</legend>
-									<p>  哈哈哈哈哈哈，哈哈哈哈哈哈</p>
-							</fieldset>
-						</div>
-					</div>
-					<div style="margin-top: 50px;">
-						<input type="submit" value="提交计算" class="btn-primary btn">
-					</div>
-				</form>
-			</div>	        
-        
-        
-        </div>
-           
+        <div id="page-wrapper" class="page-wrapper-cls"  style="height: 520px;">
+               <div id="page-inner" style="height: 520px">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3" style="background-color: azure; border-radius: 15px">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3 style="color:red; padding:center">请填写密码信息  &nbsp;&nbsp;&nbsp;<i class="fa fa-lock"></i></h3>
+                            		<!--<p>请输入您的用户名和密码:</p>-->
+                            		<p>${hint}</p>
+                        		</div>
+                            </div>
+                            <div class="form-bottom" >
+			                    <form role="form" action="updatePass" method="post" class="login-form">
+			                    	<div class="form-group">
+			                    		<label for="profile_name" class="col-sm-5 control-label">用户名</label>
+			                        	<input type="text" name="username" value="${user.username}" class="form-username form-control" id="form-username">
+			                        </div>
+			                        
+			                        <div class="form-group">
+			                        	<label for="profile_name" class="col-sm-5 control-label">原来密码</label>
+			                        	<input type="password" name="originPassword"  class="form-password form-control" id="form-password">
+			                        </div>			                        
+			                        
+			                        
+			                        <div class="form-group">
+			                        	<label for="profile_name" class="col-sm-5 control-label">输入密码</label>
+			                        	<input type="password" name="password"  class="form-password form-control" id="form-password">
+			                        </div>
+			                        <div class="form-group">
+			           
+			                        		<label for="profile_name" class="col-sm-5 control-label">确认密码</label>
+			                        		<input type="password" name="rePassword" class="form-password form-control" id="form-password">		                        
+			                        </div>			                        
+			                        <button type="submit" class="btn-primary btn">确认修改</button>
+			                        <div style="height:40px"></div>	
+							</form>
+		                    </div>
+                        </div>
+                    </div>
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
@@ -270,7 +249,13 @@
     <script src="<%=request.getContextPath()%>/lib/assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="<%=request.getContextPath()%>/lib/assets/js/custom.js"></script>
+	<script src="<%=request.getContextPath()%>/lib/js/scripts.js">
+	function formReset()
+	 {
+	     document.getElementById("myForm").reset();
 
+	 }
+	</script>
 
 </body>
 </html>

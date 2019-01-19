@@ -84,7 +84,7 @@
 			                        		<input type="password" name="rePassword" placeholder="确认密码..." class="form-password form-control" id="form-password">		                        
 			                        </div>			                        
 			                        <button type="submit" class="btn">注册</button>	
-
+								</form>
 		                    </div>
                         </div>
                     </div>

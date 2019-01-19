@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.swpu.pipe.beans.PageBean;
 import com.swpu.pipe.dao.UserDao;
+import com.swpu.pipe.dto.UserEditPassDto;
 import com.swpu.pipe.entity.User;
 
 @Repository
@@ -32,10 +33,10 @@ public class UserDaoImpl implements UserDao{
 	public boolean update(User entity) {
 	return SessionFactory.getCurrentSession().createQuery("update User u set u.nickName=:nickName,"
 				+ "u.birthday=:birthday, u.photo=:photo, u.phone=:phone, u.QQorWechat=:QQorWechat,"
-				+ "u.email=:email, u.notes=:notes where u.username=:username").setParameter("nickName", entity.getNickName())
+				+ "u.email=:email, u.notes=:notes,u.gender=:gender where u.username=:username").setParameter("nickName", entity.getNickName())
 		        .setParameter("birthday", entity.getBirthday()).setParameter("photo", entity.getPhoto())
 		        .setParameter("phone", entity.getPhone()).setParameter("QQorWechat", entity.getQQorWechat())
-		        .setParameter("email", entity.getEmail()).setParameter("notes", entity.getNotes())
+		        .setParameter("email", entity.getEmail()).setParameter("notes", entity.getNotes()).setParameter("gender", entity.getGender())
 		        .setParameter("username", entity.getUsername()).executeUpdate() == 1;
 //		SessionFactory.getCurrentSession().createQuery("update User set nickName=?,"
 //			+ "birthday=?, photo=?, phone=?, QQorWechat=?,"
@@ -89,6 +90,16 @@ public class UserDaoImpl implements UserDao{
 	public boolean delete(User entity) {
 		SessionFactory.getCurrentSession().delete(entity);
 		return true;
+	}
+
+
+
+	@Override
+	public boolean updatePassword(UserEditPassDto userEditPassDto) {
+		
+	return SessionFactory.getCurrentSession().createQuery("update User u set u.password=:password where u.username=:username")
+				.setParameter("password", userEditPassDto.getPassword())
+		        .setParameter("username", userEditPassDto.getUsername()).executeUpdate() == 1;
 	}
 	
 

@@ -13,6 +13,8 @@ public class UserInfoChangeDto {
 	
 //	private Date birthday;
 	
+	private String gender;
+	
 	private String phone;
 	
 	private String QQorWechat;
@@ -36,6 +38,7 @@ public class UserInfoChangeDto {
 		user.setQQorWechat(QQorWechat);
 		user.setNotes(notes);
 		user.setEmail(email);
+		user.setGender(gender);
 		return user;
 	}
 	public String getNickName() {
@@ -92,6 +95,11 @@ public class UserInfoChangeDto {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	
 }

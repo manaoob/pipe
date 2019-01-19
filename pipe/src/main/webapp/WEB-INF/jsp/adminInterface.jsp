@@ -51,6 +51,11 @@
                         <li><a href="toPro"><i class="fa fa-user-plus"></i>个人信息</a>
                         </li>
                         <li class="divider"></li>
+                        
+                        <li><a href="editPass"><i class="fa fa-home"></i>密码修改</a>
+                        </li>    
+                                                
+                        <li class="divider"></li>
                         <li><a href="logout"><i class="fa fa-sign-out"></i>注销</a>
                         </li>
                     </ul>
@@ -62,8 +67,8 @@
      
         <!-- /. SIDEBAR MENU (navbar-side) -->
 
-			<div class="row">		
-				<div class="col-lg-12">
+			<div class="row" >		
+				<div class="col-lg-12" style="height: 520px;padding-right:15px; padding-left:15px">
 					<div class="panel panel-default">
 						<div class="panel-heading" data-original-title>
 							<h2><i class="fa fa-user"></i><span class="break"></span>&nbsp;&nbsp;&nbsp;用户信息</h2>
@@ -79,7 +84,7 @@
 								  <tr>
 									  <th>用户名</th>
 									  <th>昵称</th>
-									  <th>Email</th>
+									  <th>性别</th>
 									  <th>电话</th>
 									  <th>操作</th>
 								  </tr>
@@ -89,7 +94,7 @@
 								<tr>
 									<td>${user.username}</td>
 									<td>${user.nickName}</td>
-									<td>${user.email}</td>
+									<td>${user.gender}</td>
 									<td>
 										${user.phone}
 									</td>
@@ -101,7 +106,7 @@
 											<i class="fa fa-edit "></i>  
 										</a> -->
 										
-										<a href="javascript:if(window.confirm('是否删除？')){window.location.href='deleteUser?userName=${user.username}'}">
+										<a class="btn btn-danger"  href="javascript:if(window.confirm('确定删除？')){window.location.href='deleteUser?userName=${user.username}'}">
 												<i class="fa fa-trash-o "></i>
 										</a>
 										
@@ -111,9 +116,9 @@
 										
 									</td>
 									
-									<td onload="checkForm()">
+								<!--  	<td onload="checkForm()">
 										<input type="hidden" id="message" value="hint">
-									</td>
+									</td> -->
 									
 								</tr>
 								</c:forEach>
@@ -124,6 +129,7 @@
 						  </table>            
 						</div>
 					</div>
+					
 					<div class="col-md-offset-9">
 							<ul class="pagination">
 							
@@ -149,13 +155,16 @@
 								
 							  </ul> 
 					</div>
+					
 				</div><!--/col-->
 			</div>     
        
     <!-- /. WRAPPER  -->
-    <footer >
+    
+    <footer>
         &copy; 2019 YourCompany | By : <a href="http://www.designbootstrap.com/" target="_blank">Allen</a>
     </footer>
+    
     <!-- /. FOOTER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->

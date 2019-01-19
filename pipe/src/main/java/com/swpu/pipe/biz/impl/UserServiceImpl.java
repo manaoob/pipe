@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.swpu.pipe.beans.PageBean;
 import com.swpu.pipe.biz.UserService;
 import com.swpu.pipe.dao.UserDao;
+import com.swpu.pipe.dto.UserEditPassDto;
 import com.swpu.pipe.entity.User;
 import com.swpu.pipe.util.MD5Util;
 
@@ -43,6 +44,9 @@ public class UserServiceImpl implements UserService{
 	 */
 	@Override
 	public boolean register(User user) {
+		if (user.getUsername().equals("admin")) {
+			return false;
+		}
 		List<User> users = userDao.findAll();
 		for (int i = 0; i < users.size(); i++) {
 			if (user.getUsername().equals(users.get(i).getUsername())) {
@@ -83,6 +87,22 @@ public class UserServiceImpl implements UserService{
 	public boolean delete(User user) {
 		
 		return userDao.delete(user);
+	}
+
+	@Override
+	public boolean updatePassword(UserEditPassDto userEditPassDto) {
+		User user = userDao.findByUsername(userEditPassDto.getUsername());		
+		try {
+			if(user.getPassword().equals(MD5Util.EncoderByMd5(userEditPassDto.getOriginPassword()))){
+				if (userDao.updatePassword(userEditPassDto)) {
+					return true;
+				}				
+			}
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

@@ -126,6 +126,11 @@
                         <li><a href="toPro"><i class="fa fa-user-plus"></i>个人信息</a>
                         </li>
                         <li class="divider"></li>
+                        
+                        <li><a href="editPass"><i class="fa fa-home"></i>密码修改</a>
+                        </li>                                          
+                        
+                        <li class="divider"></li>
                         <li><a href="logout"><i class="fa fa-sign-out"></i>注销</a>
                         </li>
                     </ul>
@@ -226,18 +231,34 @@
 									</div>
                                 </div>
                                 <h3 class="heading_a"><span class="heading_text">详细信息</span></h3>
+
+                                <div class="form-group">
+                                    <label for="profile_fb" class="col-sm-2 control-label">性别</label>
+                                    <div class="col-sm-6">
+                                        <input type="radio" name="gender" value="男" /> 男
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input type="radio" name="gender" value="女" /> 女
+                                   <!--      <select class="form-control" name="gender">
+											<option value="男">男</option>
+											<option value="女">女</option>										
+										</select>  -->
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group">
                                     <label for="profile_skype" class="col-sm-2 control-label">联系方式</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="profile_skype" name="phone" value="${user.phone}">
                                     </div>
                                 </div>
+                               
                                 <div class="form-group">
                                     <label for="profile_fb" class="col-sm-2 control-label">QQ/WeChat</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="profile_fb" name="QQorWechat" value="${user.QQorWechat}">
                                     </div>
                                 </div>
+                                
                                 <div class="form-group">
                                     <label for="profile_email" class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-10">
