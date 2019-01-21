@@ -94,6 +94,7 @@ public class UserServiceImpl implements UserService{
 		User user = userDao.findByUsername(userEditPassDto.getUsername());		
 		try {
 			if(user.getPassword().equals(MD5Util.EncoderByMd5(userEditPassDto.getOriginPassword()))){
+				userEditPassDto.setPassword(MD5Util.EncoderByMd5(userEditPassDto.getPassword()));
 				if (userDao.updatePassword(userEditPassDto)) {
 					return true;
 				}				
