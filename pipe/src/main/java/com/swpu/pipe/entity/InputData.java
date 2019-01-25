@@ -34,13 +34,13 @@ public class InputData implements Serializable{
 	private Double innerDiameter;    // 内径
 	//private Double thicknessOfPipe;
 	
-	private Long elasticityModulus; //弹性模量
+	private String elasticityModulus; //弹性模量
 	private Double poissonRatio;  // 泊松比
 	
-	//private String pipePhoto;
+	private Integer typeOfCrack;
 	
 	private Double  crackLength; // 裂纹形状比
-	private Double  RelativeLength; // 裂纹相对深度
+	private Double  relativeLength; // 裂纹相对深度
 	
 	private Integer pressure;  // 内压
 	
@@ -52,9 +52,11 @@ public class InputData implements Serializable{
 	//private String notes;
 	private Integer lenghtOfSubside; // 沉降区长度
 	
-	private Integer depthOfSrbside; // 沉降深度
+	private Integer depthOfSubside; // 沉降深度
 	
 	private Integer buriedDepth; // 埋深
+	
+	private Integer typeOfSoil;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_inputData_id")
@@ -95,11 +97,11 @@ public class InputData implements Serializable{
 
 
 
-	public Long getElasticityModulus() {
+	public String getElasticityModulus() {
 		return elasticityModulus;
 	}
 
-	public void setElasticityModulus(Long elasticityModulus) {
+	public void setElasticityModulus(String elasticityModulus) {
 		this.elasticityModulus = elasticityModulus;
 	}
 
@@ -121,14 +123,20 @@ public class InputData implements Serializable{
 		this.crackLength = crackLength;
 	}
 
+	
+
+	public Integer getDepthOfSubside() {
+		return depthOfSubside;
+	}
+	public void setDepthOfSubside(Integer depthOfSubside) {
+		this.depthOfSubside = depthOfSubside;
+	}
 	public Double getRelativeLength() {
-		return RelativeLength;
+		return relativeLength;
 	}
-
 	public void setRelativeLength(Double relativeLength) {
-		RelativeLength = relativeLength;
+		this.relativeLength = relativeLength;
 	}
-
 	public Integer getPressure() {
 		return pressure;
 	}
@@ -169,10 +177,10 @@ public class InputData implements Serializable{
 		this.lenghtOfSubside = lenghtOfSubside;
 	}
 	public Integer getDepthOfSrbside() {
-		return depthOfSrbside;
+		return depthOfSubside;
 	}
-	public void setDepthOfSrbside(Integer depthOfSrbside) {
-		this.depthOfSrbside = depthOfSrbside;
+	public void setDepthOfSrbside(Integer depthOfSubside) {
+		this.depthOfSubside = depthOfSubside;
 	}
 	public Integer getBuriedDepth() {
 		return buriedDepth;
@@ -182,6 +190,18 @@ public class InputData implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public Integer getTypeOfSoil() {
+		return typeOfSoil;
+	}
+	public void setTypeOfSoil(Integer typeOfSoil) {
+		this.typeOfSoil = typeOfSoil;
+	}
+	public Integer getTypeOfCrack() {
+		return typeOfCrack;
+	}
+	public void setTypeOfCrack(Integer typeOfCrack) {
+		this.typeOfCrack = typeOfCrack;
 	}
 	
 	

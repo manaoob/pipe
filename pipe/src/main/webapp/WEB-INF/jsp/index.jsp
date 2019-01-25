@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pipe System</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/lib/assets/css/controlStyle.css" />
+    <link href="<%=request.getContextPath()%>/lib/assets/css/controlStyle.css" rel="stylesheet"/>
     <!-- BOOTSTRAP STYLES-->
     <link href="<%=request.getContextPath()%>/lib/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME ICONS STYLES-->
@@ -36,83 +36,7 @@
 
             <div class="notifications-wrapper">
 <ul class="nav">
-               
-              <!--    <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-tasks">
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 1</strong>
-                                                <span class="pull-right text-muted">60% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                                    <span class="sr-only">60% Complete (danger)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 2</strong>
-                                                <span class="pull-right text-muted">30% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                                                    <span class="sr-only">30% Complete</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 3</strong>
-                                                <span class="pull-right text-muted">80% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                                    <span class="sr-only">80% Complete (warning)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 4</strong>
-                                                <span class="pull-right text-muted">90% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                                                    <span class="sr-only">90% Complete (success)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a class="text-center" href="#">
-                                        <strong>See Tasks List + </strong>
-                                    </a>
-                                </li>
-                            </ul>
-                </li> -->
+                         
               
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -176,81 +100,109 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-               <div id="page-wrapper" class="page-wrapper-cls">
-        <p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">管道参数输入</p>
-			<div class="all">
-				
-				<form  class="form-horizontal" role="from">
+                     <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px;">
+        	<img src="<%=request.getContextPath()%>/lib/img/pipe.jpg" style="height: 200px; width: 1318px; padding: 0px;margin: 0px;"/>
+        	<div style="height: 10px;"></div>
+        	<!--<a href="index.html" style="margin-left: 14px; text-align: center; font-size: 24px; color: #21A9E1; font-family: '黑体';">管道参数输入</a> 
+        	<a href="index.html" style="margin-left: 14px; text-align: center; font-size: 24px; color: #21A9E1; font-family: '黑体';">土体参数输入</a>
+        	-->
+      
+       <p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">参数输入</p>
+		 	<div class="all">				
+				<form  class="form-horizontal" role="from" action="compute" method="post">
 					<div class="form-group">
-						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #d96615; border-radius: 20px;">
-							<fieldset style="margin: 20px;">
-								<legend>模型参数</legend>
-								<ul>
-									<li class="a"><span class="def-font">管道外径：</span><input type="text" class="def-input"/></li>
-									<li class="a"><span class="def-font">管道内径：</span><input type="text" class="def-input"/></li>
-									<li class="a"><span class="def-font">管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;厚：</span><input type="text" class="def-input"/></li>
+						<div class="col-md-3" style="margin-right: 10px; width: 800px; height:580px; background: #d96615; border-radius: 20px;">
+							<fieldset style="margin: 20px;"> 
+								<legend class="def-title" style="font-size: 24px; color: #21A9E1; font-family: '黑体';padding-bottom: 10px;">管道参数输入</legend>
+								
+								<div style="background-color: red;height: 200px; margin-bottom: 20px;padding: 0px;">
+									<div class="div-inline" style="background-color: black; float:left; padding:10px; margin-left:48px;">
+										<img src="<%=request.getContextPath()%>/lib/img/_02.png" style="height: 200px; width: 300px; " />
+									</div>
+									<div class="div-inline" style="background-color: #00ACED;float:left; padding:10px;">
+										<img src="<%=request.getContextPath()%>/lib/img/_02.png" style="height: 200px; width: 300px; " />
+									</div>
+								</div>
+																
+								<ul style="padding-top:20px;">									
+									<li class="a"><span class="def-font">管道外径：</span><input type="text" class="def-input" name="externalDiameter" placeholder="mm"/>
+													<span class="def-font">管道内径：</span><input class="def-input" type="text" name="innerDiameter" placeholder="mm"/>
+									</li>
+									<li class="a"><span class="def-font">弹性模量：</span><input class="def-input" type="text" name="elasticityModulus" placeholder="mm"/>
+													<span class="def-font">泊松比：&nbsp;&nbsp;&nbsp;&nbsp;</span><input class="def-input" type="text" name="poissonRatio" placeholder="mm"/>
+									</li>
+									<li class="a"><span class="def-font">屈服强度：</span><input class="def-input" type="text" name="yield" placeholder="mm"/>
+													<span class="def-font">内&nbsp;&nbsp;&nbsp;&nbsp;压：&nbsp;&nbsp;&nbsp;&nbsp;</span><input class="def-input" type="text" name="pressure" placeholder="MPa"/>
+									</li>
+									<li class="a"><span class="def-font">弹性系数：</span><input class="def-input" type="text" name="yieldOffset" placeholder=""/>
+													<span class="def-font">应变硬化系数：</span><input class="def-input" type="text" name="hardening" placeholder=""/>
+									</li>
+									<li class="a"><span class="def-font">裂纹形状比：</span><input class="def-input" type="text" name="crackLength" placeholder=""/>
+													<span class="def-font">相对长度：</span><input class="def-input" type="text" name="relativeLength" placeholder=""/>
+									</li>
+									<li class="a" style="padding:0px; background-color: ;"><span class="def-font">裂纹种类：</span>
+										<input class="def-font" type="radio" name="typeOfCrack" value="1" /> 环向裂纹
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font" type="radio" name="typeOfCrack" value="2" /> 轴向裂纹                              
+
+									</li>
+																												
 								</ul>
+								<ul>
+									
+								</ul>
+								
+								<ul>
+									
+								</ul>
+								
 							</fieldset>
 							
 							
 						</div>
 						
-						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #2bbeb4; border-radius: 20px;">			
-							<fieldset style="margin: 20px;">
-								<legend>材料属性</legend>
-								<ul>
-									<li class="a"><span class="def-font">弹性模量：</span><input type="text" class="def-input"/></li>
-									<li class="a"><span class="def-font">泊松比：&nbsp;&nbsp;</span> <input type="text" class="def-input"/></li>
-								</ul>
-							</fieldset>
-						</div>
+						<!--<div class="col-md-3" style="margin-right: 10px; width: 350px; height:200px; background: #2bbeb4; border-radius: 20px;">			
+
+						</div>-->
 						
-						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #e93dab; border-radius: 20px;">			
+						<div class="col-md-3" style="margin-right: 10px; width: 400px; height:580px; background: #e93dab; border-radius: 20px;">			
 							<fieldset style="margin: 20px;">
-								<legend>管道模型图</legend>
-									<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
+								<legend>土体参数输入</legend>
+									<div style="background-color: red;height: 200px; margin-bottom: 20px;padding: 0px;">
+										<div  style="background-color: black;">
+											<img src="<%=request.getContextPath()%>/lib/img/_02.png" style="height: 200px; width: 300px; " />
+										</div>
+									</div>
+									<li class="a"><span class="def-font1">沉降区长度：</span><input type="text" class="def-input" name="lenghtOfSubside" placeholder="mm"/></li>
+									<li class="a"><span class="def-font1">沉降深度：</span><input class="def-input" type="text" name="depthOfSubside" placeholder="mm"/></li>
+									<li class="a"><span class="def-font1">埋&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;深：</span><input class="def-input" type="text" name="buriedDepth" placeholder="mm"/></li>
+									<li class="a"><span class="def-font1">土体种类：</span>
+										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> 砂土
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> 粉土
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> 黏土                                   
+									</li>
+									
+									<!--<li class="a"><span class="def-font">泊松比：&nbsp;&nbsp;</span> <input class="def-input" type="text" placeholder="mm"/></li>								
+									<li class="a"><span class="def-font">裂纹长度：</span><input class="def-input" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font">相对长度：</span><input class="def-input" type="text" placeholder="mm"/></li>								
+									<li class="a"><span class="def-font">内压：</span><input class="def-input" type="text" placeholder="MPa"/></li>									-->
+							
 							</fieldset>	
 						</div>		
+					
 					</div>
 					
-			
-					<div class="form-group">
-						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #d96615; border-radius: 20px;">		
-							<fieldset style="margin: 20px;">
-								<legend>裂纹尺寸</legend>
-								<ul>
-									<li class="a"><span class="def-font">裂纹长度：</span><input type="text" class="def-input"/></li>
-									<li class="a"><span class="def-font">相对长度：</span> <input type="text" class="def-input"/></li>
-								</ul>
-							</fieldset>
-						</div>
-						
-						<div class="col-md-3" style=" margin-right: 5px; width: 350px; height:200px; background: #2bbeb4; border-radius: 20px;">		
-							<fieldset style="margin: 20px;">
-								<legend>操作参数</legend>
-								<ul>
-									<li class="a"><span class="def-font">内压：</span><input type="text" class="def-input"/></li>
-									<!--<li class="a">： <input type="text" /></li>-->
-								</ul>
-							</fieldset>
-						</div>
-						
-						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:200px; background: #adaa37; border-radius: 20px;">			
-							<fieldset style="margin: 20px;">
-								<legend>说明</legend>
-									<p>  哈哈哈哈哈哈，哈哈哈哈哈哈</p>
-							</fieldset>
-						</div>
-					</div>
 					<div style="margin-top: 50px;">
-						<input type="submit" value="提交计算" class="btn-primary btn">
+						<button type="submit" class="btn-blue" style="background: #d9edf6;">提交计算</button> 
 					</div>
 				</form>
-			</div>	        
-        
+			</div>	
+			
+			<div id="main" style="height: 500px; background-color: ;"></div>
         
         </div>
-           
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->

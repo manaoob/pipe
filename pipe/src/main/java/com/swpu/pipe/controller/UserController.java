@@ -2,6 +2,10 @@ package com.swpu.pipe.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -15,26 +19,34 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.ModelAndViewMethodReturnValueHandler;
 
 import com.swpu.pipe.beans.PageBean;
 import com.swpu.pipe.biz.AdminService;
+import com.swpu.pipe.biz.DataService;
 import com.swpu.pipe.biz.UserService;
 import com.swpu.pipe.dto.UserEditPassDto;
 import com.swpu.pipe.dto.UserInfoChangeDto;
 import com.swpu.pipe.dto.UserLonDto;
 import com.swpu.pipe.dto.UserRegDto;
 import com.swpu.pipe.entity.Admin;
+import com.swpu.pipe.entity.InputData;
 import com.swpu.pipe.entity.User;
+import com.swpu.pipe.util.FileUtil;
 import com.swpu.pipe.util.PipeUtil;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 	private final int pageSize = 5;
+	private final String command = "cmd /c start C://Users//Administrator//Desktop//editFile.bat";
+	private final String filePath = "";
+	private final String newFilePath = "";
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private DataService datarService;
 	@Autowired
 	private AdminService adminService;
 
@@ -272,6 +284,15 @@ public class UserController {
 		model.addAttribute("user", user);
 		return "editPass";
 	}
+	
+	/**
+	 * 修改密码的controller
+	 * @param userEditPassDto
+	 * @param model
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@PostMapping(value="/updatePass")
 	public String toUpdatePass(UserEditPassDto userEditPassDto,Model model,HttpServletRequest request, HttpServletResponse response){
 		if (userEditPassDto.getPassword().equals(userEditPassDto.getRePassword())) {
@@ -298,6 +319,44 @@ public class UserController {
 
 		
 	}
+	/**
+	 * 计算结果展示
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="testJson", method=RequestMethod.GET)
+	public String sendData(Model model){
+		List<Integer> list1 = new ArrayList<>();
+		list1.add(15);
+		list1.add(25);
+		list1.add(10);
+		List<Integer> list2 = new ArrayList<>();
+		list2.add(25);
+		list2.add(35);
+		list2.add(20);
+		Map<String,List<Integer>> map = new HashMap<>();
+		map.put("first", list1);
+		map.put("second", list2);
+		model.addAttribute("map", map);
+		return "result";
+	}
+	
+	// 数据交互时候的重要的controller。
+	// 计算的controller
+	@PostMapping(value="/compute")
+	public String compute(InputData inputData,HttpServletRequest request, HttpServletResponse response,Model model){		
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		inputData.setUser(user);
+		List<String> oldList = new ArrayList<>();
+		oldList.add("");
+		List<String> newList = new ArrayList<>();
+		newList.add(inputData.getTypeOfCrack().toString());
+		if (datarService.saveData(inputData)) {
+			FileUtil.createScriptFile(command, filePath, newFilePath, oldList, newList);
+		}
+		return null;	
+	}	
 
 //	/**
 //		 * form表单提交 Date类型数据绑定

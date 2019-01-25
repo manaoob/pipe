@@ -9,12 +9,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 /**
  * 操作文件的工具类，包括文件的修改、复制以及删除
  * @author Allen
  *
  */
+
+import com.swpu.pipe.dto.DataShowDto;
 public class FileUtil {
 
 	    /**
@@ -24,6 +27,7 @@ public class FileUtil {
 		 * @param newStr
 		 */
 		private static void autoReplace(String filePath, String oldstr, String newStr) {
+			
 			File file = new File(filePath);
 			Long fileLength = file.length();
 			byte[] fileContext = new byte[fileLength.intValue()];
@@ -124,5 +128,58 @@ public class FileUtil {
 		            e.printStackTrace();
 		        }
 		        return list;
-	}
+			}
+			
+			/**
+			 * 将数据库查出来的字符串数据 转化成 list 型 方便前端页面展示。
+			 * @param list
+			 * @return
+			 */
+			public static DataShowDto StringToArray(List<String> list){
+				DataShowDto dataShowDto = new DataShowDto();
+				// setCrackJs  
+				String str0 = list.get(0);	
+				String[] arr0 = str0.split(","); // 用,分割
+				dataShowDto.setCrackJs(Arrays.asList(arr0));
+				
+				// setCrackMises  
+				String str1 = list.get(1);	
+				String[] arr1 = str1.split(","); // 用,分割
+				dataShowDto.setCrackMises(Arrays.asList(arr1));	
+				
+				// setAxialMises  
+				String str2 = list.get(2);	
+				String[] arr2 = str2.split(","); // 用,分割
+				dataShowDto.setAxialMises(Arrays.asList(arr2));	
+				
+				// setAxialMises  
+				String str3 = list.get(3);	
+				String[] arr3 = str3.split(","); // 用,分割
+				dataShowDto.setAxialUs(Arrays.asList(arr3));					
+				
+				return dataShowDto;
+			}
+			/**
+			 * 操作文件，将inp的相关参数进行替换
+			 * @param command - dos下的命令代码
+			 * @param filePath - 源文件路径
+			 * @param newFilePath - 新文件路径
+			 * @param oldList - 要替换掉
+			 * @param newList - 替换成
+			 * @return
+			 */
+			public static boolean createScriptFile(String command,String filePath,String newFilePath, List<String> oldList, List<String> newList){
+				copyFile(filePath,newFilePath);
+				for (int i = 0; i < oldList.size(); i++) {
+					autoReplace(newFilePath, oldList.get(i), newList.get(i));
+				}	
+			     command = "cmd /c start C://Users//Administrator//Desktop//editFile.bat";
+			        try {
+			            Runtime.getRuntime().exec(command);
+			            return true;
+			        } catch (IOException e) {
+			            e.printStackTrace();
+			            return false;
+				}				
+			}
 }

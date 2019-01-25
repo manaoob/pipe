@@ -36,83 +36,7 @@
 
             <div class="notifications-wrapper">
 <ul class="nav">
-               
-             <!--    <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-tasks">
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 1</strong>
-                                                <span class="pull-right text-muted">60% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                                    <span class="sr-only">60% Complete (danger)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 2</strong>
-                                                <span class="pull-right text-muted">30% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                                                    <span class="sr-only">30% Complete</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 3</strong>
-                                                <span class="pull-right text-muted">80% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                                    <span class="sr-only">80% Complete (warning)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="#">
-                                        <div>
-                                            <p>
-                                                <strong>Task 4</strong>
-                                                <span class="pull-right text-muted">90% Complete</span>
-                                            </p>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                                                    <span class="sr-only">90% Complete (success)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a class="text-center" href="#">
-                                        <strong>See Tasks List + </strong>
-                                    </a>
-                                </li>
-                            </ul>
-                </li> --> 
+
               
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -177,6 +101,10 @@
         <!-- /. SIDEBAR MENU (navbar-side) -->
         <div id="page-wrapper" class="page-wrapper-cls">
             <p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">计算结果</p>
+		<div id="main" style="height: 400px; width:400px">
+		</div>
+		<a href="testJson"> submit</a>
+		
 		<div class="all">
 			 <!--<p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">管道参数输入</p>-->
 				<form  class="form-horizontal" role="from">
@@ -249,6 +177,90 @@
     <script src="<%=request.getContextPath()%>/lib/assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="<%=request.getContextPath()%>/lib/assets/js/custom.js"></script>
+    <script src="<%=request.getContextPath()%>/lib/assets/js/echarts.min.js"></script>
+
+	<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        
+        var myChart = echarts.init(document.getElementById('main'));
+		
+	      option={
+	            title: {
+	                text: '一周气站出气量',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:['d=500','d=600']
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/L',
+	                data: [1,2,3,4,5]
+	            },
+	            yAxis: { 
+						name: '单位/L'
+						},
+	            series: [{
+	                name: 'd=500',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data:${map.second}
+	               // data: [12,15,18,21,14]
+	 				
+	            },
+				{
+	                name: 'd=600',
+	                type: 'line',
+//					stack:'总水量',
+					color:'#B5C334',
+					smooth: true,
+					data:${map.first}
+	                //data: [22,25,28,31,24]
+	 				
+	            }]
+	        };
+	     myChart.setOption(option);
+	
+	/**	$.ajax({
+		    type : "get",
+		    async : true,
+		    url : "testJson",
+		    dataType:"json",
+		    success:function(map) {
+		        
+		        if(map)
+		        {
+		           var obj =  map ; 
+		           myChart.hideLoading();
+		             myChart.setOption({
+		                // xAxis:{  
+		                  //   data:obj.xAxisData
+		                // },  
+		                 series:[{
+		                	 	data:obj[1]
+		                 
+		                 		}]
+		                 
+		             });
+		        }
+		                  
+		   },
+		    error : function(errorMsg) {
+		        //请求失败时执行该函数
+		    alert("请求数据失败!");
+		    myChart.hideLoading();
+		    }
+		});
+	**/
+		
+	</script >     
 
 
 </body>

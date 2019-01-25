@@ -1,6 +1,7 @@
 package com.swpu.pipe.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -24,30 +25,42 @@ public class ResultData implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer resultDataId;
 	
-	private String mises;
-	private String maxPrincipal;
-	private String maxPrincipalabs;
-	private String midPrincipal;
-	private String minPrincipal;
-	private String S11;
-	private String S22;
-	private String S33;
+	private String crackJs;  // J积分
 	
-	private String magnitude;
-	private String U1;
-	private String U2;
-	private String U3;
-	private String K;
+	private String crackMises; // 沿裂纹线的mises
 	
-	private String misesPhoto;
-	private String magnitudePhoto;
+	private String axialU2;  // 沿轴向的U2位移
+	
+	private String axialMises; // 沿轴向的mises应力
+	
+	private String axialPressure; // 沿轴向的正应力
+	
+	private String axialShear; // 沿轴向的剪应力
+	
+//	private String mises;
+//	private String maxPrincipal;
+//	private String maxPrincipalabs;
+//	private String midPrincipal;
+//	private String minPrincipal;
+//	private String S11;
+//	private String S22;
+//	private String S33;
+//	
+//	private String magnitude;
+//	private String U1;
+//	private String U2;
+//	private String U3;
+//	private String K;
+//	
+//	private String misesPhoto;
+//	private String magnitudePhoto;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_resultData_id")
 	private User user;
 	
 	@OneToOne(optional = false, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "inputDataId", referencedColumnName = "inputDataId", unique = true)
+	@JoinColumn(name = "inputDataId_resultData_id", referencedColumnName = "inputDataId", unique = true)
 	private InputData inputData;
 
 	public Integer getResultDataId() {
@@ -58,125 +71,36 @@ public class ResultData implements Serializable{
 		this.resultDataId = resultDataId;
 	}
 	
-	
-	public String getMises() {
-		return mises;
+	public String getCrackJs() {
+		return crackJs;
 	}
 
-	public void setMises(String mises) {
-		this.mises = mises;
+	public void setCrackJs(String crackJs) {
+		this.crackJs = crackJs;
 	}
 
-	public String getMaxPrincipal() {
-		return maxPrincipal;
+	public String getCrackMises() {
+		return crackMises;
 	}
 
-	public void setMaxPrincipal(String maxPrincipal) {
-		this.maxPrincipal = maxPrincipal;
+	public void setCrackMises(String crackMises) {
+		this.crackMises = crackMises;
 	}
 
-	public String getMaxPrincipalabs() {
-		return maxPrincipalabs;
+	public String getAxialU2() {
+		return axialU2;
 	}
 
-	public void setMaxPrincipalabs(String maxPrincipalabs) {
-		this.maxPrincipalabs = maxPrincipalabs;
+	public void setAxialU2(String axialU2) {
+		this.axialU2 = axialU2;
 	}
 
-	public String getMidPrincipal() {
-		return midPrincipal;
+	public String getAxialMises() {
+		return axialMises;
 	}
 
-	public void setMidPrincipal(String midPrincipal) {
-		this.midPrincipal = midPrincipal;
-	}
-
-	public String getMinPrincipal() {
-		return minPrincipal;
-	}
-
-	public void setMinPrincipal(String minPrincipal) {
-		this.minPrincipal = minPrincipal;
-	}
-
-	public String getS11() {
-		return S11;
-	}
-
-	public void setS11(String s11) {
-		S11 = s11;
-	}
-
-	public String getS22() {
-		return S22;
-	}
-
-	public void setS22(String s22) {
-		S22 = s22;
-	}
-
-	public String getS33() {
-		return S33;
-	}
-
-	public void setS33(String s33) {
-		S33 = s33;
-	}
-
-	public String getMagnitude() {
-		return magnitude;
-	}
-
-	public void setMagnitude(String magnitude) {
-		this.magnitude = magnitude;
-	}
-
-	public String getU1() {
-		return U1;
-	}
-
-	public void setU1(String u1) {
-		U1 = u1;
-	}
-
-	public String getU2() {
-		return U2;
-	}
-
-	public void setU2(String u2) {
-		U2 = u2;
-	}
-
-	public String getU3() {
-		return U3;
-	}
-
-	public void setU3(String u3) {
-		U3 = u3;
-	}
-
-	public String getK() {
-		return K;
-	}
-
-	public void setK(String k) {
-		K = k;
-	}
-
-	public String getMisesPhoto() {
-		return misesPhoto;
-	}
-
-	public void setMisesPhoto(String misesPhoto) {
-		this.misesPhoto = misesPhoto;
-	}
-
-	public String getMagnitudePhoto() {
-		return magnitudePhoto;
-	}
-
-	public void setMagnitudePhoto(String magnitudePhoto) {
-		this.magnitudePhoto = magnitudePhoto;
+	public void setAxialMises(String axialMises) {
+		this.axialMises = axialMises;
 	}
 
 	public User getUser() {
@@ -197,5 +121,23 @@ public class ResultData implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}	
+	}
+
+	public String getAxialPressure() {
+		return axialPressure;
+	}
+
+	public void setAxialPressure(String axialPressure) {
+		this.axialPressure = axialPressure;
+	}
+
+	public String getAxialShear() {
+		return axialShear;
+	}
+
+	public void setAxialShear(String axialShear) {
+		this.axialShear = axialShear;
+	}
+	
+	
 }
