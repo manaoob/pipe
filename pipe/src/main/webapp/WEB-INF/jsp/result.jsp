@@ -91,7 +91,7 @@
                    
                    
                     <li>
-                        <a href="toBlank"><i class="fa fa-dashcube "></i>Blank Page</a>
+                        <a href="toBlank"><i class="fa fa-dashcube "></i>说明</a>
                     </li>
                    
                 </ul>

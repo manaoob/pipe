@@ -95,7 +95,7 @@
                    
                    
                     <li>
-                        <a href="toBlank"><i class="fa fa-dashcube "></i>Blank Page</a>
+                        <a href="toBlank"><i class="fa fa-dashcube "></i>说明</a>
                     </li>
                    
                 </ul>
@@ -106,52 +106,63 @@
         <div id="page-wrapper" class="page-wrapper-cls">
             <div id="page-inner">
                <div class="all">
-			 <p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">结果查询</p>
+			 <p style="margin-top: 0px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">结果查询</p>
 				<form  class="form-horizontal" role="from">
 					<div class="form-group">
-						<div class="" style="margin-right: 10px;height:200px; background: #00A651; border-radius: 20px;">
+						<div class="" style="margin-right: 10px;height:280px; background: #ACD373; border-radius: 20px;">
 							<fieldset style="margin: 20px;">
 								<legend class="def-title">查询参数</legend>
 								<ul>
 									<li class="a"><span class="def-font-result">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
 									<span class="def-font-result">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">裂纹长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">内压：</span><input type="text" class="def-input-result" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-result">裂纹类型：</span><input type="radio" name="colors" id="red">内裂纹
-									              <input type="radio" name="colors" id="blue">外裂纹</li>
+									<span class="def-font-result">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-result">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-result">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-result">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-result">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-result">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-result">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-result">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-result">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹类型：</span><input type="radio" name="colors" id="red">环向裂纹
+									              <input type="radio" name="colors" id="blue">轴向裂纹</li>
+									<li class="a"><span class="def-font1">土体种类：</span>
+										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> 砂土
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> 粉土
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> 黏土                                   
+									</li>
 								</ul>
 							</fieldset>							
 								<input type="submit" value="查询" class="btn-primary btn" >														
 						</div>												
 					</div>
 					
-					<div class="form-group" style="background: #00A651; height:500px ; border-radius: 20px;">
+					<div class="form-group" style="background: #ACD373; height:500px ; border-radius: 20px;">
 						
 					<h1 style="color: white;"> 详细结果</h1>
 						
 										
 						<div class="form-group">
-							<div class="col-md-3" style="margin-left: 35px; margin-right: 5px; width: 340px; height:400px; background: #d96615; border-radius: 20px;">
+							<div class="col-md-3" style="margin-left: 35px; margin-right: 5px; width: 190px; height:400px; background: #FAAC6D; border-radius: 20px;">
 								<fieldset style="margin: 15px;">
-									<legend class="def-title">应力计算结果</legend>
+									<legend class="def-title" style="font-family: '黑体';">竖直位移</legend>
 									<ul>
 										<li class="a"><span class="def-font-result">裂纹尖端最大MISES：</span><input type="text" class="def-input-result" placeholder="mm"/></li>
 										<li class="a"><span class="def-font-result">裂纹尖端Max.Principal：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
 										<li class="a"><span class="def-font-result">裂纹尖端Max.Principal(abs)：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
 										<li class="a"><span class="def-font-result">裂纹尖端Mid.Principal：</span><input type="text" class="def-input-result" placeholder="mm"/></li>
-										<li class="a"><span class="def-font-result">裂纹尖端Min.Principal：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-										<li class="a"><span class="def-font-result">裂纹尖端S11：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-										<li class="a"><span class="def-font-result">裂纹尖端S22：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-										<li class="a"><span class="def-font-result">裂纹尖端S33：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
 									</ul>
 								</fieldset>
 								
 								
 							</div>
 							
-							<div class="col-md-3" style="margin-right: 5px; width: 340px; height:400px; background: #2bbeb4; border-radius: 20px;">			
+							<div class="col-md-3" style="margin-right: 5px; width: 190px; height:400px; background: #FAAC6D; border-radius: 20px;">			
 								<fieldset style="margin: 15px;">
-									<legend>应变计算结果</legend>
+									<legend class="def-title" style="font-family: '黑体';">轴向正应力</legend>
 									<ul>
 										<li class="a"><span class="def-font-result">裂纹尖端Magnitude：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
 										<li class="a"><span class="def-font-result">裂纹尖端U1：</span> <input class="def-input-result" type="text" placeholder="mm"/></li>
@@ -161,16 +172,46 @@
 								</fieldset>
 							</div>
 							
-							<div class="col-md-3" style="margin-right: 5px; width: 340px; height:400px; background: #e93dab; border-radius: 20px;">			
+							<div class="col-md-3" style="margin-right: 5px; width: 190px; height:400px; background: #FAAC6D; border-radius: 20px;">			
 								<fieldset style="margin: 15px;">
-									<legend>应力应变图</legend>
+									<legend class="def-title" style="font-family: '黑体';">轴向剪应力</legend>
 										<p class="def-font-result">Mises应力图</p>
 										<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
 										<p></p>
 										<p class="def-font-result">总应变图 </p>
 										<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
 								</fieldset>	
-							</div>		
+							</div>	
+							<div class="col-md-3" style="margin-right: 5px; width: 190px; height:400px; background: #FAAC6D; border-radius: 20px;">			
+								<fieldset style="margin: 15px;">
+									<legend class="def-title" style="font-family: '黑体';font-size:20px;">轴向mises应力</legend>
+										<p class="def-font-result">Mises应力图</p>
+										<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
+										<p></p>
+										<p class="def-font-result">总应变图 </p>
+										<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
+								</fieldset>	
+							</div>								
+							<div class="col-md-3" style="margin-right: 5px; width: 190px; height:400px; background: #FAAC6D; border-radius: 20px;">			
+								<fieldset style="margin: 15px;">
+									<legend class="def-title" style="font-family: '黑体';">裂纹J积分</legend>
+										<p class="def-font-result">Mises应力图</p>
+										<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
+										<p></p>
+										<p class="def-font-result">总应变图 </p>
+										<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
+								</fieldset>	
+							</div>
+							<div class="col-md-3" style="margin-right: 5px; width: 190px; height:400px; background: #FAAC6D; border-radius: 20px;">			
+								<fieldset style="margin: 15px;">
+									<legend class="def-title" style="font-family: '黑体'; font-size:16px;">裂纹处mises应力</legend>
+										<p class="def-font-result">Mises应力图</p>
+										<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
+										<p></p>
+										<p class="def-font-result">总应变图 </p>
+										<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
+								</fieldset>	
+							</div>																	
 						</div>
 						
 						

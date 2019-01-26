@@ -92,7 +92,7 @@
                    
                    
                     <li>
-                        <a href="toBlank"><i class="fa fa-dashcube "></i>Blank Page</a>
+                        <a href="toBlank"><i class="fa fa-dashcube "></i>说明</a>
                     </li>
                    
                 </ul>
@@ -111,9 +111,9 @@
 		 	<div class="all">				
 				<form  class="form-horizontal" role="from" action="compute" method="post">
 					<div class="form-group">
-						<div class="col-md-3" style="margin-right: 10px; width: 800px; height:580px; background: #d96615; border-radius: 20px;">
+						<div class="col-md-3" style="margin-right: 10px; width: 800px; height:620px; background: #FAAC6D; border-radius: 20px;">
 							<fieldset style="margin: 20px;"> 
-								<legend class="def-title" style="font-size: 24px; color: #21A9E1; font-family: '黑体';padding-bottom: 10px;">管道参数输入</legend>
+								<legend class="def-title" style="font-size: 24px; color: white; font-family: '黑体';padding-bottom: 10px;">管道参数输入</legend>
 								
 								<div style="background-color: red;height: 200px; margin-bottom: 20px;padding: 0px;">
 									<div class="div-inline" style="background-color: black; float:left; padding:10px; margin-left:48px;">
@@ -165,9 +165,9 @@
 
 						</div>-->
 						
-						<div class="col-md-3" style="margin-right: 10px; width: 400px; height:580px; background: #e93dab; border-radius: 20px;">			
+						<div class="col-md-3" style="margin-right: 10px; width: 400px; height:620px; background: #E696C1; border-radius: 20px;">			
 							<fieldset style="margin: 20px;">
-								<legend>土体参数输入</legend>
+								<legend style="font-size: 24px; color: white; font-family: '黑体';padding-bottom: 10px;">土体参数输入</legend>
 									<div style="background-color: red;height: 200px; margin-bottom: 20px;padding: 0px;">
 										<div  style="background-color: black;">
 											<img src="<%=request.getContextPath()%>/lib/img/_02.png" style="height: 200px; width: 300px; " />
