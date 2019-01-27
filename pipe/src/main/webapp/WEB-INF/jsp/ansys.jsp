@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page pageEncoding="utf-8"%>
 <% String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() +
@@ -101,12 +102,154 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-        <div id="page-wrapper" class="page-wrapper-cls">
-           <h1> 敬请期待 </h1>
+	        <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px;">
+			 	<div class="all" style="background-image: url(<%=request.getContextPath()%>/lib/img/backgrounds/background01.png);padding: 0px; margin: 0px;">				
+					<div style="height: 40px;"></div>
+					<p style="margin-top: 0px; text-align: center; font-size: 48px; color: #21A9E1; font-family: '黑体';">数据分析</p>
+					<div style="height: 10px;"></div>
+					<form  action="" class="form-horizontal" role="from">
+						<div>
+							<div style="margin: 15px; text-align: center;">
+							 <label class="checkbox-inline">
+							 	<span style=" color:white; font-size:18px;">裂纹类型：<span>
+							 </label>
+							 <label class="checkbox-inline">
+							      <input  type="radio" name="optionsRadiosinline" id="optionsRadios3" 
+							         value="option1" > <span style="font-size:18px ; color: white;">环向裂纹</span>
+							   </label>
+							   <label class="checkbox-inline">
+							      <input type="radio" name="optionsRadiosinline" id="optionsRadios4" 
+							         value="option2">  <span style="font-size:18px ; color: white;">轴向裂纹</span>
+							   </label> 
+							</div>
+							
+							<div style="margin: 15px;">
+								<p style="margin-left:480px; color:white; font-size:18px;">影响因素：<p>
+								
+						<c:choose>
+							<c:when test="${param1==1}">
+								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+										    <option value="1" selected="selected">不同沉降长度</option>
+										    <option value="2">不同沉降深度</option>
+										    <option value="3">不同土体种类</option> 
+										    <option value="4">不同管道埋深</option>
+										    <option value="5">不同裂纹形状比</option>     
+										    <option value="6">不同裂纹相对深度</option>
+										    <option value="7">不同内压</option>
+								</select>
+							</c:when>
+							<c:when test="${param1==2}">
+								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+										    <option value="1">不同沉降长度</option>
+										    <option value="2" selected="selected">不同沉降深度</option>
+										    <option value="3">不同土体种类</option> 
+										    <option value="4">不同管道埋深</option>
+										    <option value="5">不同裂纹形状比</option>     
+										    <option value="6">不同裂纹相对深度</option>
+										    <option value="7">不同内压</option>
+								</select>
+							</c:when>
+							<c:when test="${param1==3}">
+								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+										    <option value="1">不同沉降长度</option>
+										    <option value="2">不同沉降深度</option>
+										    <option value="3" selected="selected">不同土体种类</option> 
+										    <option value="4">不同管道埋深</option>
+										    <option value="5">不同裂纹形状比</option>     
+										    <option value="6">不同裂纹相对深度</option>
+										    <option value="7">不同内压</option>
+								</select>
+							</c:when>
+							<c:when test="${param1==4}">
+								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+										    <option value="1">不同沉降长度</option>
+										    <option value="2">不同沉降深度</option>
+										    <option value="3" >不同土体种类</option> 
+										    <option value="4" selected="selected">不同管道埋深</option>
+										    <option value="5">不同裂纹形状比</option>     
+										    <option value="6">不同裂纹相对深度</option>
+										    <option value="7">不同内压</option>
+								</select>
+							</c:when>	
+							<c:when test="${param1==5}">
+								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+										    <option value="1">不同沉降长度</option>
+										    <option value="2">不同沉降深度</option>
+										    <option value="3" >不同土体种类</option> 
+										    <option value="4">不同管道埋深</option>
+										    <option value="5" selected="selected">不同裂纹形状比</option>     
+										    <option value="6">不同裂纹相对深度</option>
+										    <option value="7">不同内压</option>
+								</select>
+							</c:when>
+							<c:when test="${param1==6}">
+								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+										    <option value="1">不同沉降长度</option>
+										    <option value="2">不同沉降深度</option>
+										    <option value="3" >不同土体种类</option> 
+										    <option value="4">不同管道埋深</option>
+										    <option value="5">不同裂纹形状比</option>     
+										    <option value="6" selected="selected">不同裂纹相对深度</option>
+										    <option value="7">不同内压</option>
+								</select>
+							</c:when>
+							<c:when test="${param1==7}"> 
+								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+										    <option value="1">不同沉降长度</option>
+										    <option value="2">不同沉降深度</option>
+										    <option value="3" >不同土体种类</option> 
+										    <option value="4">不同管道埋深</option>
+										    <option value="5">不同裂纹形状比</option>     
+										    <option value="6">不同裂纹相对深度</option>
+										    <option value="7" selected="selected">不同内压</option>
+								</select>
+							</c:when>
+							<c:otherwise>
+								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+											<option value="1">不同沉降长度</option>
+										    <option value="2">不同沉降深度</option>
+										    <option value="3" >不同土体种类</option> 
+										    <option value="4">不同管道埋深</option>
+										    <option value="5">不同裂纹形状比</option>     
+										    <option value="6">不同裂纹相对深度</option>
+										    <option value="7">不同内压</option>
+								</select>
+							</c:otherwise>																		
+							</c:choose>
+								
+								
+							</div>
+							<div style="text-align: center;">
+							   <label class="checkbox-inline">
+							      <input type="checkbox" id="inlineCheckbox1" name="" value="option1"> 
+							      <span style="font-size:18px ; color: white;">选项 1</span> 
+							   </label>
+							   <label class="checkbox-inline">
+							      <input type="checkbox" id="inlineCheckbox2" value="option2"> 选项 2
+							   </label>
+							   <label class="checkbox-inline">
+							      <input type="checkbox" id="inlineCheckbox3" value="option3"> 选项 3
+							   </label>					  
+							</div>					
+						</div>
+						
+						<div style="margin-top: 20px; text-align: center;">
+							<button type="submit" class="btn-blue" style="background: #d9edf6;">提交分析</button> 
+						</div>
+					</form>					
+					<div style="height: 20px;"></div>	
+				</div>	
+				<h1>${param1}</h1>
+				<div id="main" style="height: 500px; background-color: ;"></div>
+	        
+	        </div>           
+           
+           
+           
+           
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
-    </div>
     <!-- /. WRAPPER  -->
     <footer >
         &copy; 2019 YourCompany | By : <a href="http://www.designbootstrap.com/" target="_blank">Allen</a>
@@ -121,7 +264,17 @@
     <script src="<%=request.getContextPath()%>/lib/assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="<%=request.getContextPath()%>/lib/assets/js/custom.js"></script>
-
+	<script language="javascript" type="text/javascript">  
+		$(document).ready(function(){  
+		$('#mySelect').change(function(){  
+		//alert($(this).children('option:selected').val());  
+		var p1 = $(this).children('option:selected').val();//这就是selected的值  
+		//var p2=$('#param2').val();//获取本页面其他标签的值  
+		//window.location.href="xx.php?param1="+p1+"¶m2="+p2+"";//页面跳转并传参
+		window.location.href="ansysFactor?"+"param="+p1;  //页面跳转并传参
+		})  
+		})  
+	</script>  
 
 </body>
 </html>

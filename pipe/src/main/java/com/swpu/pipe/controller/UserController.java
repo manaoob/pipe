@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.swpu.pipe.beans.PageBean;
@@ -356,7 +357,15 @@ public class UserController {
 			FileUtil.createScriptFile(command, filePath, newFilePath, oldList, newList);
 		}
 		return null;	
-	}	
+	}
+	
+	@GetMapping(value="/ansysFactor")
+	public String ansysFactor(@RequestParam(value = "param") String param ,Model model){
+		System.out.println(param);
+		int newParam = Integer.parseInt(param);
+		model.addAttribute("param1", newParam);
+		return "ansys";
+	}
 
 //	/**
 //		 * form表单提交 Date类型数据绑定

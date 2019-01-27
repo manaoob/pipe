@@ -40,7 +40,7 @@
             </div>
 
             <div class="notifications-wrapper">
-<ul class="nav">
+	<ul class="nav">
               
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -103,10 +103,13 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-        <div id="page-wrapper" class="page-wrapper-cls">
-            <div id="page-inner">
-               <div class="all">
-			 <p style="margin-top: 0px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">结果查询</p>
+        <div id="page-wrapper" class="page-wrapper-cls" style="padding:0px;">
+      		<div style="height: 150px; width: 1318px; padding: 0px;margin: 0px; background-image: url(<%=request.getContextPath()%>/lib/img/backgrounds/background03.png)">
+      			 <div style="height: 10px;"></div>
+      			 <p style="margin-top: 36px; text-align: center; font-size: 48px; color: white; font-family: '黑体'; ">结果查询</p>
+		 	</div>
+            <div id="page-inner" >
+               <div class="all" style="margin-top: 0px;">
 				<form  class="form-horizontal" role="from">
 					<div class="form-group">
 						<div class="" style="margin-right: 10px;height:280px; background: #ACD373; border-radius: 20px;">

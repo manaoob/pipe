@@ -100,15 +100,15 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-                     <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px;">
-        	<img src="<%=request.getContextPath()%>/lib/img/pipe.jpg" style="height: 200px; width: 1318px; padding: 0px;margin: 0px;"/>
-        	<div style="height: 10px;"></div>
+       <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px;">
         	<!--<a href="index.html" style="margin-left: 14px; text-align: center; font-size: 24px; color: #21A9E1; font-family: '黑体';">管道参数输入</a> 
         	<a href="index.html" style="margin-left: 14px; text-align: center; font-size: 24px; color: #21A9E1; font-family: '黑体';">土体参数输入</a>
         	-->
-      
-       <p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">参数输入</p>
-		 	<div class="all">				
+      			<div style="height: 150px; width: 1318px; padding: 0px;margin: 0px; background-image: url(<%=request.getContextPath()%>/lib/img/backgrounds/background03.png)">
+      			 	<div style="height: 10px;"></div>
+      			 	<p style="margin-top: 36px; text-align: center; font-size: 48px; color: white; font-family: '黑体'; ">参数输入</p>
+		 		</div>
+		 	<div class="all" style="margin-top:40px;">				
 				<form  class="form-horizontal" role="from" action="compute" method="post">
 					<div class="form-group">
 						<div class="col-md-3" style="margin-right: 10px; width: 800px; height:620px; background: #FAAC6D; border-radius: 20px;">

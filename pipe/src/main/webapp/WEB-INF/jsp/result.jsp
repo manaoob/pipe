@@ -35,7 +35,7 @@
             </div>
 
             <div class="notifications-wrapper">
-<ul class="nav">
+				<ul class="nav">
 
               
                 <li class="dropdown">
@@ -99,8 +99,11 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-        <div id="page-wrapper" class="page-wrapper-cls">
-            <p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">计算结果</p>
+        <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px;">
+      		<div style="height: 150px; width: 1318px; padding: 0px;margin: 0px; background-image: url(<%=request.getContextPath()%>/lib/img/backgrounds/background03.png)">
+      			 <div style="height: 10px;"></div>
+      			 <p style="margin-top: 36px; text-align: center; font-size: 48px; color: white; font-family: '黑体'; ">计算结果</p>
+		 	</div>
 		<div id="main" style="height: 400px; width:400px">
 		</div>
 		<a href="testJson"> submit</a>
