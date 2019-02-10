@@ -360,10 +360,13 @@ public class UserController {
 	}
 	
 	@GetMapping(value="/ansysFactor")
-	public String ansysFactor(@RequestParam(value = "param") String param ,Model model){
+	public String ansysFactor(@RequestParam(value = "param") String param ,Model model,HttpServletRequest request, HttpServletResponse response){
 		System.out.println(param);
 		int newParam = Integer.parseInt(param);
 		model.addAttribute("param1", newParam);
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
 		return "ansys";
 	}
 

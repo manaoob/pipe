@@ -22,6 +22,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link href="<%=request.getContextPath()%>/lib/assets/css/controlStyle.css" rel="stylesheet"  />
 </head>
 <body>
     <div id="wrapper">
@@ -124,7 +125,7 @@
 							</div>
 							
 							<div style="margin: 15px;">
-								<p style="margin-left:480px; color:white; font-size:18px;">影响因素：<p>
+								<p style="margin-left:-240px; color:white; font-size:18px; background-color: red;">影响因素：<p>
 								
 						<c:choose>
 							<c:when test="${param1==1}">
@@ -137,6 +138,27 @@
 										    <option value="6">不同裂纹相对深度</option>
 										    <option value="7">不同内压</option>
 								</select>
+								<ul>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<!-- <span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  -->
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
+										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> <span style="color:white;">粉土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
+									</li>
+								</ul>
 							</c:when>
 							<c:when test="${param1==2}">
 								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
@@ -148,6 +170,27 @@
 										    <option value="6">不同裂纹相对深度</option>
 										    <option value="7">不同内压</option>
 								</select>
+								<ul>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  
+									<!-- <span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/> -->
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
+										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> <span style="color:white;">粉土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
+									</li>
+								</ul>								
 							</c:when>
 							<c:when test="${param1==3}">
 								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
@@ -159,6 +202,27 @@
 										    <option value="6">不同裂纹相对深度</option>
 										    <option value="7">不同内压</option>
 								</select>
+								<ul>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+								<!-- 	<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
+										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> <span style="color:white;">粉土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
+									</li>  -->
+								</ul>								
 							</c:when>
 							<c:when test="${param1==4}">
 								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
@@ -170,6 +234,28 @@
 										    <option value="6">不同裂纹相对深度</option>
 										    <option value="7">不同内压</option>
 								</select>
+								<ul>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/> 
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<!-- <span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/> -->
+									</li>
+									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
+										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> <span style="color:white;">粉土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
+									</li>
+								</ul>								
 							</c:when>	
 							<c:when test="${param1==5}">
 								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
@@ -181,6 +267,27 @@
 										    <option value="6">不同裂纹相对深度</option>
 										    <option value="7">不同内压</option>
 								</select>
+								<ul>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<!--<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>-->
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
+										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> <span style="color:white;">粉土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
+									</li>
+								</ul>								
 							</c:when>
 							<c:when test="${param1==6}">
 								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
@@ -192,6 +299,27 @@
 										    <option value="6" selected="selected">不同裂纹相对深度</option>
 										    <option value="7">不同内压</option>
 								</select>
+								<ul>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<!-- <span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>-->
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
+										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> <span style="color:white;">粉土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
+									</li>
+								</ul>								
 							</c:when>
 							<c:when test="${param1==7}"> 
 								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
@@ -203,6 +331,27 @@
 										    <option value="6">不同裂纹相对深度</option>
 										    <option value="7" selected="selected">不同内压</option>
 								</select>
+								<ul>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<!-- <span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>-->
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
+										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> <span style="color:white;">粉土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
+									</li>
+								</ul>								
 							</c:when>
 							<c:otherwise>
 								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
@@ -214,23 +363,33 @@
 										    <option value="6">不同裂纹相对深度</option>
 										    <option value="7">不同内压</option>
 								</select>
+								<ul>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<!-- <span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  -->
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
+										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> <span style="color:white;">粉土</span>
+                                        &nbsp; &nbsp; &nbsp;
+                                        <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
+									</li>
+								</ul>								
 							</c:otherwise>																		
 							</c:choose>
 								
 								
 							</div>
-							<div style="text-align: center;">
-							   <label class="checkbox-inline">
-							      <input type="checkbox" id="inlineCheckbox1" name="" value="option1"> 
-							      <span style="font-size:18px ; color: white;">选项 1</span> 
-							   </label>
-							   <label class="checkbox-inline">
-							      <input type="checkbox" id="inlineCheckbox2" value="option2"> 选项 2
-							   </label>
-							   <label class="checkbox-inline">
-							      <input type="checkbox" id="inlineCheckbox3" value="option3"> 选项 3
-							   </label>					  
-							</div>					
+							
 						</div>
 						
 						<div style="margin-top: 20px; text-align: center;">
