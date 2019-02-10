@@ -9,4 +9,8 @@ public interface DataService {
 	public boolean saveData(InputData inputData);
 	
 	public ResultData showData(QueryData queryData);
+	
+	public boolean saveResultData(ResultData resultData);
+	
+	public ResultData selectNewResultData();
 }

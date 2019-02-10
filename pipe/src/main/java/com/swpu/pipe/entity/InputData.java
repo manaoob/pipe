@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.swpu.pipe.dto.InputDataDto;
 /**
  * 
  * @author Administrator
@@ -204,6 +206,25 @@ public class InputData implements Serializable{
 		this.typeOfCrack = typeOfCrack;
 	}
 	
+	public InputData DtoToData(InputDataDto inputDataDto){
+			InputData inputData = new InputData();
+			inputData.setBuriedDepth(inputDataDto.getBuriedDepth());
+			inputData.setCrackLength(inputDataDto.getCrackLength());
+			//inputData.setDepthOfSrbside(inputDataDto.getDepthOfSubside());
+			inputData.setDepthOfSubside(inputDataDto.getDepthOfSubside());
+			inputData.setElasticityModulus(inputDataDto.getElasticityModulus());
+			inputData.setExternalDiameter(inputDataDto.getExternalDiameter());
+			inputData.setHardening(inputDataDto.getHardening());
+			inputData.setInnerDiameter(inputDataDto.getInnerDiameter());
+			inputData.setLenghtOfSubside(inputDataDto.getLenghtOfSubside());
+			inputData.setPoissonRatio(inputDataDto.getPoissonRatio());
+			inputData.setPressure(inputDataDto.getPressure());
+			inputData.setRelativeLength(inputDataDto.getRelativeLength());
+			inputData.setTypeOfCrack(inputDataDto.getTypeOfCrack());
+			inputData.setTypeOfSoil(inputDataDto.getTypeOfSoil());
+		return inputData;
+		
+	}
 	
 	
 }

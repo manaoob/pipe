@@ -7,4 +7,8 @@ import com.swpu.pipe.entity.ResultData;
 public interface DataDao extends BaseDao<InputData, Integer>{
 
 	public ResultData queryResultData(QueryData queryData);
+	
+	public Integer save(ResultData entity);
+	
+	public ResultData showNewResultData();
 }

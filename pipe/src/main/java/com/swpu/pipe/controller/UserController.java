@@ -27,12 +27,14 @@ import com.swpu.pipe.beans.PageBean;
 import com.swpu.pipe.biz.AdminService;
 import com.swpu.pipe.biz.DataService;
 import com.swpu.pipe.biz.UserService;
+import com.swpu.pipe.dto.InputDataDto;
 import com.swpu.pipe.dto.UserEditPassDto;
 import com.swpu.pipe.dto.UserInfoChangeDto;
 import com.swpu.pipe.dto.UserLonDto;
 import com.swpu.pipe.dto.UserRegDto;
 import com.swpu.pipe.entity.Admin;
 import com.swpu.pipe.entity.InputData;
+import com.swpu.pipe.entity.ResultData;
 import com.swpu.pipe.entity.User;
 import com.swpu.pipe.util.FileUtil;
 import com.swpu.pipe.util.PipeUtil;
@@ -47,7 +49,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private DataService datarService;
+	private DataService dataService;
 	@Autowired
 	private AdminService adminService;
 
@@ -327,6 +329,8 @@ public class UserController {
 	 */
 	@RequestMapping(value="testJson", method=RequestMethod.GET)
 	public String sendData(Model model){
+		ResultData resultData = dataService.selectNewResultData();
+		
 		List<Integer> list1 = new ArrayList<>();
 		list1.add(15);
 		list1.add(25);
@@ -336,8 +340,8 @@ public class UserController {
 		list2.add(35);
 		list2.add(20);
 		Map<String,List<Integer>> map = new HashMap<>();
-		map.put("first", list1);
-		map.put("second", list2);
+		map.put("X", list1);
+		map.put("Y", list2);
 		model.addAttribute("map", map);
 		return "result";
 	}
@@ -348,15 +352,55 @@ public class UserController {
 	public String compute(InputData inputData,HttpServletRequest request, HttpServletResponse response,Model model){		
 		String username = (String) request.getSession().getAttribute("username");
 		User user = userService.findByUsername(username);
-		inputData.setUser(user);
-		List<String> oldList = new ArrayList<>();
-		oldList.add("");
-		List<String> newList = new ArrayList<>();
-		newList.add(inputData.getTypeOfCrack().toString());
-		if (datarService.saveData(inputData)) {
-			FileUtil.createScriptFile(command, filePath, newFilePath, oldList, newList);
+		inputData.setUser(user);		
+//		List<String> oldList = new ArrayList<>();
+//		oldList.add("");
+//		List<String> newList = new ArrayList<>();
+//		newList.add(inputData.getTypeOfCrack().toString());
+		if (dataService.saveData(inputData)) {
+		     String commandU2 = "cmd /c start C://Users//Administrator//Desktop//readU2.bat";
+		     String commandMises = "cmd /c start  C://Users//Administrator//Desktop//readMises.bat";
+		     String commandU3 = "cmd /c start C://Users//Administrator//Desktop//readSS3.bat";
+		     String commandShear = "cmd /c start C://Users//Administrator//Desktop//readShear.bat";
+		     String commandcrackMises = "cmd /c start C://Users//Administrator//Desktop//readcrackMises.bat";
+		     String commandcrackJs = "cmd /c start C://Users//Administrator//Desktop//readcrackJs.bat";
+		        try { 
+		            Runtime.getRuntime().exec(commandU2);
+		            Runtime.getRuntime().exec(commandMises);
+		            Runtime.getRuntime().exec(commandU3);
+		            Runtime.getRuntime().exec(commandShear);
+		            Runtime.getRuntime().exec(commandcrackMises);
+		            Runtime.getRuntime().exec(commandcrackJs);
+		        } catch (IOException e) {
+		            e.printStackTrace();
+			}
+			//FileUtil.createScriptFile(command, filePath, newFilePath, oldList, newList);
+		    ResultData resultData = new ResultData();
+		    try {
+		    	Thread.sleep(200);  //休眠一分钟
+		    	} catch (InterruptedException e) {
+		    	e.printStackTrace();
+		    	} 		    		    
+			List<String> list_dataCrackJs = FileUtil.read("E:\\yinSoft\\AbaqusINP01\\dataCrackJs.txt");
+			List<String> list_dataCrackMises = FileUtil.read("E:\\yinSoft\\AbaqusINP01\\dataCrackMises.txt");
+			List<String> list_dataSS3 = FileUtil.read("E:\\yinSoft\\AbaqusINP01\\dataSS3.txt");
+			List<String> list_dataSS2 = FileUtil.read("E:\\yinSoft\\AbaqusINP01\\dataSS2.txt");
+			List<String> list_dataU2 = FileUtil.read("E:\\yinSoft\\AbaqusINP01\\dataU2.txt");
+			List<String> list_dataMises = FileUtil.read("E:\\yinSoft\\AbaqusINP01\\dataMises.txt");
+			resultData.setAxialU2(list_dataU2.toString());
+			resultData.setAxialMises(list_dataSS3.toString());
+			resultData.setAxialShear(list_dataSS2.toString());
+			resultData.setAxialPressure(list_dataMises.toString());
+			resultData.setCrackJs(list_dataCrackJs.toString());
+			resultData.setCrackMises(list_dataCrackMises.toString());
+			resultData.setUser(user);
+			resultData.setInputData(inputData);
+			if (dataService.saveResultData(resultData)) {
+				model.addAttribute("temp", "计算成功");
+			}
+			return "index";				
 		}
-		return null;	
+		return "index";	
 	}
 	
 	@GetMapping(value="/ansysFactor")

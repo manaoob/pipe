@@ -7,22 +7,13 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.swpu.pipe.biz.UserService;
-import com.swpu.pipe.dto.UserLonDto;
-import com.swpu.pipe.dto.UserRegDto;
-import com.swpu.pipe.entity.User;
 
 @Controller
 @RequestMapping("/content")

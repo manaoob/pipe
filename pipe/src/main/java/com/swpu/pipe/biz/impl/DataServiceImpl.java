@@ -25,5 +25,15 @@ public class DataServiceImpl implements DataService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public boolean saveResultData(ResultData resultData) {
+		// TODO Auto-generated method stub
+		return dataDao.save(resultData) != null;
+	}
+	@Override
+	public ResultData selectNewResultData() {
+		// TODO Auto-generated method stub
+		return dataDao.showNewResultData();
+	}
 
 }
