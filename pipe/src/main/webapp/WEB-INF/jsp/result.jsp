@@ -99,17 +99,24 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-        <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px;">
+        <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px; height:1000px">
       		<div style="height: 150px; width: 1318px; padding: 0px;margin: 0px; background-image: url(<%=request.getContextPath()%>/lib/img/backgrounds/background03.png)">
       			 <div style="height: 10px;"></div>
       			 <p style="margin-top: 36px; text-align: center; font-size: 48px; color: white; font-family: '黑体'; ">计算结果</p>
 		 	</div>
-		<div id="main" style="height: 400px; width:400px">
-		</div>
+		<div style="height:40px"></div>
+		<div id="CrackJs" style="height: 400px; width:400px; float:left"></div>
+		<div id="CrackMises" style="height: 400px; width:400px; float:left"></div>
+		<div id="AxialMises" style="height: 400px; width:400px; float:left"></div>
+		<div id="AxialU2" style="height: 400px; width:400px; float:left"></div>
+		<div id="AxialPressure" style="height: 400px; width:400px; float:left"></div>	
+		<div id="AxialShear" style="height: 400px; width:400px; float:left"></div>
+		
 		<a href="testJson"> submit</a>
 		
+		<!--  
 		<div class="all">
-			 <!--<p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">管道参数输入</p>-->
+			 <<p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">管道参数输入</p>
 				<form  class="form-horizontal" role="from">
 					<div class="form-group">
 						<div class="col-md-3" style="margin-right: 5px; width: 350px; height:400px; background: #d96615; border-radius: 20px;">
@@ -152,21 +159,25 @@
 									<img src="img/_02.png" style="text-align: center; width: 150px; height: 100px;"/>
 							</fieldset>	
 						</div>		
-					</div>
+					</div>  -->
 					
 			
 			
-					
+					<!-- 
 					<div style="margin-top: 50px;">
 						<input type="submit" value="保存" class="btn-primary btn">
-					</div>
-				</form>
+					</div> 
+				</form> -->
+				
 		</div>
             <!-- /. PAGE INNER  -->
+            
         </div>
         <!-- /. PAGE WRAPPER  -->
+        
     </div>
     <!-- /. WRAPPER  -->
+    
     <footer >
         &copy; 2019 YourCompany | By : <a href="http://www.designbootstrap.com/" target="_blank">Allen</a>
     </footer>
@@ -185,11 +196,10 @@
 	<script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         
-        var myChart = echarts.init(document.getElementById('main'));
-		
+        var myChart1 = echarts.init(document.getElementById('CrackJs'));
 	      option={
 	            title: {
-	                text: '一周气站出气量',
+	                text: '沿裂纹的J积分值',
 					borderWidth:2,
 					x:'center'
 					
@@ -198,38 +208,227 @@
 	            legend: {
 					orient:'vertical',
 					x:'right',
-	                data:['d=500','d=600']
+	                data:[]
 					
 	            },
 	            xAxis: {
 					type: 'category',
-					name: '单位/L',
-	                data: [1,2,3,4,5]
+					name: '单位/。',
+	                data: ${mapCrackJs.X}
 	            },
 	            yAxis: { 
-						name: '单位/L'
+						name: '单位/kJm-2'
 						},
 	            series: [{
-	                name: 'd=500',
+	                name: '',
 	                type: 'line',
 //					stack:'总水量',
 					smooth: true,
-					data:${map.second}
+					data: ${mapCrackJs.Y}
 	               // data: [12,15,18,21,14]
 	 				
+	            }]
+//				{
+//	                name: 'd=600',
+//	                type: 'line',
+//					stack:'总水量',
+//					color:'#B5C334',
+//					smooth: true,
+//					data:${map.first}
+	                //data: [22,25,28,31,24]
+//	            }
+	
+	        };
+	     myChart1.setOption(option);
+	var myChart2 = echarts.init(document.getElementById('CrackMises'));
+	      option={
+	            title: {
+	                text: '沿裂纹的mises应力',
+					borderWidth:2,
+					x:'center'
+					
 	            },
-				{
-	                name: 'd=600',
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/。',
+	                data: ${mapCrackMises.X}
+	            },
+	            yAxis: { 
+						name: '单位/MPa'
+						},
+	            series: [{
+	                name: '',
 	                type: 'line',
 //					stack:'总水量',
-					color:'#B5C334',
 					smooth: true,
-					data:${map.first}
-	                //data: [22,25,28,31,24]
+					data:${mapCrackMises.Y}
+	               // data: [12,15,18,21,14]
 	 				
 	            }]
+	            
 	        };
-	     myChart.setOption(option);
+	     myChart2.setOption(option);
+
+	var myChart3 = echarts.init(document.getElementById('AxialMises'));
+	      option={
+	            title: {
+	                text: '管道轴向mises应力',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/m',
+	                data: ${mapAxialMises.X}
+	            },
+	            yAxis: { 
+						name: '单位/MPa'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data: ${mapAxialMises.Y}
+	               // data: [12,15,18,21,14]
+	 				
+	            }]
+	            
+	        };
+	     myChart3.setOption(option);
+
+	var myChart4 = echarts.init(document.getElementById('AxialU2'));
+	      option={
+	            title: {
+	                text: '管道沉降',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/m',
+	                data: ${mapAxialU2.X}
+	            },
+	            yAxis: { 
+						name: '单位/mm'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data:${mapAxialU2.Y}
+	               // data: [12,15,18,21,14]
+	 				
+	            }]
+	            
+	        };
+	     myChart4.setOption(option);
+	
+	var myChart5 = echarts.init(document.getElementById('AxialPressure'));
+	      option={
+	            title: {
+	                text: '管道轴应力',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/m',
+	                data: ${mapAxialPressure.X}
+	            },
+	            yAxis: { 
+						name: '单位/MPa'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data:${mapAxialPressure.Y}
+	               // data: [12,15,18,21,14]
+	 				
+	            }]
+	            
+	        };
+	     myChart5.setOption(option);
+		
+	var myChart6 = echarts.init(document.getElementById('AxialShear'));
+	      option={
+	            title: {
+	                text: '管道切应力',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/m',
+	                data: ${mapAxialShear.X}
+	            },
+	            yAxis: { 
+						name: '单位/MPa'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data:${mapAxialShear.Y}
+	               // data: [12,15,18,21,14]
+	 				
+	            
+	            }]
+	        };
+	     myChart6.setOption(option);	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**	$.ajax({
 		    type : "get",

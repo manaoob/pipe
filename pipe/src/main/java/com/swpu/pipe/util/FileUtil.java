@@ -132,30 +132,46 @@ public class FileUtil {
 			
 			/**
 			 * 将数据库查出来的字符串数据 转化成 list 型 方便前端页面展示。
-			 * @param list
+			 * @param list : 一个用于分隔的列表
 			 * @return
 			 */
 			public static DataShowDto StringToArray(List<String> list){
 				DataShowDto dataShowDto = new DataShowDto();
 				// setCrackJs  
 				String str0 = list.get(0);	
-				String[] arr0 = str0.split(","); // 用,分割
+				String string0 = str0.substring(1,str0.length()-1);
+				String[] arr0 = string0.split(","); // 用,分割
 				dataShowDto.setCrackJs(Arrays.asList(arr0));
 				
 				// setCrackMises  
 				String str1 = list.get(1);	
-				String[] arr1 = str1.split(","); // 用,分割
+				String string1 = str1.substring(1,str1.length()-1);
+				String[] arr1 = string1.split(","); // 用,分割
 				dataShowDto.setCrackMises(Arrays.asList(arr1));	
 				
 				// setAxialMises  
 				String str2 = list.get(2);	
-				String[] arr2 = str2.split(","); // 用,分割
+				String string2 = str2.substring(1,str2.length()-1);
+				String[] arr2 = string2.split(","); // 用,分割
 				dataShowDto.setAxialMises(Arrays.asList(arr2));	
 				
-				// setAxialMises  
+				// setAxialUs  
 				String str3 = list.get(3);	
-				String[] arr3 = str3.split(","); // 用,分割
-				dataShowDto.setAxialUs(Arrays.asList(arr3));					
+				String string3 = str3.substring(1,str3.length()-1);
+				String[] arr3 = string3.split(","); // 用,分割
+				dataShowDto.setAxialUs(Arrays.asList(arr3));	
+				
+				// setAxialPressure
+				String str4 = list.get(4);	
+				String string4 = str4.substring(1,str4.length()-1);
+				String[] arr4 = string4.split(","); // 用,分割
+				dataShowDto.setAxialPressure(Arrays.asList(arr4));	
+				
+				// setAxialShear
+				String str5 = list.get(5);	
+				String string5 = str5.substring(1,str5.length()-1);
+				String[] arr5 = string5.split(","); // 用,分割
+				dataShowDto.setAxialShear(Arrays.asList(arr5));					
 				
 				return dataShowDto;
 			}

@@ -1,5 +1,7 @@
 package com.swpu.pipe.biz.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +24,8 @@ public class DataServiceImpl implements DataService {
 	}
 	@Override
 	public ResultData showData(QueryData queryData) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dataDao.queryResultData(queryData);
 	}
 	@Override
 	public boolean saveResultData(ResultData resultData) {
@@ -34,6 +36,11 @@ public class DataServiceImpl implements DataService {
 	public ResultData selectNewResultData() {
 		// TODO Auto-generated method stub
 		return dataDao.showNewResultData();
+	}
+	@Override
+	public List<ResultData> ansysData(QueryData queryData, String index) {
+		// TODO Auto-generated method stub
+		return dataDao.ansysData(queryData, index);
 	}
 
 }

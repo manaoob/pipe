@@ -100,7 +100,7 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-       <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px;">
+       <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px; height:900px">
         	<!--<a href="index.html" style="margin-left: 14px; text-align: center; font-size: 24px; color: #21A9E1; font-family: '黑体';">管道参数输入</a> 
         	<a href="index.html" style="margin-left: 14px; text-align: center; font-size: 24px; color: #21A9E1; font-family: '黑体';">土体参数输入</a>
         	-->
@@ -200,7 +200,7 @@
 				</form>
 			</div>	
 			
-			<div id="main" style="height: 500px; background-color: ;"></div>
+			<!--  <div id="main" style="height: 500px; background-color: ;"></div> -->
         
         </div>
             <!-- /. PAGE INNER  -->

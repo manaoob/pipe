@@ -115,12 +115,12 @@
 							 	<span style=" color:white; font-size:18px;">裂纹类型：<span>
 							 </label>
 							 <label class="checkbox-inline">
-							      <input  type="radio" name="optionsRadiosinline" id="optionsRadios3" 
-							         value="option1" > <span style="font-size:18px ; color: white;">环向裂纹</span>
+							      <input  type="radio" name="typeOfCrack" id="optionsRadios3" 
+							         value="1" > <span style="font-size:18px ; color: white;">环向裂纹</span>
 							   </label>
 							   <label class="checkbox-inline">
-							      <input type="radio" name="optionsRadiosinline" id="optionsRadios4" 
-							         value="option2">  <span style="font-size:18px ; color: white;">轴向裂纹</span>
+							      <input type="radio" name="typeOfCrack" id="optionsRadios4" 
+							         value="2">  <span style="font-size:18px ; color: white;">轴向裂纹</span>
 							   </label> 
 							</div>
 							
@@ -139,18 +139,19 @@
 										    <option value="7">不同内压</option>
 								</select>
 								<ul>
-									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<!-- <span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  -->
-									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" name="externalDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" name="innerDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性模量：</span><input class="def-input-result" type="text" name="elasticityModulus" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" name="poissonRatio" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" name="yield" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" name="pressure" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" name="yieldOffset" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" name="hardening" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" name="crackLength" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" name="relativeLength" placeholder="mm"/>
+									<!-- <span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" name="lenghtOfSubside" placeholder="mm"/>  -->
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" name="depthOfSubside" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" name="buriedDepth" placeholder="mm"/></li>
 									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
 										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
                                         &nbsp; &nbsp; &nbsp;
@@ -171,18 +172,19 @@
 										    <option value="7">不同内压</option>
 								</select>
 								<ul>
-									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" name="externalDiameter"  placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" name="innerDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性模量：</span><input class="def-input-result" type="text" name="elasticityModulus" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" name="poissonRatio" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text"  name="yield" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" name="pressure"  placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" name="yieldOffset" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" name="hardening" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" name="crackLength" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" name="relativeLength"  placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" name="lenghtOfSubside"  placeholder="mm"/>  
 									<!-- <span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/> -->
-									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" name="buriedDepth"  placeholder="mm"/></li>
 									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
 										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
                                         &nbsp; &nbsp; &nbsp;
@@ -203,25 +205,26 @@
 										    <option value="7">不同内压</option>
 								</select>
 								<ul>
-									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  
-									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-								<!-- 	<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" name="externalDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" name="innerDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性模量：</span><input class="def-input-result" type="text" name="elasticityModulus" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" name="poissonRatio" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" name="yield" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" name="pressure" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" name="yieldOffset" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" name="hardening" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" name="crackLength" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" name="relativeLength" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" name="lenghtOfSubside" placeholder="mm"/>  
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" name="depthOfSubside" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" name="buriedDepth" placeholder="mm"/></li>
+									<!-- <li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
 										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
                                         &nbsp; &nbsp; &nbsp;
                                         <input class="def-font1" type="radio" name="typeOfSoil" value="2" /> <span style="color:white;">粉土</span>
                                         &nbsp; &nbsp; &nbsp;
                                         <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
-									</li>  -->
+									</li> -->
 								</ul>								
 							</c:when>
 							<c:when test="${param1==4}">
@@ -235,18 +238,19 @@
 										    <option value="7">不同内压</option>
 								</select>
 								<ul>
-									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/> 
-									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<!-- <span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/> -->
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" name="externalDiameter"  placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" name="innerDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性模量：</span><input class="def-input-result" type="text" name="elasticityModulus" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" name="poissonRatio" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text"  name="yield" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" name="pressure"  placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" name="yieldOffset" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" name="hardening" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" name="crackLength" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" name="relativeLength"  placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" name="lenghtOfSubside"  placeholder="mm"/>  
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/> 
+									<!-- <span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" name="buriedDepth"  placeholder="mm"/>-->
 									</li>
 									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
 										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
@@ -268,18 +272,19 @@
 										    <option value="7">不同内压</option>
 								</select>
 								<ul>
-									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<!--<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>-->
-									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  
-									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" name="externalDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" name="innerDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性模量：</span><input class="def-input-result" type="text" name="elasticityModulus" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" name="poissonRatio" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" name="yield" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" name="pressure" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" name="yieldOffset" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" name="hardening" type="text" placeholder="mm"/>
+									<!--<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" name="crackLength" placeholder="mm"/>-->
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" name="relativeLength" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" name="lenghtOfSubside" placeholder="mm"/>  
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" name="depthOfSubside" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" name="buriedDepth" placeholder="mm"/></li>
 									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
 										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
                                         &nbsp; &nbsp; &nbsp;
@@ -300,18 +305,19 @@
 										    <option value="7">不同内压</option>
 								</select>
 								<ul>
-									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<!-- <span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>-->
-									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  
-									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" name="externalDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" name="innerDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性模量：</span><input class="def-input-result" type="text" name="elasticityModulus" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" name="poissonRatio" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" name="yield" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" name="pressure" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" name="yieldOffset" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" name="hardening" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" name="crackLength" placeholder="mm"/>
+									<!--<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" name="relativeLength" placeholder="mm"/>-->
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" name="lenghtOfSubside" placeholder="mm"/>  
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" name="depthOfSubside" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" name="buriedDepth" placeholder="mm"/></li>
 									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
 										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
                                         &nbsp; &nbsp; &nbsp;
@@ -332,18 +338,19 @@
 										    <option value="7" selected="selected">不同内压</option>
 								</select>
 								<ul>
-									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<!-- <span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>-->
-									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  
-									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" name="externalDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" name="innerDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性模量：</span><input class="def-input-result" type="text" name="elasticityModulus" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" name="poissonRatio" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" name="yield" placeholder="mm"/>
+									<!--<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" name="pressure" placeholder="mm"/>-->
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" name="yieldOffset" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" name="hardening" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" name="crackLength" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" name="relativeLength" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" name="lenghtOfSubside" placeholder="mm"/>  
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" name="depthOfSubside" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" name="buriedDepth" placeholder="mm"/></li>
 									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
 										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
                                         &nbsp; &nbsp; &nbsp;
@@ -351,7 +358,7 @@
                                         &nbsp; &nbsp; &nbsp;
                                         <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
 									</li>
-								</ul>								
+								</ul>									
 							</c:when>
 							<c:otherwise>
 								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
@@ -364,18 +371,19 @@
 										    <option value="7">不同内压</option>
 								</select>
 								<ul>
-									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<!-- <span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>  -->
-									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">管道外径：</span><input type="text" class="def-input-result" name="externalDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">管道内径：</span><input class="def-input-result" type="text" name="innerDiameter" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性模量：</span><input class="def-input-result" type="text" name="elasticityModulus" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">泊松比：</span><input class="def-input-result" type="text" name="poissonRatio" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">屈服强度：</span><input class="def-input-result" type="text" name="yield" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">内压：</span><input class="def-input-result" type="text" name="pressure" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">弹性系数：</span><input class="def-input-result" type="text" name="yieldOffset" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-query" style="color:white;">应变硬化系数：</span><input class="def-input-result" name="hardening" type="text" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">裂纹形状比：</span><input class="def-input-result" type="text" name="crackLength" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">相对长度：</span><input class="def-input-result" type="text" name="relativeLength" placeholder="mm"/>
+									<!-- <span class="def-font-query" style="color:white;">沉降区长度：</span><input class="def-input-result" type="text" name="lenghtOfSubside" placeholder="mm"/>  -->
+									<span class="def-font-query" style="color:white;">沉降深度：</span><input class="def-input-result" type="text" name="depthOfSubside" placeholder="mm"/>
+									<span class="def-font-query" style="color:white;">埋深：</span><input class="def-input-result" type="text" name="buriedDepth" placeholder="mm"/></li>
 									<li class="a"><span class="def-font1" style="color:white;">土体种类：</span>
 										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> <span style="color:white;">砂土</span>
                                         &nbsp; &nbsp; &nbsp;
@@ -384,7 +392,7 @@
                                         <input class="def-font1" type="radio" name="typeOfSoil" value="3" /> <span style="color:white;">黏土</span>                                   
 									</li>
 								</ul>								
-							</c:otherwise>																		
+							</c:otherwise>					 													
 							</c:choose>
 								
 								

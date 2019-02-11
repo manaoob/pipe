@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.management.Query;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +28,9 @@ import com.swpu.pipe.beans.PageBean;
 import com.swpu.pipe.biz.AdminService;
 import com.swpu.pipe.biz.DataService;
 import com.swpu.pipe.biz.UserService;
+import com.swpu.pipe.dto.DataShowDto;
 import com.swpu.pipe.dto.InputDataDto;
+import com.swpu.pipe.dto.QueryData;
 import com.swpu.pipe.dto.UserEditPassDto;
 import com.swpu.pipe.dto.UserInfoChangeDto;
 import com.swpu.pipe.dto.UserLonDto;
@@ -330,20 +333,75 @@ public class UserController {
 	@RequestMapping(value="testJson", method=RequestMethod.GET)
 	public String sendData(Model model){
 		ResultData resultData = dataService.selectNewResultData();
+		List<String> list = new ArrayList<>();
+		list.add(resultData.getCrackJs());
+		list.add(resultData.getCrackMises());
+		list.add(resultData.getAxialMises());
+		list.add(resultData.getAxialU2());
+		list.add(resultData.getAxialPressure());
+		list.add(resultData.getAxialShear());
+		// 纵坐标的数值。
+		DataShowDto dataShowDto =  FileUtil.StringToArray(list);
 		
-		List<Integer> list1 = new ArrayList<>();
-		list1.add(15);
-		list1.add(25);
-		list1.add(10);
-		List<Integer> list2 = new ArrayList<>();
-		list2.add(25);
-		list2.add(35);
-		list2.add(20);
-		Map<String,List<Integer>> map = new HashMap<>();
-		map.put("X", list1);
-		map.put("Y", list2);
-		model.addAttribute("map", map);
-		return "result";
+		
+		
+		List<String> list1 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getCrackJs().size()+1; i++) {
+			list1.add(String.valueOf(i));
+		}
+		List<String> list2 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getCrackMises().size()+1; i++) {
+			list2.add(String.valueOf(i));
+		}
+		List<String> list3 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialMises().size()+1; i++) {
+			list3.add(String.valueOf(i));
+		}
+		List<String> list4 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialUs().size()+1; i++) {
+			list4.add(String.valueOf(i));
+		}
+		List<String> list5 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialPressure().size()+1; i++) {
+			list5.add(String.valueOf(i));
+		}
+		List<String> list6 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialShear().size()+1; i++) {
+			list6.add(String.valueOf(i));
+		}		
+		
+//		Map<String,List<String>> map= new HashMap<>();
+		Map<String,List<String>> mapCrackJs = new HashMap<>();
+		Map<String,List<String>> mapCrackMises = new HashMap<>();
+		Map<String,List<String>> mapAxialMises = new HashMap<>();
+		Map<String,List<String>> mapAxialU2 = new HashMap<>();
+		Map<String,List<String>> mapAxialPressure = new HashMap<>();
+		Map<String,List<String>> mapAxialShear = new HashMap<>();
+		mapCrackJs.put("X", list1);
+		mapCrackJs.put("Y", dataShowDto.getCrackJs());
+		model.addAttribute("mapCrackJs", mapCrackJs);
+		
+		mapCrackMises.put("X", list2);
+		mapCrackMises.put("Y", dataShowDto.getCrackMises());
+		model.addAttribute("mapCrackMises", mapCrackMises);	
+		
+		mapAxialMises.put("X", list3);
+		mapAxialMises.put("Y", dataShowDto.getAxialMises());
+		model.addAttribute("mapAxialMises", mapAxialMises);
+		
+		mapAxialU2.put("X", list4);
+		mapAxialU2.put("Y", dataShowDto.getAxialUs());
+		model.addAttribute("mapAxialU2", mapAxialU2);
+		
+		mapAxialPressure.put("X", list5);
+		mapAxialPressure.put("Y", dataShowDto.getAxialPressure());
+		model.addAttribute("mapAxialPressure", mapAxialPressure);
+		
+		mapAxialShear.put("X", list6);
+		mapAxialShear.put("Y", dataShowDto.getAxialShear());
+		model.addAttribute("mapAxialShear", mapAxialShear);
+		model.addAttribute("temp", "aaaaa");
+		return "result";	
 	}
 	
 	// 数据交互时候的重要的controller。
@@ -402,6 +460,82 @@ public class UserController {
 		}
 		return "index";	
 	}
+	//@PostMapping(value="/query")
+	@RequestMapping(value="/query")	
+	public String query(QueryData queryData, Model model){
+		ResultData resultData = dataService.showData(queryData);
+		List<String> list = new ArrayList<>();
+		list.add(resultData.getCrackJs());
+		list.add(resultData.getCrackMises());
+		list.add(resultData.getAxialMises());
+		list.add(resultData.getAxialU2());
+		list.add(resultData.getAxialPressure());
+		list.add(resultData.getAxialShear());
+		// 纵坐标的数值。
+		DataShowDto dataShowDto =  FileUtil.StringToArray(list);
+		
+		
+		
+		List<String> list1 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getCrackJs().size()+1; i++) {
+			list1.add(String.valueOf(i));
+		}
+		List<String> list2 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getCrackMises().size()+1; i++) {
+			list2.add(String.valueOf(i));
+		}
+		List<String> list3 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialMises().size()+1; i++) {
+			list3.add(String.valueOf(i));
+		}
+		List<String> list4 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialUs().size()+1; i++) {
+			list4.add(String.valueOf(i));
+		}
+		List<String> list5 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialPressure().size()+1; i++) {
+			list5.add(String.valueOf(i));
+		}
+		List<String> list6 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialShear().size()+1; i++) {
+			list6.add(String.valueOf(i));
+		}		
+		
+//		Map<String,List<String>> map= new HashMap<>();
+		Map<String,List<String>> mapCrackJs = new HashMap<>();
+		Map<String,List<String>> mapCrackMises = new HashMap<>();
+		Map<String,List<String>> mapAxialMises = new HashMap<>();
+		Map<String,List<String>> mapAxialU2 = new HashMap<>();
+		Map<String,List<String>> mapAxialPressure = new HashMap<>();
+		Map<String,List<String>> mapAxialShear = new HashMap<>();
+		mapCrackJs.put("X", list1);
+		mapCrackJs.put("Y", dataShowDto.getCrackJs());
+		model.addAttribute("mapCrackJs", mapCrackJs);
+		
+		mapCrackMises.put("X", list2);
+		mapCrackMises.put("Y", dataShowDto.getCrackMises());
+		model.addAttribute("mapCrackMises", mapCrackMises);	
+		
+		mapAxialMises.put("X", list3);
+		mapAxialMises.put("Y", dataShowDto.getAxialMises());
+ 		model.addAttribute("mapAxialMises", mapAxialMises);
+		
+		mapAxialU2.put("X", list4);
+		mapAxialU2.put("Y", dataShowDto.getAxialUs());
+		model.addAttribute("mapAxialU2", mapAxialU2);
+		
+		mapAxialPressure.put("X", list5);
+		mapAxialPressure.put("Y", dataShowDto.getAxialPressure());
+		model.addAttribute("mapAxialPressure", mapAxialPressure);
+		
+		mapAxialShear.put("X", list6);
+		mapAxialShear.put("Y", dataShowDto.getAxialShear());
+		model.addAttribute("mapAxialShear", mapAxialShear);
+		
+		model.addAttribute("temp", "2222");
+		return "query";
+	}
+	
 	
 	@GetMapping(value="/ansysFactor")
 	public String ansysFactor(@RequestParam(value = "param") String param ,Model model,HttpServletRequest request, HttpServletResponse response){

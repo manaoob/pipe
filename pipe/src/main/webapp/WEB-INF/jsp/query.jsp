@@ -103,33 +103,35 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-        <div id="page-wrapper" class="page-wrapper-cls" style="padding:0px;">
+        <div id="page-wrapper" class="page-wrapper-cls" style="padding:0px; height:1500px">
       		<div style="height: 150px; width: 1318px; padding: 0px;margin: 0px; background-image: url(<%=request.getContextPath()%>/lib/img/backgrounds/background03.png)">
       			 <div style="height: 10px;"></div>
       			 <p style="margin-top: 36px; text-align: center; font-size: 48px; color: white; font-family: '黑体'; ">结果查询</p>
 		 	</div>
             <div id="page-inner" >
                <div class="all" style="margin-top: 0px;">
-				<form  class="form-horizontal" role="from">
+				<form  class="form-horizontal" role="from" action="query" method="post">
 					<div class="form-group">
 						<div class="" style="margin-right: 10px;height:280px; background: #ACD373; border-radius: 20px;">
 							<fieldset style="margin: 20px;">
-								<legend class="def-title">查询参数</legend>
+								<legend class="def-title" style="text-align:center;">查询参数</legend>
 								<ul>
-									<li class="a"><span class="def-font-result">管道外径：</span><input type="text" class="def-input-result" placeholder="mm"/>
-									<span class="def-font-result">管道内径：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">泊松比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">屈服强度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">内压：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">弹性系数：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-result">应变硬化系数：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">裂纹形状比：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">相对长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">沉降区长度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">沉降深度：</span><input class="def-input-result" type="text" placeholder="mm"/>
-									<span class="def-font-result">埋深：</span><input class="def-input-result" type="text" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-result">裂纹类型：</span><input type="radio" name="colors" id="red">环向裂纹
-									              <input type="radio" name="colors" id="blue">轴向裂纹</li>
+							
+									<li class="a"><span class="def-font-result">管道外径：</span><input type="text" class="def-input-result" name="externalDiameter" placeholder="mm"/>
+									<span class="def-font-result">管道内径：</span><input class="def-input-result" type="text"  name="innerDiameter" placeholder="mm"/>
+									<span class="def-font-result">弹性模量：</span><input class="def-input-result" type="text"  name="elasticityModulus" placeholder="mm"/>
+									<span class="def-font-result">泊松比：</span><input class="def-input-result" type="text"  name="poissonRatio" placeholder="mm"/>
+									<span class="def-font-result">屈服强度：</span><input class="def-input-result" type="text"  name="yield" placeholder="mm"/>
+									<span class="def-font-result">内压：</span><input class="def-input-result" type="text"  name="pressure" placeholder="mm"/>
+									<span class="def-font-result">弹性系数：</span><input class="def-input-result" type="text"  name="yieldOffset" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">应变硬化系数：</span><input class="def-input-result" type="text"  name="hardening" placeholder="mm"/>
+									<span class="def-font-result">裂纹形状比：</span><input class="def-input-result" type="text"  name="crackLength" placeholder="mm"/>
+									<span class="def-font-result">相对长度：</span><input class="def-input-result" type="text"  name="relativeLength" placeholder="mm"/>
+									<span class="def-font-result">沉降区长度：</span><input class="def-input-result" type="text"  name="lenghtOfSubside" placeholder="mm"/>
+									<span class="def-font-result">沉降深度：</span><input class="def-input-result" type="text"  name="depthOfSubside" placeholder="mm"/>
+									<span class="def-font-result">埋深：</span><input class="def-input-result" type="text"  name="buriedDepth" placeholder="mm"/></li>
+									<li class="a"><span class="def-font-result">裂纹类型：</span><input type="radio" name="typeOfCrack" id="red" value="1">环向裂纹
+									              <input type="radio" name="typeOfCrack" id="blue" value="2">轴向裂纹</li>
 									<li class="a"><span class="def-font1">土体种类：</span>
 										<input class="def-font1" type="radio" name="typeOfSoil" value="1" /> 砂土
                                         &nbsp; &nbsp; &nbsp;
@@ -143,6 +145,7 @@
 						</div>												
 					</div>
 					
+					<!--  
 					<div class="form-group" style="background: #ACD373; height:500px ; border-radius: 20px;">
 						
 					<h1 style="color: white;"> 详细结果</h1>
@@ -218,10 +221,18 @@
 						</div>
 						
 						
-					</div>
+					</div> -->
 				</form>
+				
 		</div>
-
+				
+		<div style="height:40px"></div>
+		<div id="CrackJs" style="height: 400px; width:400px; float:left"></div>
+		<div id="CrackMises" style="height: 400px; width:400px; float:left"></div>
+		<div id="AxialMises" style="height: 400px; width:400px; float:left"></div>
+		<div id="AxialU2" style="height: 400px; width:400px; float:left"></div>
+		<div id="AxialPressure" style="height: 400px; width:400px; float:left"></div>	
+		<div id="AxialShear" style="height: 400px; width:400px; float:left"></div>
             </div>
             <!-- /. PAGE INNER  -->
         </div>
@@ -241,7 +252,236 @@
     <script src="<%=request.getContextPath()%>/lib/assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="<%=request.getContextPath()%>/lib/assets/js/custom.js"></script>
+    <script src="<%=request.getContextPath()%>/lib/assets/js/echarts.min.js"></script>
+    
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        
+        var myChart1 = echarts.init(document.getElementById('CrackJs'));
+	      option={
+	            title: {
+	                text: '沿裂纹的J积分值',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/。',
+	                data: ${mapCrackJs.X}
+					//data: [1,2,3,4,5]
+	            },
+	            yAxis: { 
+						name: '单位/kJm-2'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data: ${mapCrackJs.Y}
+	                //data: [12,15,18,21,14]
+	 				
+	            }]
+//				{
+//	                name: 'd=600',
+//	                type: 'line',
+//					stack:'总水量',
+//					color:'#B5C334',
+//					smooth: true,
+//					data:${map.first}
+	                //data: [22,25,28,31,24]
+//	            }
+	
+	        };
+	     myChart1.setOption(option);
+	var myChart2 = echarts.init(document.getElementById('CrackMises'));
+	      option={
+	            title: {
+	                text: '沿裂纹的mises应力',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/。',
+	                data: ${mapCrackMises.X}
+	            },
+	            yAxis: { 
+						name: '单位/MPa'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data:${mapCrackMises.Y}
+	               // data: [12,15,18,21,14]
+	 				
+	            }]
+	            
+	        };
+	     myChart2.setOption(option);
 
+	var myChart3 = echarts.init(document.getElementById('AxialMises'));
+	      option={
+	            title: {
+	                text: '管道轴向mises应力',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/m',
+	                data: ${mapAxialMises.X}
+	            },
+	            yAxis: { 
+						name: '单位/MPa'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data: ${mapAxialMises.Y}
+	               // data: [12,15,18,21,14]
+	 				
+	            }]
+	            
+	        };
+	     myChart3.setOption(option);
+
+	var myChart4 = echarts.init(document.getElementById('AxialU2'));
+	      option={
+	            title: {
+	                text: '管道沉降',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/m',
+	                data: ${mapAxialU2.X}
+	            },
+	            yAxis: { 
+						name: '单位/mm'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data:${mapAxialU2.Y}
+	               // data: [12,15,18,21,14]
+	 				
+	            }]
+	            
+	        };
+	     myChart4.setOption(option);
+	
+	var myChart5 = echarts.init(document.getElementById('AxialPressure'));
+	      option={
+	            title: {
+	                text: '管道轴应力',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/m',
+	                data: ${mapAxialPressure.X}
+	            },
+	            yAxis: { 
+						name: '单位/MPa'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data:${mapAxialPressure.Y}
+	               // data: [12,15,18,21,14]
+	 				
+	            }]
+	            
+	        };
+	     myChart5.setOption(option);
+		
+	var myChart6 = echarts.init(document.getElementById('AxialShear'));
+	      option={
+	            title: {
+	                text: '管道切应力',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/m',
+	                data: ${mapAxialShear.X}
+	            },
+	            yAxis: { 
+						name: '单位/MPa'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					data:${mapAxialShear.Y}
+	               // data: [12,15,18,21,14]
+	 				
+	            
+	            }]
+	        };
+	     myChart6.setOption(option);	
+	</script>
 
 </body>
 </html>
