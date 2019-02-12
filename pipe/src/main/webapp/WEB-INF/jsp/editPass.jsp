@@ -100,11 +100,11 @@
                         
                     </li>
                    
-                     
+                   <!--   
                      <li>
                         <a href="toAnsys"><i class="fa fa-code "></i>结果分析</a>
                     </li>
-                   
+                   --> 
                    
                     <li>
                         <a href="toBlank"><i class="fa fa-dashcube "></i>说明</a>
