@@ -141,7 +141,7 @@
 									</li>
 								</ul>
 							</fieldset>							
-								<input type="submit" value="查询" class="btn-primary btn" >														
+								<input type="submit" value="查询并导出数据" class="btn-primary btn" >														
 						</div>												
 					</div>
 					

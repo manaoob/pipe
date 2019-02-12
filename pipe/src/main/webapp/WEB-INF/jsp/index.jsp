@@ -195,7 +195,8 @@
 					</div>
 					
 					<div style="margin-top: 50px;">
-						<button type="submit" class="btn-blue" style="background: #d9edf6;">提交计算</button> 
+						<button type="submit" class="btn-blue" style="background: #d9edf6;">提交计算</button>
+						<a href="testJson">${temp}</a> 
 					</div>
 				</form>
 			</div>	

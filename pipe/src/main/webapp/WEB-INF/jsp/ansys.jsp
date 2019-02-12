@@ -23,6 +23,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link href="<%=request.getContextPath()%>/lib/assets/css/controlStyle.css" rel="stylesheet"  />
+   
 </head>
 <body>
     <div id="wrapper">
@@ -103,16 +104,16 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-	        <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px;">
+	        <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px; height:1500px">
 			 	<div class="all" style="background-image: url(<%=request.getContextPath()%>/lib/img/backgrounds/background01.png);padding: 0px; margin: 0px;">				
 					<div style="height: 40px;"></div>
 					<p style="margin-top: 0px; text-align: center; font-size: 48px; color: #21A9E1; font-family: '黑体';">数据分析</p>
 					<div style="height: 10px;"></div>
-					<form  action="" class="form-horizontal" role="from">
+					<form class="form-horizontal" role="from" action="ansysData" method="post">
 						<div>
 							<div style="margin: 15px; text-align: center;">
 							 <label class="checkbox-inline">
-							 	<span style=" color:white; font-size:18px;">裂纹类型：<span>
+							 	<span style=" color:white; font-size:18px;">裂纹类型：</span>
 							 </label>
 							 <label class="checkbox-inline">
 							      <input  type="radio" name="typeOfCrack" id="optionsRadios3" 
@@ -129,7 +130,7 @@
 								
 						<c:choose>
 							<c:when test="${param1==1}">
-								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+								<select id="mySelect" class="form-control selectpicker" name="param" style="width: 200px; margin: auto; ">
 										    <option value="1" selected="selected">不同沉降长度</option>
 										    <option value="2">不同沉降深度</option>
 										    <option value="3">不同土体种类</option> 
@@ -162,7 +163,7 @@
 								</ul>
 							</c:when>
 							<c:when test="${param1==2}">
-								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+								<select id="mySelect" class="form-control selectpicker" name="param" style="width: 200px; margin: auto; ">
 										    <option value="1">不同沉降长度</option>
 										    <option value="2" selected="selected">不同沉降深度</option>
 										    <option value="3">不同土体种类</option> 
@@ -195,7 +196,7 @@
 								</ul>								
 							</c:when>
 							<c:when test="${param1==3}">
-								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+								<select id="mySelect" class="form-control selectpicker" name="param" style="width: 200px; margin: auto; ">
 										    <option value="1">不同沉降长度</option>
 										    <option value="2">不同沉降深度</option>
 										    <option value="3" selected="selected">不同土体种类</option> 
@@ -228,7 +229,7 @@
 								</ul>								
 							</c:when>
 							<c:when test="${param1==4}">
-								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+								<select id="mySelect" class="form-control selectpicker" name="param" style="width: 200px; margin: auto; ">
 										    <option value="1">不同沉降长度</option>
 										    <option value="2">不同沉降深度</option>
 										    <option value="3" >不同土体种类</option> 
@@ -262,7 +263,7 @@
 								</ul>								
 							</c:when>	
 							<c:when test="${param1==5}">
-								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+								<select id="mySelect" class="form-control selectpicker" name="param" style="width: 200px; margin: auto; ">
 										    <option value="1">不同沉降长度</option>
 										    <option value="2">不同沉降深度</option>
 										    <option value="3" >不同土体种类</option> 
@@ -295,7 +296,7 @@
 								</ul>								
 							</c:when>
 							<c:when test="${param1==6}">
-								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+								<select id="mySelect" class="form-control selectpicker" name="param" style="width: 200px; margin: auto; ">
 										    <option value="1">不同沉降长度</option>
 										    <option value="2">不同沉降深度</option>
 										    <option value="3" >不同土体种类</option> 
@@ -328,7 +329,7 @@
 								</ul>								
 							</c:when>
 							<c:when test="${param1==7}"> 
-								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+								<select id="mySelect" class="form-control selectpicker" name="param" style="width: 200px; margin: auto; ">
 										    <option value="1">不同沉降长度</option>
 										    <option value="2">不同沉降深度</option>
 										    <option value="3" >不同土体种类</option> 
@@ -361,7 +362,7 @@
 								</ul>									
 							</c:when>
 							<c:otherwise>
-								<select id="mySelect" class="form-control selectpicker" style="width: 200px; margin: auto; ">
+								<select id="mySelect" class="form-control selectpicker" name="param" style="width: 200px; margin: auto; ">
 											<option value="1">不同沉降长度</option>
 										    <option value="2">不同沉降深度</option>
 										    <option value="3" >不同土体种类</option> 
@@ -398,22 +399,27 @@
 								
 							</div>
 							
-						</div>
-						
+						</div>					
+							
 						<div style="margin-top: 20px; text-align: center;">
 							<button type="submit" class="btn-blue" style="background: #d9edf6;">提交分析</button> 
 						</div>
 					</form>					
-					<div style="height: 20px;"></div>	
+					<div style="height: 20px;"></div>											
 				</div>	
-				<h1>${param1}</h1>
-				<div id="main" style="height: 500px; background-color: ;"></div>
+				<h1>${param1}</h1>										
+							<div style="height:40px"></div>
+							
+							<div id="CrackJs" style="height: 400px; width:400px; float:left;background-color: "></div>
+							<!--<div id="CrackMises" style="height: 400px; width:400px; float:left"></div>
+							<div id="AxialMises" style="height: 400px; width:400px; float:left"></div>
+							<div id="AxialU2" style="height: 400px; width:400px; float:left"></div>
+							<div id="AxialPressure" style="height: 400px; width:400px; float:left"></div>	
+							<div id="AxialShear" style="height: 400px; width:400px; float:left"></div>	-->
+							 <!--  <div id="main" style="height: 500px; background-color: ;"></div> -->
 	        
 	        </div>           
-           
-           
-           
-           
+          
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
@@ -431,7 +437,57 @@
     <script src="<%=request.getContextPath()%>/lib/assets/js/jquery.metisMenu.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="<%=request.getContextPath()%>/lib/assets/js/custom.js"></script>
-	<script language="javascript" type="text/javascript">  
+	<script src="<%=request.getContextPath()%>/lib/assets/js/echarts.min.js"></script>    
+	<script type="text/javascript">		
+	var myChart = echarts.init(document.getElementById('CrackJs'));
+	      option={
+	            title: {
+	                text: '沿裂纹的J积分值',
+					borderWidth:2,
+					x:'center'
+					
+	            },
+	            tooltip: {},
+	            legend: {
+					orient:'vertical',
+					x:'right',
+	                data:[]
+					
+	            },
+	            xAxis: {
+					type: 'category',
+					name: '单位/。',
+	                //data: ${Xlist1}
+					data: [1, 2, 3, 4, 5]
+	            },
+	            yAxis: { 
+						name: '单位/kJm-2'
+						},
+	            series: [{
+	                name: '',
+	                type: 'line',
+//					stack:'总水量',
+					smooth: true,
+					//data: ${mapCrackJs.Y[0]}
+	                data: [12, 15, 18, 21, 14]
+					
+	            }]
+//				{
+	//                name: 'd=600',
+	//                type: 'line',
+//					stack:'总水量',
+//					color:'#B5C334',
+//					smooth: true,
+//					data:${map.first}
+	                //data: [22,25,28,31,24]
+	//            }
+
+	        };
+	     myChart.setOption(option);
+
+	</script>    
+	
+	<script type="text/javascript">  
 		$(document).ready(function(){  
 		$('#mySelect').change(function(){  
 		//alert($(this).children('option:selected').val());  
@@ -441,6 +497,7 @@
 		window.location.href="ansysFactor?"+"param="+p1;  //页面跳转并传参
 		})  
 		})  
+	
 	</script>  
 
 </body>

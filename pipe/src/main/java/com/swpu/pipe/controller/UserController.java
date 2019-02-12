@@ -1,6 +1,7 @@
 package com.swpu.pipe.controller;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -330,7 +331,7 @@ public class UserController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="testJson", method=RequestMethod.GET)
+	@RequestMapping(value="/testJson", method=RequestMethod.GET)
 	public String sendData(Model model){
 		ResultData resultData = dataService.selectNewResultData();
 		List<String> list = new ArrayList<>();
@@ -454,13 +455,13 @@ public class UserController {
 			resultData.setUser(user);
 			resultData.setInputData(inputData);
 			if (dataService.saveResultData(resultData)) {
-				model.addAttribute("temp", "计算成功");
+				model.addAttribute("temp", "计算成功,查看计算结果");
 			}
 			return "index";				
 		}
 		return "index";	
 	}
-	//@PostMapping(value="/query")
+	
 	@RequestMapping(value="/query")	
 	public String query(QueryData queryData, Model model){
 		ResultData resultData = dataService.showData(queryData);
@@ -533,13 +534,239 @@ public class UserController {
 		model.addAttribute("mapAxialShear", mapAxialShear);
 		
 		model.addAttribute("temp", "2222");
+		
+		
+		// 导出数据的操作
+		FileWriter fw1 = null;  
+		FileWriter fw2 = null;
+		FileWriter fw3 = null;
+		FileWriter fw4 = null;
+		FileWriter fw5 = null; 
+		FileWriter fw6 = null; 
+		File fileCrackJs = new File("E:\\yinSoft\\exportQueryTXT\\getCrackJs.txt");  
+		File fileCrackMises = new File("E:\\yinSoft\\exportQueryTXT\\getCrackMises.txt"); 
+		File fileAxialMises = new File("E:\\yinSoft\\exportQueryTXT\\getAxialMises.txt"); 
+		File fileAxialU2 = new File("E:\\yinSoft\\exportQueryTXT\\getAxialU2.txt"); 
+		File fileAxialPressure = new File("E:\\yinSoft\\exportQueryTXT\\getAxialPressure.txt"); 
+		File fileAxialShear = new File("E:\\yinSoft\\exportQueryTXT\\getAxialShear.txt");		
+		
+		try {           
+	           
+			 fw1 = new FileWriter(fileCrackJs);  
+			 fw2 = new FileWriter(fileCrackMises); 
+			 fw3 = new FileWriter(fileAxialMises); 
+			 fw4 = new FileWriter(fileAxialU2); 
+			 fw5 = new FileWriter(fileAxialPressure); 
+			 fw6 = new FileWriter(fileAxialShear); 
+			          
+			fw1.write("index:"+list1+"\r\n");//向文件中写内容          
+			fw1.write("data:"+dataShowDto.getCrackJs()+"\r\n");          
+			fw1.flush();
+			fw2.write("index:"+list2+"\r\n");//向文件中写内容          
+			fw2.write("data:"+dataShowDto.getCrackMises()+"\r\n");          
+			fw2.flush(); 
+			fw3.write("index:"+list3+"\r\n");//向文件中写内容          
+			fw3.write("data:"+dataShowDto.getAxialMises()+"\r\n");          
+			fw3.flush(); 
+			fw4.write("index:"+list4+"\r\n");//向文件中写内容          
+			fw4.write("data:"+dataShowDto.getAxialUs()+"\r\n");          
+			fw4.flush(); 
+			fw5.write("index:"+list5+"\r\n");//向文件中写内容          
+			fw5.write("data:"+dataShowDto.getAxialPressure()+"\r\n");          
+			fw5.flush(); 
+			fw6.write("index:"+list6+"\r\n");//向文件中写内容          
+			fw6.write("data:"+dataShowDto.getAxialShear()+"\r\n");          
+			fw6.flush(); 			
+			model.addAttribute("temp","写数据成功！");          
+			System.out.println("写数据成功！");       
+			} catch (IOException e) {         
+				  // TODO Auto-generated catch block          
+				 e.printStackTrace();        }
+			finally{          
+				 if(fw1 != null){               
+				 try {                   
+					 fw1.close();              
+			} 				 
+				 catch (IOException e) { 
+				             // TODO Auto-generated catch block                  
+				 e.printStackTrace();              
+				}           
+			} 
+			if(fw2 != null){               
+				 try {                   
+					 fw2.close();              
+			} 				 
+				 catch (IOException e) { 
+				             // TODO Auto-generated catch block                  
+				 e.printStackTrace();              
+				}           
+			}
+			 if(fw3 != null){               
+			 try {                   
+				 fw3.close();              
+		} 				 
+			 catch (IOException e) { 
+			             // TODO Auto-generated catch block                  
+			 e.printStackTrace();              
+			}           
+		} 
+		 if(fw4 != null){               
+			 try {                   
+				 fw4.close();              
+		} 				 
+			 catch (IOException e) { 
+			             // TODO Auto-generated catch block                  
+			 e.printStackTrace();              
+			}           
+		} 
+		 if(fw5 != null){               
+		 try {                   
+			 fw5.close();              
+	} 				 
+		 catch (IOException e) { 
+		             // TODO Auto-generated catch block                  
+		 e.printStackTrace();              
+		}           
+	}
+	 if(fw6 != null){               
+		 try {                   
+			 fw6.close();              
+	} 				 
+		 catch (IOException e) { 
+		             // TODO Auto-generated catch block                  
+		 e.printStackTrace();              
+		}           
+	} 
+				 
+		 }	
+		
+		
+		
 		return "query";
 	}
 	
 	
+	@RequestMapping(value="/ansysData", method=RequestMethod.POST)
+	public String ansys(String param ,QueryData queryData, Model model,HttpServletRequest request, HttpServletResponse response){
+		List<ResultData> resultDatas = dataService.ansysData(queryData, param);
+		List<DataShowDto> list = new ArrayList<>();
+		for (int i = 0; i < resultDatas.size(); i++) {
+			List<String> list1 = new ArrayList<>();
+ 			list1.add(resultDatas.get(i).getCrackJs());
+			list1.add(resultDatas.get(i).getCrackMises());
+			list1.add(resultDatas.get(i).getAxialMises());
+			list1.add(resultDatas.get(i).getAxialU2());
+			list1.add(resultDatas.get(i).getAxialPressure());
+			list1.add(resultDatas.get(i).getAxialShear());
+			DataShowDto dataShowDto =  FileUtil.StringToArray(list1);
+			list.add(dataShowDto);
+		}
+		List<String> list1 = new ArrayList<>();
+		for (int i = 1; i < list.get(0).getCrackJs().size()+1; i++) {
+			list1.add(String.valueOf(i));
+		}
+		List<String> list2 = new ArrayList<>();
+		for (int i = 1; i < list.get(0).getCrackMises().size()+1; i++) {
+			list2.add(String.valueOf(i));
+		}
+		List<String> list3 = new ArrayList<>();
+		for (int i = 1; i < list.get(0).getAxialMises().size()+1; i++) {
+			list3.add(String.valueOf(i));
+		}
+		List<String> list4 = new ArrayList<>();
+		for (int i = 1; i < list.get(0).getAxialUs().size()+1; i++) {
+			list4.add(String.valueOf(i));
+		}
+		List<String> list5 = new ArrayList<>();
+		for (int i = 1; i < list.get(0).getAxialPressure().size()+1; i++) {
+			list5.add(String.valueOf(i));
+		}
+		List<String> list6 = new ArrayList<>();
+		for (int i = 1; i < list.get(0).getAxialShear().size()+1; i++) {
+			list6.add(String.valueOf(i));
+		}		
+		
+		List<List<String>> newlist1 = new ArrayList<>();
+		List<List<String>> listCrackJs = new ArrayList<>();
+		for (int i = 0; i < list.size(); i++) {
+			listCrackJs.add(list.get(i).getCrackJs());
+			newlist1.add(list1);
+		}
+		List<List<String>> newlist2 = new ArrayList<>();
+		List<List<String>> listCrackMises = new ArrayList<>();
+		for (int i = 0; i < list.size(); i++) {
+			listCrackMises.add(list.get(i).getCrackMises());
+			newlist2.add(list2);
+		}
+		List<List<String>> newlist3 = new ArrayList<>();
+		List<List<String>> listAxialMises = new ArrayList<>();
+		for (int i = 0; i < list.size(); i++) {
+			listAxialMises.add(list.get(i).getAxialMises());
+			newlist3.add(list3);
+		}
+		List<List<String>> newlist4 = new ArrayList<>();
+		List<List<String>> listAxialU2 = new ArrayList<>();
+		for (int i = 0; i < list.size(); i++) {
+			listAxialU2.add(list.get(i).getAxialUs());
+			newlist4.add(list4);
+		}
+		List<List<String>> newlist5 = new ArrayList<>();
+		List<List<String>> listAxialPressure = new ArrayList<>();
+		for (int i = 0; i < list.size(); i++) {
+			listAxialPressure.add(list.get(i).getAxialPressure());
+			newlist5.add(list5);
+		}
+		List<List<String>> newlist6 = new ArrayList<>();
+		List<List<String>> listAxialShear = new ArrayList<>();
+		for (int i = 0; i < list.size(); i++) {
+			listAxialShear.add(list.get(i).getAxialShear());
+			newlist6.add(list6);
+		}
+		
+		
+		Map<String,List<List<String>>> mapCrackJs  = new HashMap<>();
+		Map<String,List<List<String>>> mapCrackMises = new HashMap<>();
+		Map<String,List<List<String>>> mapAxialMises = new HashMap<>();
+		Map<String,List<List<String>>> mapAxialU2 = new HashMap<>();
+		Map<String,List<List<String>>> mapAxialPressure = new HashMap<>();
+		Map<String,List<List<String>>> mapAxialShear = new HashMap<>();
+		mapCrackJs.put("X", newlist1);
+		mapCrackJs.put("Y", listCrackJs);
+		model.addAttribute("mapCrackJs", mapCrackJs);
+		model.addAttribute("Xlist1", newlist1.get(0));
+		
+		mapCrackMises.put("X", newlist2);
+		mapCrackMises.put("Y", listCrackMises);
+		model.addAttribute("mapCrackMises", mapCrackMises);	
+		model.addAttribute("Xlist2", newlist2.get(0));
+		
+		mapAxialMises.put("X", newlist3);
+		mapAxialMises.put("Y", listAxialMises);
+ 		model.addAttribute("mapAxialMises", mapAxialMises);
+ 		model.addAttribute("Xlist3", newlist3.get(0));
+ 		
+		mapAxialU2.put("X", newlist4);
+		mapAxialU2.put("Y", listAxialU2);
+		model.addAttribute("mapAxialU2", mapAxialU2);
+		model.addAttribute("Xlist4", newlist4.get(0));
+		
+		mapAxialPressure.put("X", newlist5);
+		mapAxialPressure.put("Y", listAxialPressure );
+		model.addAttribute("mapAxialPressure", mapAxialPressure);
+		model.addAttribute("Xlist5", newlist5.get(0));
+		
+		mapAxialShear.put("X", newlist6);
+		mapAxialShear.put("Y", listAxialShear);
+		model.addAttribute("mapAxialShear", mapAxialShear);		
+		model.addAttribute("Xlist6", newlist6.get(0));
+		
+		return "ansys";
+
+	}
+
 	@GetMapping(value="/ansysFactor")
-	public String ansysFactor(@RequestParam(value = "param") String param ,Model model,HttpServletRequest request, HttpServletResponse response){
-		System.out.println(param);
+	public String ansysFactor(@RequestParam(value = "param") String param , Model model,HttpServletRequest request, HttpServletResponse response){
+		
 		int newParam = Integer.parseInt(param);
 		model.addAttribute("param1", newParam);
 		String username = (String) request.getSession().getAttribute("username");
@@ -547,19 +774,152 @@ public class UserController {
 		model.addAttribute("user", user);
 		return "ansys";
 	}
-
-//	/**
-//		 * form表单提交 Date类型数据绑定
-//		 * <功能详细描述>
-//		 * @param binder
-//		 * @see [类、类#方法、类#成员]
-//		 */
-//	@InitBinder  
-//	public void initBinder(WebDataBinder binder) {  
-//		    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
-//		    dateFormat.setLenient(false);  
-//		    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));  
-//	}
+	
+	
+	@RequestMapping(value="/exportComputeData", method=RequestMethod.GET)
+	public String exportComputeData(Model model){
+		ResultData resultData = dataService.selectNewResultData();
+		List<String> list = new ArrayList<>();
+		list.add(resultData.getCrackJs());
+		list.add(resultData.getCrackMises());
+		list.add(resultData.getAxialMises());
+		list.add(resultData.getAxialU2());
+		list.add(resultData.getAxialPressure());
+		list.add(resultData.getAxialShear());
+		// 纵坐标的数值。
+		DataShowDto dataShowDto =  FileUtil.StringToArray(list);
+		
+		
+		
+		List<String> list1 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getCrackJs().size()+1; i++) {
+			list1.add(String.valueOf(i));
+		}
+		List<String> list2 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getCrackMises().size()+1; i++) {
+			list2.add(String.valueOf(i));
+		}
+		List<String> list3 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialMises().size()+1; i++) {
+			list3.add(String.valueOf(i));
+		}
+		List<String> list4 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialUs().size()+1; i++) {
+			list4.add(String.valueOf(i));
+		}
+		List<String> list5 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialPressure().size()+1; i++) {
+			list5.add(String.valueOf(i));
+		}
+		List<String> list6 = new ArrayList<>();
+		for (int i = 1; i < dataShowDto.getAxialShear().size()+1; i++) {
+			list6.add(String.valueOf(i));
+		}		
+			
+			FileWriter fw1 = null;  
+			FileWriter fw2 = null;
+			FileWriter fw3 = null;
+			FileWriter fw4 = null;
+			FileWriter fw5 = null; 
+			FileWriter fw6 = null; 
+			File fileCrackJs = new File("E:\\yinSoft\\exportTXT\\getCrackJs.txt");  
+			File fileCrackMises = new File("E:\\yinSoft\\exportTXT\\getCrackMises.txt"); 
+			File fileAxialMises = new File("E:\\yinSoft\\exportTXT\\getAxialMises.txt"); 
+			File fileAxialU2 = new File("E:\\yinSoft\\exportTXT\\getAxialU2.txt"); 
+			File fileAxialPressure = new File("E:\\yinSoft\\exportTXT\\getAxialPressure.txt"); 
+			File fileAxialShear = new File("E:\\yinSoft\\exportTXT\\getAxialShear.txt"); 
+		
+			try {           
+		           
+			 fw1 = new FileWriter(fileCrackJs);  
+			 fw2 = new FileWriter(fileCrackMises); 
+			 fw3 = new FileWriter(fileAxialMises); 
+			 fw4 = new FileWriter(fileAxialU2); 
+			 fw5 = new FileWriter(fileAxialPressure); 
+			 fw6 = new FileWriter(fileAxialShear); 
+			          
+			fw1.write("index:"+list1+"\r\n");//向文件中写内容          
+			fw1.write("data:"+dataShowDto.getCrackJs()+"\r\n");          
+			fw1.flush();
+			fw2.write("index:"+list2+"\r\n");//向文件中写内容          
+			fw2.write("data:"+dataShowDto.getCrackMises()+"\r\n");          
+			fw2.flush(); 
+			fw3.write("index:"+list3+"\r\n");//向文件中写内容          
+			fw3.write("data:"+dataShowDto.getAxialMises()+"\r\n");          
+			fw3.flush(); 
+			fw4.write("index:"+list4+"\r\n");//向文件中写内容          
+			fw4.write("data:"+dataShowDto.getAxialUs()+"\r\n");          
+			fw4.flush(); 
+			fw5.write("index:"+list5+"\r\n");//向文件中写内容          
+			fw5.write("data:"+dataShowDto.getAxialPressure()+"\r\n");          
+			fw5.flush(); 
+			fw6.write("index:"+list6+"\r\n");//向文件中写内容          
+			fw6.write("data:"+dataShowDto.getAxialShear()+"\r\n");          
+			fw6.flush(); 			
+			model.addAttribute("temp","写数据成功！");          
+			System.out.println("写数据成功！");       
+			} catch (IOException e) {         
+				  // TODO Auto-generated catch block          
+				 e.printStackTrace();        }
+			finally{          
+				 if(fw1 != null){               
+				 try {                   
+					 fw1.close();              
+			} 				 
+				 catch (IOException e) { 
+				             // TODO Auto-generated catch block                  
+				 e.printStackTrace();              
+				}           
+			} 
+			if(fw2 != null){               
+				 try {                   
+					 fw2.close();              
+			} 				 
+				 catch (IOException e) { 
+				             // TODO Auto-generated catch block                  
+				 e.printStackTrace();              
+				}           
+			}
+			 if(fw3 != null){               
+			 try {                   
+				 fw3.close();              
+		} 				 
+			 catch (IOException e) { 
+			             // TODO Auto-generated catch block                  
+			 e.printStackTrace();              
+			}           
+		} 
+		 if(fw4 != null){               
+			 try {                   
+				 fw4.close();              
+		} 				 
+			 catch (IOException e) { 
+			             // TODO Auto-generated catch block                  
+			 e.printStackTrace();              
+			}           
+		} 
+		 if(fw5 != null){               
+		 try {                   
+			 fw5.close();              
+	} 				 
+		 catch (IOException e) { 
+		             // TODO Auto-generated catch block                  
+		 e.printStackTrace();              
+		}           
+	}
+	 if(fw6 != null){               
+		 try {                   
+			 fw6.close();              
+	} 				 
+		 catch (IOException e) { 
+		             // TODO Auto-generated catch block                  
+		 e.printStackTrace();              
+		}           
+	} 
+				 
+		 }		
+		return "result";	
+	}
 
 
 	
