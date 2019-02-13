@@ -115,7 +115,7 @@
 		<div id="AxialShear" style="height: 400px; width:400px; float:left"></div>
 		
 		<a href="exportComputeData">导出结果数据</a>
-		<div>${temp}</div>
+		<!--<div>${temp}</div>-->
 		<!--  
 		<div class="all">
 			 <<p style="margin-top: 36px; text-align: center; font-size: 36px; color: #21A9E1; font-family: '黑体';">管道参数输入</p>

@@ -42,5 +42,10 @@ public class DataServiceImpl implements DataService {
 		// TODO Auto-generated method stub
 		return dataDao.ansysData(queryData, index);
 	}
+	@Override
+	public InputData selectInputData(InputData inputData) {
+		// TODO Auto-generated method stub
+		return dataDao.findInputData(inputData);
+	}
 
 }

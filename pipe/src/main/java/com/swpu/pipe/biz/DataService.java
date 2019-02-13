@@ -17,4 +17,6 @@ public interface DataService {
 	public ResultData selectNewResultData();
 	
 	public List<ResultData> ansysData(QueryData queryData, String index);
+	
+	public InputData selectInputData(InputData inputData);
 }

@@ -100,7 +100,7 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-       <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px; height:900px">
+       <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px; height:1000px">
         	<!--<a href="index.html" style="margin-left: 14px; text-align: center; font-size: 24px; color: #21A9E1; font-family: '黑体';">管道参数输入</a> 
         	<a href="index.html" style="margin-left: 14px; text-align: center; font-size: 24px; color: #21A9E1; font-family: '黑体';">土体参数输入</a>
         	-->
@@ -128,10 +128,10 @@
 									<li class="a"><span class="def-font">管道外径：</span><input type="text" class="def-input" name="externalDiameter" placeholder="mm"/>
 													<span class="def-font">管道内径：</span><input class="def-input" type="text" name="innerDiameter" placeholder="mm"/>
 									</li>
-									<li class="a"><span class="def-font">弹性模量：</span><input class="def-input" type="text" name="elasticityModulus" placeholder="mm"/>
+									<li class="a"><span class="def-font">弹性模量：</span><input class="def-input" type="text" name="elasticityModulus" placeholder="MPa"/>
 													<span class="def-font">泊松比：&nbsp;&nbsp;&nbsp;&nbsp;</span><input class="def-input" type="text" name="poissonRatio" placeholder="mm"/>
 									</li>
-									<li class="a"><span class="def-font">屈服强度：</span><input class="def-input" type="text" name="yield" placeholder="mm"/>
+									<li class="a"><span class="def-font">屈服强度：</span><input class="def-input" type="text" name="yield" placeholder="MPa"/>
 													<span class="def-font">内&nbsp;&nbsp;&nbsp;&nbsp;压：&nbsp;&nbsp;&nbsp;&nbsp;</span><input class="def-input" type="text" name="pressure" placeholder="MPa"/>
 									</li>
 									<li class="a"><span class="def-font">弹性系数：</span><input class="def-input" type="text" name="yieldOffset" placeholder=""/>
@@ -193,7 +193,7 @@
 						</div>		
 					
 					</div>
-					
+					<h3 style="color:red;">${message}</h3>
 					<div style="margin-top: 50px;">
 						<button type="submit" class="btn-blue" style="background: #d9edf6;">提交计算</button>
 						<a href="testJson">${temp}</a> 

@@ -274,6 +274,24 @@ public class DataDaoImpl implements DataDao{
 		return resultData;
 	}
 
+	@Override
+	public InputData findInputData(InputData inputData) {
+		InputData findInputData = (InputData) SessionFactory.getCurrentSession().createQuery(" from InputData i where i.externalDiameter=:externalDiameter and "
+				+ "i.innerDiameter=:innerDiameter and i.elasticityModulus=:elasticityModulus and i.poissonRatio=:poissonRatio and i.typeOfCrack=:typeOfCrack and "
+				+ "i.crackLength=:crackLength and i.relativeLength=:relativeLength and i.pressure=:pressure and i.yield=:yield and i.yieldOffset=:yieldOffset and i.hardening=:hardening and "
+				+ "i.lenghtOfSubside=:lenghtOfSubside and i.depthOfSubside=:depthOfSubside and i.buriedDepth=:buriedDepth and i.typeOfSoil=:typeOfSoil")
+				.setParameter("externalDiameter", inputData.getExternalDiameter())
+		        .setParameter("innerDiameter", inputData.getInnerDiameter()).setParameter("elasticityModulus", inputData.getElasticityModulus())
+		        .setParameter("poissonRatio", inputData.getPoissonRatio()).setParameter("typeOfCrack", inputData.getTypeOfCrack())
+		        .setParameter("crackLength", inputData.getCrackLength()).setParameter("relativeLength",inputData.getRelativeLength())
+		        .setParameter("pressure", inputData.getPressure())
+		        .setParameter("yield", inputData.getYield()).setParameter("yieldOffset", inputData.getYieldOffset()).setParameter("hardening", inputData.getHardening())
+		        .setParameter("lenghtOfSubside", inputData.getLenghtOfSubside()).setParameter("depthOfSubside", inputData.getDepthOfSubside())
+		        .setParameter("buriedDepth", inputData.getBuriedDepth())
+		        .setParameter("typeOfSoil", inputData.getTypeOfSoil()).uniqueResult();
+		return findInputData;
+	}
+
 
 
 }

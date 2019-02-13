@@ -121,14 +121,14 @@
 							
 									<li class="a"><span class="def-font-result">管道外径：</span><input type="text" class="def-input-result" name="externalDiameter" placeholder="mm"/>
 									<span class="def-font-result">管道内径：</span><input class="def-input-result" type="text"  name="innerDiameter" placeholder="mm"/>
-									<span class="def-font-result">弹性模量：</span><input class="def-input-result" type="text"  name="elasticityModulus" placeholder="mm"/>
-									<span class="def-font-result">泊松比：</span><input class="def-input-result" type="text"  name="poissonRatio" placeholder="mm"/>
-									<span class="def-font-result">屈服强度：</span><input class="def-input-result" type="text"  name="yield" placeholder="mm"/>
-									<span class="def-font-result">内压：</span><input class="def-input-result" type="text"  name="pressure" placeholder="mm"/>
-									<span class="def-font-result">弹性系数：</span><input class="def-input-result" type="text"  name="yieldOffset" placeholder="mm"/></li>
-									<li class="a"><span class="def-font-result">应变硬化系数：</span><input class="def-input-result" type="text"  name="hardening" placeholder="mm"/>
-									<span class="def-font-result">裂纹形状比：</span><input class="def-input-result" type="text"  name="crackLength" placeholder="mm"/>
-									<span class="def-font-result">相对长度：</span><input class="def-input-result" type="text"  name="relativeLength" placeholder="mm"/>
+									<span class="def-font-result">弹性模量：</span><input class="def-input-result" type="text"  name="elasticityModulus" placeholder="MPa"/>
+									<span class="def-font-result">泊松比：</span><input class="def-input-result" type="text"  name="poissonRatio" placeholder=""/>
+									<span class="def-font-result">屈服强度：</span><input class="def-input-result" type="text"  name="yield" placeholder="MPa"/>
+									<span class="def-font-result">内压：</span><input class="def-input-result" type="text"  name="pressure" placeholder="MPa"/>
+									<span class="def-font-result">弹性系数：</span><input class="def-input-result" type="text"  name="yieldOffset" placeholder=""/></li>
+									<li class="a"><span class="def-font-result">应变硬化系数：</span><input class="def-input-result" type="text"  name="hardening" placeholder=""/>
+									<span class="def-font-result">裂纹形状比：</span><input class="def-input-result" type="text"  name="crackLength" placeholder=""/>
+									<span class="def-font-result">相对长度：</span><input class="def-input-result" type="text"  name="relativeLength" placeholder=""/>
 									<span class="def-font-result">沉降区长度：</span><input class="def-input-result" type="text"  name="lenghtOfSubside" placeholder="mm"/>
 									<span class="def-font-result">沉降深度：</span><input class="def-input-result" type="text"  name="depthOfSubside" placeholder="mm"/>
 									<span class="def-font-result">埋深：</span><input class="def-input-result" type="text"  name="buriedDepth" placeholder="mm"/></li>

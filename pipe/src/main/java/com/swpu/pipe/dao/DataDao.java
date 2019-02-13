@@ -15,4 +15,6 @@ public interface DataDao extends BaseDao<InputData, Integer>{
 	public ResultData showNewResultData();
 	
 	public List<ResultData> ansysData(QueryData queryData, String index);
+
+	public InputData findInputData(InputData inputData);
 }
