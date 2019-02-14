@@ -332,7 +332,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value="/testJson", method=RequestMethod.GET)
-	public String sendData(Model model){
+	public String sendData(Model model,HttpServletRequest request, HttpServletResponse response){
 		ResultData resultData = dataService.selectNewResultData();
 		List<String> list = new ArrayList<>();
 		list.add(resultData.getCrackJs());
@@ -450,7 +450,10 @@ public class UserController {
 		mapAxialShear.put("X", list6);
 		mapAxialShear.put("Y", dataShowDto.getAxialShear());
 		model.addAttribute("mapAxialShear", mapAxialShear);
-		model.addAttribute("temp", "aaaaa");
+		model.addAttribute("temp", "导出结果数据");
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
 		return "result";	
 	}
 	
@@ -516,9 +519,9 @@ public class UserController {
 			List<String> list_dataU2 = FileUtil.read("E:\\yinSoft\\test\\dataU2.txt");
 			List<String> list_dataMises = FileUtil.read("E:\\yinSoft\\test\\dataMises.txt");
 			resultData.setAxialU2(list_dataU2.toString());
-			resultData.setAxialMises(list_dataSS3.toString());
+			resultData.setAxialMises(list_dataMises.toString());
 			resultData.setAxialShear(list_dataSS2.toString());
-			resultData.setAxialPressure(list_dataMises.toString());
+			resultData.setAxialPressure(list_dataSS3.toString());
 			resultData.setCrackJs(list_dataCrackJs.toString());
 			resultData.setCrackMises(list_dataCrackMises.toString());
 			resultData.setUser(user);
@@ -528,6 +531,7 @@ public class UserController {
 				String message = list_mess.get(list_mess.size()-1);
 				model.addAttribute("message", message);
 				model.addAttribute("temp", "计算成功,查看计算结果");
+				model.addAttribute("user", user);
 			}
 			return "index";				
 		}
@@ -535,8 +539,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/query")	
-	public String query(QueryData queryData, Model model){
+	public String query(QueryData queryData, Model model,HttpServletRequest request, HttpServletResponse response){
 		ResultData resultData = dataService.showData(queryData);
+		if (resultData==null) {
+			request.getSession().setAttribute("mess", "查询数据失败，请重新输入查询数据！！");
+			String username = (String) request.getSession().getAttribute("username");
+			User user = userService.findByUsername(username);
+			model.addAttribute("user", user);
+			return "query";
+		}
 		List<String> list = new ArrayList<>();
 		list.add(resultData.getCrackJs());
 		list.add(resultData.getCrackMises());
@@ -655,7 +666,7 @@ public class UserController {
 		mapAxialShear.put("Y", dataShowDto.getAxialShear());
 		model.addAttribute("mapAxialShear", mapAxialShear);
 		
-		model.addAttribute("temp", "2222");
+		model.addAttribute("temp", "删除数据");
 		
 		
 		// 导出数据的操作
@@ -699,8 +710,8 @@ public class UserController {
 			fw6.write("index:"+list6+"\r\n");//向文件中写内容          
 			fw6.write("data:"+dataShowDto.getAxialShear()+"\r\n");          
 			fw6.flush(); 			
-			model.addAttribute("temp","写数据成功！");          
-			System.out.println("写数据成功！");       
+			//model.addAttribute("temp","删除数据");          
+			//System.out.println("写数据成功！");       
 			} catch (IOException e) {         
 				  // TODO Auto-generated catch block          
 				 e.printStackTrace();        }
@@ -761,9 +772,11 @@ public class UserController {
 	} 
 				 
 		 }	
-		
-		
-		
+		request.getSession().setAttribute("mess", "查询成功！！");
+		request.getSession().setAttribute("resultId", resultData.getResultDataId());
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
 		return "query";
 	}
 	
@@ -1043,6 +1056,18 @@ public class UserController {
 		return "result";	
 	}
 
-
+	@GetMapping(value="deleteData")
+	public String deleteData(Model model,HttpServletRequest request, HttpServletResponse response){
+		int id = (int) request.getSession().getAttribute("resultId");
+		if (dataService.deleteData(id)) {
+			//model.addAttribute("temp", "删除数据成功！！");
+			request.getSession().setAttribute("mess", "删除数据成功！！");
+			return "query";
+		}
+		//model.addAttribute("temp", "删除数据失败！！");
+		request.getSession().setAttribute("mess", "删除数据失败！！");
+		return "query";
+		
+	}
 	
 }

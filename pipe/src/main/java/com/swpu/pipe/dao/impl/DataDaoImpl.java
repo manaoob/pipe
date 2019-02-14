@@ -292,6 +292,19 @@ public class DataDaoImpl implements DataDao{
 		return findInputData;
 	}
 
+	@Override
+	public boolean deleteDataById(int id) {
+		ResultData resultData = (ResultData) SessionFactory.getCurrentSession().createQuery("from ResultData r where r.resultDataId=:resultDataId").setParameter("resultDataId", id).uniqueResult();
+		
+		InputData inputData = (InputData) SessionFactory.getCurrentSession().createQuery("from InputData i where i.inputDataId=:inputDataId").setParameter("inputDataId", resultData.getInputData().getInputDataId()).uniqueResult();;
+		if (resultData != null && inputData != null) {
+			SessionFactory.getCurrentSession().delete(resultData);
+			SessionFactory.getCurrentSession().delete(inputData);
+			return true;
+		}
+		return false;
+	}
+
 
 
 }

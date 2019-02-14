@@ -17,4 +17,6 @@ public interface DataDao extends BaseDao<InputData, Integer>{
 	public List<ResultData> ansysData(QueryData queryData, String index);
 
 	public InputData findInputData(InputData inputData);
+	
+	public boolean deleteDataById(int id);
 }

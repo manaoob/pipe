@@ -107,14 +107,14 @@
       			 <p style="margin-top: 36px; text-align: center; font-size: 48px; color: white; font-family: '黑体'; ">计算结果</p>
 		 	</div>
 		<div style="height:40px"></div>
-		<div id="CrackJs" style="height: 400px; width:400px; float:left"></div>
-		<div id="CrackMises" style="height: 400px; width:400px; float:left"></div>
-		<div id="AxialMises" style="height: 400px; width:400px; float:left"></div>
-		<div id="AxialU2" style="height: 400px; width:400px; float:left"></div>
-		<div id="AxialPressure" style="height: 400px; width:400px; float:left"></div>	
-		<div id="AxialShear" style="height: 400px; width:400px; float:left"></div>
+		<div id="CrackJs" style="height: 350px; width:360px; float:left;"></div>
+		<div id="CrackMises" style="height: 350px; width:360px; float:left;"></div>
+		<div id="AxialMises" style="height: 350px; width:360px; float:left;"></div>
+		<div id="AxialU2" style="height: 350px; width:360px; float:left;"></div>
+		<div id="AxialPressure" style="height: 350px; width:360px; float:left;"></div>	
+		<div id="AxialShear" style="height: 350px; width:360px; float:left;"></div>
 		
-		<a href="exportComputeData">导出结果数据</a>
+		<a href="exportComputeData">${temp}</a>
 		<!--<div>${temp}</div>-->
 		<!--  
 		<div class="all">
@@ -215,11 +215,13 @@
 	            },
 	            xAxis: {
 					type: 'category',
-					name: '单位/。',
+					name: '角度 / °',
+					nameLocation:"middle",
+					nameGap:25,
 	                data: ${mapCrackJs.X}
 	            },
 	            yAxis: { 
-						name: '单位/kJm-2'
+						name: '      J积分值/kJm-2',
 						},
 	            series: [{
 	                name: '',
@@ -259,11 +261,13 @@
 	            },
 	            xAxis: {
 					type: 'category',
-					name: '单位/。',
+					name: '角度 / °',
+					nameLocation:"middle",
+					nameGap:25,
 	                data: ${mapCrackMises.X}
 	            },
 	            yAxis: { 
-						name: '单位/MPa'
+						name: '      mises应力/MPa'
 						},
 	            series: [{
 	                name: '',
@@ -295,11 +299,13 @@
 	            },
 	            xAxis: {
 					type: 'category',
-					name: '单位/m',
+					name: '管线计算长度 / m',
+					nameLocation:"middle",
+					nameGap:25,	
 	                data: ${mapAxialMises.X}
 	            },
 	            yAxis: { 
-						name: '单位/MPa'
+						name: '      mises应力/MPa',
 						},
 	            series: [{
 	                name: '',
@@ -331,11 +337,13 @@
 	            },
 	            xAxis: {
 					type: 'category',
-					name: '单位/m',
+					name: '管线计算长度 / m',
+					nameLocation:"middle",
+					nameGap:25,	
 	                data: ${mapAxialU2.X}
 	            },
 	            yAxis: { 
-						name: '单位/mm'
+						name: '管道沉降/mm'
 						},
 	            series: [{
 	                name: '',
@@ -367,11 +375,13 @@
 	            },
 	            xAxis: {
 					type: 'category',
-					name: '单位/m',
+					name: '管线计算长度 / m',
+					nameLocation:"middle",
+					nameGap:25,
 	                data: ${mapAxialPressure.X}
 	            },
 	            yAxis: { 
-						name: '单位/MPa'
+						name: '  轴向应力/MPa'
 						},
 	            series: [{
 	                name: '',
@@ -403,11 +413,13 @@
 	            },
 	            xAxis: {
 					type: 'category',
-					name: '单位/m',
+					name: '管线计算长度 / m',
+					nameLocation:"middle",
+					nameGap:25,
 	                data: ${mapAxialShear.X}
 	            },
 	            yAxis: { 
-						name: '单位/MPa'
+						name: '切应力/MPa'
 						},
 	            series: [{
 	                name: '',

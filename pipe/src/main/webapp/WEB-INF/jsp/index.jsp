@@ -100,7 +100,7 @@
 
         </nav>
         <!-- /. SIDEBAR MENU (navbar-side) -->
-       <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px; height:1000px">
+       <div id="page-wrapper" class="page-wrapper-cls" style="padding: 0px; height:1000px; text-align:center;">
         	<!--<a href="index.html" style="margin-left: 14px; text-align: center; font-size: 24px; color: #21A9E1; font-family: '黑体';">管道参数输入</a> 
         	<a href="index.html" style="margin-left: 14px; text-align: center; font-size: 24px; color: #21A9E1; font-family: '黑体';">土体参数输入</a>
         	-->
@@ -111,25 +111,25 @@
 		 	<div class="all" style="margin-top:40px;">				
 				<form  class="form-horizontal" role="from" action="compute" method="post">
 					<div class="form-group">
-						<div class="col-md-3" style="margin-right: 10px; width: 800px; height:620px; background: #FAAC6D; border-radius: 20px;">
+						<div class="col-md-3" style="margin-right: 10px; width: 700px; height:620px; background: #FAAC6D; border-radius: 20px;">
 							<fieldset style="margin: 20px;"> 
 								<legend class="def-title" style="font-size: 24px; color: white; font-family: '黑体';padding-bottom: 10px;">管道参数输入</legend>
 								
-								<div style="background-color: red;height: 200px; margin-bottom: 20px;padding: 0px;">
-									<div class="div-inline" style="background-color: black; float:left; padding:10px; margin-left:48px;">
-										<img src="<%=request.getContextPath()%>/lib/img/_02.png" style="height: 200px; width: 300px; " />
+								<div style="background-color: ;height: 200px; margin-bottom: 20px;padding: 0px;">
+									<div class="div-inline" style="background-color: ; float:left;width: 250px;  padding:10px; margin-left:48px;">
+										<img src="<%=request.getContextPath()%>/lib/img/soft_huan_01.png" style="height: 180px; width: 250px; float:left;" />
 									</div>
-									<div class="div-inline" style="background-color: #00ACED;float:left; padding:10px;">
-										<img src="<%=request.getContextPath()%>/lib/img/_02.png" style="height: 200px; width: 300px; " />
+									<div class="div-inline" style="background-color: ;float:left; padding:10px; width: 250px; ">
+										<img src="<%=request.getContextPath()%>/lib/img/soft_zhou_03.png" style="height: 180px; width: 250px; float:left;" />
 									</div>
 								</div>
 																
-								<ul style="padding-top:20px;">									
+								<ul style="padding-top:-10px;">									
 									<li class="a"><span class="def-font">管道外径：</span><input type="text" class="def-input" name="externalDiameter" placeholder="mm"/>
 													<span class="def-font">管道内径：</span><input class="def-input" type="text" name="innerDiameter" placeholder="mm"/>
 									</li>
 									<li class="a"><span class="def-font">弹性模量：</span><input class="def-input" type="text" name="elasticityModulus" placeholder="MPa"/>
-													<span class="def-font">泊松比：&nbsp;&nbsp;&nbsp;&nbsp;</span><input class="def-input" type="text" name="poissonRatio" placeholder="mm"/>
+													<span class="def-font">泊松比：&nbsp;&nbsp;&nbsp;&nbsp;</span><input class="def-input" type="text" name="poissonRatio" placeholder=""/>
 									</li>
 									<li class="a"><span class="def-font">屈服强度：</span><input class="def-input" type="text" name="yield" placeholder="MPa"/>
 													<span class="def-font">内&nbsp;&nbsp;&nbsp;&nbsp;压：&nbsp;&nbsp;&nbsp;&nbsp;</span><input class="def-input" type="text" name="pressure" placeholder="MPa"/>
@@ -165,12 +165,12 @@
 
 						</div>-->
 						
-						<div class="col-md-3" style="margin-right: 10px; width: 400px; height:620px; background: #E696C1; border-radius: 20px;">			
+						<div class="col-md-6" style="margin-right: 10px; width: 380px; height:620px; background: #E696C1; border-radius: 20px;">			
 							<fieldset style="margin: 20px;">
 								<legend style="font-size: 24px; color: white; font-family: '黑体';padding-bottom: 10px;">土体参数输入</legend>
-									<div style="background-color: red;height: 200px; margin-bottom: 20px;padding: 0px;">
-										<div  style="background-color: black;">
-											<img src="<%=request.getContextPath()%>/lib/img/_02.png" style="height: 200px; width: 300px; " />
+									<div style="background-color: ;height: 200px; margin-bottom: 20px;padding: 0px;">
+										<div  style="background-color: ;">
+											<img src="<%=request.getContextPath()%>/lib/img/tuti.png" style="height: 200px; width: 300px; " />
 										</div>
 									</div>
 									<li class="a"><span class="def-font1">沉降区长度：</span><input type="text" class="def-input" name="lenghtOfSubside" placeholder="mm"/></li>

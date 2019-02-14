@@ -47,5 +47,10 @@ public class DataServiceImpl implements DataService {
 		// TODO Auto-generated method stub
 		return dataDao.findInputData(inputData);
 	}
+	@Override
+	public boolean deleteData(int id) {
+		// TODO Auto-generated method stub
+		return dataDao.deleteDataById(id);
+	}
 
 }

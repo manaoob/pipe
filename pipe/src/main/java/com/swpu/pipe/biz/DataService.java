@@ -19,4 +19,6 @@ public interface DataService {
 	public List<ResultData> ansysData(QueryData queryData, String index);
 	
 	public InputData selectInputData(InputData inputData);
+	
+	public boolean deleteData(int id);
 }
