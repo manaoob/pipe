@@ -470,17 +470,28 @@ public class UserController {
 //		newList.add(inputData.getTypeOfCrack().toString());
 		if (dataService.selectInputData(inputData) != null) {
 			model.addAttribute("message", "请勿重复计算！！");
+			model.addAttribute("user", user);
 			return "index";
 		}
 		
 		// 调用bat运行py程序  
-//		String commandCompute="cmd /c start C://Users//Administrator//Desktop//compute.bat";
-//		try {
-//			Runtime.getRuntime().exec(commandCompute);
-//			Thread.sleep(40000);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
+		String commandCompute="cmd /c start C://Users//Administrator//Desktop//Run_pipe.bat";
+		try {
+			Runtime.getRuntime().exec(commandCompute);
+			
+			Thread.sleep(10000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		String commandComputeInp="cmd /c start C://Users//Administrator//Desktop//Run_inp.bat";
+		try {
+			Runtime.getRuntime().exec(commandComputeInp);
+			
+			Thread.sleep(25000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}		
 		
 		if (dataService.saveData(inputData)) {
 		     String commandU2 = "cmd /c start C://Users//Administrator//Desktop//readU2.bat";
@@ -502,7 +513,7 @@ public class UserController {
 			//FileUtil.createScriptFile(command, filePath, newFilePath, oldList, newList);
 		    ResultData resultData = new ResultData();
 		    try {
-		    	Thread.sleep(200);  //休眠一分钟
+		    	Thread.sleep(2000);  //休眠一分钟
 		    	} catch (InterruptedException e) {
 		    	e.printStackTrace();
 		    	} 		    		    
@@ -693,6 +704,7 @@ public class UserController {
 			 fw6 = new FileWriter(fileAxialShear); 
 			          
 			fw1.write("index:"+list1+"\r\n");//向文件中写内容          
+			//System.out.println(list1);
 			fw1.write("data:"+dataShowDto.getCrackJs()+"\r\n");          
 			fw1.flush();
 			fw2.write("index:"+list2+"\r\n");//向文件中写内容          
@@ -912,7 +924,7 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/exportComputeData", method=RequestMethod.GET)
-	public String exportComputeData(Model model){
+	public String exportComputeData(Model model,HttpServletRequest request, HttpServletResponse respons){
 		ResultData resultData = dataService.selectNewResultData();
 		List<String> list = new ArrayList<>();
 		list.add(resultData.getCrackJs());
@@ -927,29 +939,76 @@ public class UserController {
 		
 		
 		List<String> list1 = new ArrayList<>();
-		for (int i = 1; i < dataShowDto.getCrackJs().size()+1; i++) {
-			list1.add(String.valueOf(i));
-		}
+		list1.add("0");list1.add("15");list1.add("30");list1.add("45");list1.add("60");list1.add("75");list1.add("90");
+//		for (int i = 1; i < dataShowDto.getCrackJs().size()+1; i++) {
+//			list1.add(String.valueOf(i));
+//		}
 		List<String> list2 = new ArrayList<>();
-		for (int i = 1; i < dataShowDto.getCrackMises().size()+1; i++) {
-			list2.add(String.valueOf(i));
-		}
+		list2.add("0");list2.add("15");list2.add("30");list2.add("45");list2.add("60");list2.add("75");list2.add("90");
+//		for (int i = 1; i < dataShowDto.getCrackMises().size()+1; i++) {
+//			list2.add(String.valueOf(i));
+//		}
 		List<String> list3 = new ArrayList<>();
-		for (int i = 1; i < dataShowDto.getAxialMises().size()+1; i++) {
-			list3.add(String.valueOf(i));
-		}
+		list3.add("0");list3.add("0.6");list3.add("1.2");list3.add("1.8");
+		list3.add("2.4");list3.add("3");list3.add("3.6");list3.add("4.2");
+		list3.add("4.8");list3.add("5.4");list3.add("6");list3.add("6.6");
+		list3.add("7.2");list3.add("7.9");list3.add("8.5");list3.add("9.15");
+		list3.add("9.75");list3.add("10.35");list3.add("10.95");list3.add("11.55");
+		list3.add("12.15");list3.add("12.75");list3.add("13.35");list3.add("13.95");
+		list3.add("14.45");list3.add("15.15");list3.add("15.75");list3.add("16.35");
+		list3.add("16.95");list3.add("17.75");list3.add("18.15");list3.add("18.75");
+		list3.add("19.35");list3.add("19.95");list3.add("20.55");list3.add("21.15");
+		list3.add("21.77");list3.add("22.38");list3.add("23");list3.add("23.6");
+		list3.add("24.2");list3.add("24.8");list3.add("24.985");list3.add("24.989");
+		list3.add("24.993");list3.add("24.997");list3.add("25");
+//		for (int i = 1; i < dataShowDto.getAxialMises().size()+1; i++) {
+//			list3.add(String.valueOf(i));
+//		}
 		List<String> list4 = new ArrayList<>();
-		for (int i = 1; i < dataShowDto.getAxialUs().size()+1; i++) {
-			list4.add(String.valueOf(i));
-		}
+		list4.add("0");list4.add("0.6");list4.add("1.2");list4.add("1.8");
+		list4.add("2.4");list4.add("3");list4.add("3.6");list4.add("4.2");
+		list4.add("4.8");list4.add("5.4");list4.add("6");list4.add("6.6");
+		list4.add("7.2");list4.add("7.9");list4.add("8.5");list4.add("9.15");
+		list4.add("9.75");list4.add("10.35");list4.add("10.95");list4.add("11.55");
+		list4.add("12.15");list4.add("12.75");list4.add("13.35");list4.add("13.95");
+		list4.add("14.45");list4.add("15.15");list4.add("15.75");list4.add("16.35");
+		list4.add("16.95");list4.add("17.75");list4.add("18.15");list4.add("18.75");
+		list4.add("19.35");list4.add("19.95");list4.add("20.55");list4.add("21.15");
+		list4.add("21.77");list4.add("22.38");list4.add("23");list4.add("23.6");
+		list4.add("24.2");list4.add("24.8");list4.add("24.985");list4.add("24.989");
+		list4.add("24.993");list4.add("24.997");list4.add("25");
+//		for (int i = 1; i < dataShowDto.getAxialUs().size()+1; i++) {
+//			list4.add(String.valueOf(i));
+//		}
 		List<String> list5 = new ArrayList<>();
-		for (int i = 1; i < dataShowDto.getAxialPressure().size()+1; i++) {
-			list5.add(String.valueOf(i));
-		}
+		list5.add("0");list5.add("0.6");list5.add("1.2");list5.add("1.8");
+		list5.add("2.4");list5.add("3");list5.add("3.6");list5.add("4.2");
+		list5.add("4.8");list5.add("5.4");list5.add("6");list5.add("6.6");
+		list5.add("7.2");list5.add("7.9");list5.add("8.5");list5.add("9.15");
+		list5.add("9.75");list5.add("10.35");list5.add("10.95");list5.add("11.55");
+		list5.add("12.15");list5.add("12.75");list5.add("13.35");list5.add("13.95");
+		list5.add("14.45");list5.add("15.15");list5.add("15.75");list5.add("16.35");
+		list5.add("16.95");list5.add("17.75");list5.add("18.15");list5.add("18.75");
+		list5.add("19.35");list5.add("19.95");list5.add("20.55");list5.add("21.15");
+		list5.add("21.77");list5.add("22.38");list5.add("23");list5.add("23.6");
+		list5.add("24.2");list5.add("24.8");list5.add("24.985");list5.add("24.989");
+		list5.add("24.993");list5.add("24.997");list5.add("25");
+//		for (int i = 1; i < dataShowDto.getAxialPressure().size()+1; i++) {
+//			list5.add(String.valueOf(i));
+//		}
 		List<String> list6 = new ArrayList<>();
-		for (int i = 1; i < dataShowDto.getAxialShear().size()+1; i++) {
-			list6.add(String.valueOf(i));
-		}		
+		list6.add("0");list6.add("0.6");list6.add("1.2");list6.add("1.8");
+		list6.add("2.4");list6.add("3");list6.add("3.6");list6.add("4.2");
+		list6.add("4.8");list6.add("5.4");list6.add("6");list6.add("6.6");
+		list6.add("7.2");list6.add("7.9");list6.add("8.5");list6.add("9.15");
+		list6.add("9.75");list6.add("10.35");list6.add("10.95");list6.add("11.55");
+		list6.add("12.15");list6.add("12.75");list6.add("13.35");list6.add("13.95");
+		list6.add("14.45");list6.add("15.15");list6.add("15.75");list6.add("16.35");
+		list6.add("16.95");list6.add("17.75");list6.add("18.15");list6.add("18.75");
+		list6.add("19.35");list6.add("19.95");list6.add("20.55");list6.add("21.15");
+		list6.add("21.77");list6.add("22.38");list6.add("23");list6.add("23.6");
+		list6.add("24.2");list6.add("24.8");list6.add("24.985");list6.add("24.989");
+		list6.add("24.993");list6.add("24.997");list6.add("25");	
 			
 			FileWriter fw1 = null;  
 			FileWriter fw2 = null;
@@ -1052,20 +1111,28 @@ public class UserController {
 		}           
 	} 
 				 
-		 }		
+		 }	
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
 		return "result";	
 	}
 
 	@GetMapping(value="deleteData")
 	public String deleteData(Model model,HttpServletRequest request, HttpServletResponse response){
 		int id = (int) request.getSession().getAttribute("resultId");
+		String username = (String) request.getSession().getAttribute("username");
+		User user = userService.findByUsername(username);
+		
 		if (dataService.deleteData(id)) {
 			//model.addAttribute("temp", "删除数据成功！！");
 			request.getSession().setAttribute("mess", "删除数据成功！！");
+			model.addAttribute("user", user);
 			return "query";
 		}
 		//model.addAttribute("temp", "删除数据失败！！");
 		request.getSession().setAttribute("mess", "删除数据失败！！");
+		model.addAttribute("user", user);
 		return "query";
 		
 	}

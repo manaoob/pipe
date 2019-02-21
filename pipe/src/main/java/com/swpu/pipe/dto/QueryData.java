@@ -14,7 +14,7 @@ public class QueryData {
 	private Double  crackLength; // 裂纹形状比
 	private Double  relativeLength; // 裂纹相对深度
 	
-	private Integer pressure;  // 内压
+	private Double pressure;  // 内压
 	
 	private Integer yield; // 屈服强度
 	
@@ -86,11 +86,13 @@ public class QueryData {
 		this.relativeLength = relativeLength;
 	}
 
-	public Integer getPressure() {
+
+
+	public Double getPressure() {
 		return pressure;
 	}
 
-	public void setPressure(Integer pressure) {
+	public void setPressure(Double pressure) {
 		this.pressure = pressure;
 	}
 
