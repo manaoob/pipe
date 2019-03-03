@@ -106,4 +106,10 @@ public class UserServiceImpl implements UserService{
 		return false;
 	}
 
+	@Override
+	public boolean updateTime(User user) {
+		// TODO Auto-generated method stub
+		return userDao.save(user) != null;
+	}
+
 }

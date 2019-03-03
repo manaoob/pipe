@@ -3,7 +3,10 @@ package com.swpu.pipe.controller;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,6 +86,10 @@ public class UserController {
 				
 				request.getSession().setAttribute("username", userTemp.getUsername());
 				User user = userService.findByUsername(userTemp.getUsername());
+				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String loginTime = df.format(new Date()).toString();
+				user.setLoginTime(loginTime);
+				userService.updateTime(user);
 				model.addAttribute("user", user);
 				return "profile";
 			} 

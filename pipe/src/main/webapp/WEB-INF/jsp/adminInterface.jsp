@@ -79,7 +79,7 @@
 								  <tr>
 									  <th>用户名</th>
 									  <th>昵称</th>
-									  <th>性别</th>
+									  <th>最近登录日期</th>
 									  <th>电话</th>
 									  <th>操作</th>
 								  </tr>
@@ -89,7 +89,7 @@
 								<tr>
 									<td>${user.username}</td>
 									<td>${user.nickName}</td>
-									<td>${user.gender}</td>
+									<td>${user.loginTime}</td>
 									<td>
 										${user.phone}
 									</td>
