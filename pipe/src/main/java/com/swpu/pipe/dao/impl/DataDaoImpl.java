@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +13,7 @@ import com.swpu.pipe.dao.DataDao;
 import com.swpu.pipe.dto.QueryData;
 import com.swpu.pipe.entity.InputData;
 import com.swpu.pipe.entity.ResultData;
-import com.swpu.pipe.entity.User;
+
 
 @Repository
 public class DataDaoImpl implements DataDao{
